@@ -1,14 +1,13 @@
-﻿using System;
-using System.Globalization;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using MyPhotos.Common;
+using MyPhotos.Models;
+using MyPhotos.ViewModels;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using MyPhotos.Models;
 
 namespace MyPhotos.Controllers
 {
@@ -22,7 +21,7 @@ namespace MyPhotos.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +33,9 @@ namespace MyPhotos.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -50,6 +49,20 @@ namespace MyPhotos.Controllers
             {
                 _userManager = value;
             }
+        }
+
+        /// <summary>
+        /// 获取验证码图片
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public ActionResult GetValidateCode()
+        {
+            ValidateCode vCode = new ValidateCode();
+            string code = vCode.CreateValidateCode(5);
+            Session["ValidateCode"] = code;
+            byte[] bytes = vCode.CreateValidateGraphic(code);
+            return File(bytes, @"image/jpeg");
         }
 
         //
@@ -66,11 +79,20 @@ namespace MyPhotos.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl, string code)
         {
+            string controller = returnUrl.Split('/')[1];
+            string action = returnUrl.Split('/')[2];
+
             if (!ModelState.IsValid)
             {
                 return View(model);
+            }
+
+            if (Session["ValidateCode"].ToString() != code)
+            {
+                ModelState.AddModelError("code", "validate code is error");
+                return View();
             }
 
             // 这不会计入到为执行帐户锁定而统计的登录失败次数中
@@ -79,7 +101,7 @@ namespace MyPhotos.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction(action, controller);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -120,7 +142,7 @@ namespace MyPhotos.Controllers
             // 如果用户输入错误代码的次数达到指定的次数，则会将
             // 该用户帐户锁定指定的时间。
             // 可以在 IdentityConfig 中配置帐户锁定设置
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -155,8 +177,8 @@ namespace MyPhotos.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // 有关如何启用帐户确认和密码重置的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=320771
                     // 发送包含此链接的电子邮件
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

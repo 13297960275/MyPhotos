@@ -1,0 +1,42 @@
+﻿@model MyPhotos.Models.PhotoType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PhotoType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model._typename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._typename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._typedes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._typedes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._tcover)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._tcover)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model._typeid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

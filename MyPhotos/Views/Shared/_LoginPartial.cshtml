@@ -1,22 +1,43 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("Logout", "Users", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("你好，" + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">注销</a></li>
-    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li id="userDetails">
+                @Html.ActionLink("你好，" + User.Identity.GetUserName() + "!", "Details", "Users", routeValues: null, htmlAttributes: new { title = "Manage" })
+                <ul hidden id="userManager" class="nav nav-pills nav-stacked">
+                    <li>
+                        @*<a onclick="Modify();">修改资料</a>*@
+                        <a href="~/Users/Details2">修改资料</a>
+                    </li>
+                    <li>
+                        @*<a onclick="ChangePassword();">修改密码</a>*@
+                        <a href="~/Users/ChangePassword">修改密码</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">注销</a></li>
+        </ul>
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("注册", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("登录", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("注册", "Register", "Users", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("登录", "Login", "Users", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#userDetails").hover(function () {
+            $("#userManager").show();
+        }, function () {
+            $("#userManager").hide();
+        });
+    });
+</script>

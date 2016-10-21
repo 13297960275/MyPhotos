@@ -1,4 +1,4 @@
-﻿@model MyPhotos.Models.RegisterViewModel
+﻿@model MyPhotos.ViewModels.RegisterViewModel
 @{
     ViewBag.Title = "注册";
 }
@@ -28,6 +28,7 @@
         <div class="col-md-10">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
+        @*<img id="valiCode" style="cursor: pointer;" src="../Account/GetValidateCode" alt="验证码" />*@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

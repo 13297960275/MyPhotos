@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("MyPhotos")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("WistronITS")]
 [assembly: AssemblyProduct("MyPhotos")]
-[assembly: AssemblyCopyright("版权所有(C)  2016")]
+[assembly: AssemblyCopyright("版权所有(C) WistronITS 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于 typelib 的 ID
-[assembly: Guid("7a8ddaf4-57ad-4a6a-99d3-627304a7c96f")]
+[assembly: Guid("b056a779-c146-4655-907c-24f11d5bdaa4")]
 
 // 程序集的版本信息由下列四个值组成:
 //

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MyPhotos.Models.Photos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PhotoTypes._typename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._ptitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._purl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._pdes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._pclicks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._ptime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._pup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model._pdown)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhotoTypes._typename)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._ptitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._purl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._pdes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._pclicks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._ptime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._pup)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item._pdown)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item._pid }) |
+            @Html.ActionLink("Details", "Details", new { id=item._pid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item._pid })
+        </td>
+    </tr>
+}
+
+</table>

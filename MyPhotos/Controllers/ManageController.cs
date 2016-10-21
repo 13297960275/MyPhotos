@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MyPhotos.Models;
+using MyPhotos.ViewModels;
 
 namespace MyPhotos.Controllers
 {
@@ -32,9 +33,9 @@ namespace MyPhotos.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -333,7 +334,7 @@ namespace MyPhotos.Controllers
             base.Dispose(disposing);
         }
 
-#region 帮助程序
+        #region 帮助程序
         // 用于在添加外部登录名时提供 XSRF 保护
         private const string XsrfKey = "XsrfId";
 
@@ -384,6 +385,6 @@ namespace MyPhotos.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }

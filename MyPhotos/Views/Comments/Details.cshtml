@@ -1,0 +1,66 @@
+﻿@model MyPhotos.Models.Comments
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comments</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model._cphotoid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._cphotoid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._cusername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._cusername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._ctext)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._ctext)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._ctime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._ctime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._cup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._cup)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model._cdown)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._cdown)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model._cid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
