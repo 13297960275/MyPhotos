@@ -193,22 +193,21 @@ namespace MyPhotos.Controllers
             }
             if (ModelState.IsValid)
             {
+                //User _user = udbr.Find(u => u.UserName == register.UserName);
                 if (udbr.Exist(u => u.UserName == register.UserName)) ModelState.AddModelError("UserName", "用户名已存在");
                 else
                 {
-                    User _user = new User()
-                    {
-                        UserName = register.UserName,
-                        //默认用户组代码写这里
-                        RoleID = 1,
-                        DisplayName = register.DisplayName,
-                        Password = Encode.Sha256(register.Password),
-                        //邮箱验证与邮箱唯一性问题
-                        Email = register.Email,
-                        //用户状态问题
-                        Status = 0,
-                        RegistrationTime = DateTime.Now
-                    };
+                    User _user = new User();
+                    _user.UserName = register.UserName;
+                    //默认用户组代码写这里
+                    _user.RoleID = 1;
+                    _user.DisplayName = register.DisplayName;
+                    _user.Password = Encode.Sha256(register.Password);
+                    //邮箱验证与邮箱唯一性问题
+                    _user.Email = register.Email;
+                    //用户状态问题
+                    _user.Status = 0;
+                    _user.RegistrationTime = DateTime.Now;
                     db.Users.Add(_user);
                     db.SaveChanges();
                     if (_user.UserID > 0)
@@ -259,12 +258,13 @@ namespace MyPhotos.Controllers
         {
             if (ModelState.IsValid)
             {
-                var _user = udbr.Find(u => u.UserName == loginViewModel.UserName);
+                User _user = udbr.Find(u => u.UserName == loginViewModel.UserName);
                 if (_user == null) ModelState.AddModelError("UserName", "用户名不存在");
                 else if (_user.Password == Encode.Sha256(loginViewModel.Password))
                 {
                     _user.LoginTime = DateTime.Now;
                     _user.LoginIP = Request.UserHostAddress;
+                    udbr.Update(_user);
                     //db.Entry(_user).State = EntityState.Modified;
                     db.SaveChanges();
                     var _identity = authentication.CreateIdentity(_user, DefaultAuthenticationTypes.ApplicationCookie);
