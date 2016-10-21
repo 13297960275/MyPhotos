@@ -14,11 +14,11 @@ namespace MyPhotos.Models
         public int RoleID { get; set; }
 
         /// <summary>
-        /// 角色名称
+        /// 角色类型
         /// </summary>
         [Required(ErrorMessage = "必须输入{0}")]
         [StringLength(20, MinimumLength = 2, ErrorMessage = "{0}长度为{2}-{1}个字符")]
-        [Display(Name = "角色名称")]
+        [Display(Name = "角色类型")]
         public string RoleName { get; set; }
 
         /// <summary>

@@ -25,7 +25,8 @@ namespace MyPhotos.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            var Users = db.Users.Include(u => u.Roles);
+            return View(Users.ToList());
         }
 
         // GET: Users/Details/5
@@ -81,7 +82,7 @@ namespace MyPhotos.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName");
+            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", user.RoleID);
             return View(user);
         }
 
@@ -98,6 +99,7 @@ namespace MyPhotos.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", user.RoleID);
             return View(user);
         }
 
@@ -300,7 +302,7 @@ namespace MyPhotos.Controllers
         /// 显示用户资料
         /// </summary>
         /// <returns></returns>
-        public ActionResult Details2()
+        public ActionResult DataModify()
         {
             return View(udbr.Find(u => u.UserName == User.Identity.Name));
         }

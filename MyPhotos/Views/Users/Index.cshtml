@@ -51,8 +51,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DisplayName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Roles.RoleName)
+            <td id="EditRole">
+                <span id="ShowRole">@Html.DisplayFor(modelItem => item.Roles.RoleName)</span>
+                @*<div id="SelectRole">@Html.DropDownList("RoleID", null, htmlAttributes: new { @class = "form-control" })</div>*@
             </td>
             @*<td>
                     @Html.DisplayFor(modelItem => item.Password)
@@ -73,11 +74,22 @@
                 @Html.DisplayFor(modelItem => item.LoginIP)
             </td>
             <td>
-                @Html.ActionLink("编辑", "Edit", new { id = item.UserID }) |
-                @Html.ActionLink("详情", "Details", new { id = item.UserID }) |
-                @Html.ActionLink("删除", "Delete", new { id = item.UserID })
+                @Html.ActionLink("修改权限", "Edit", new { id = item.UserID }) @*|
+                    @Html.ActionLink("详情", "Details", new { id = item.UserID }) |
+                    @Html.ActionLink("删除", "Delete", new { id = item.UserID })*@
             </td>
         </tr>
     }
 
 </table>
+
+@*<script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#EditRole").hover(function () {
+                $("#SelectRole").show();
+            }, function () {
+                $("#ShowRole").show();
+            });
+        });
+    </script>*@
