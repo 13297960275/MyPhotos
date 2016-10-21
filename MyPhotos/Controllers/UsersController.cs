@@ -193,7 +193,6 @@ namespace MyPhotos.Controllers
             }
             if (ModelState.IsValid)
             {
-                //User _user = udbr.Find(u => u.UserName == register.UserName);
                 if (udbr.Exist(u => u.UserName == register.UserName)) ModelState.AddModelError("UserName", "用户名已存在");
                 else
                 {
