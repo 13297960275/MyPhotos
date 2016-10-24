@@ -44,90 +44,91 @@ namespace MyPhotos.Controllers
             return View(user);
         }
 
+        // 用户的增（由register代替）删改（由editrole、modify和changepassword代替）等操作
         // GET: Users/Create
-        public ActionResult Create()
-        {
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName");
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName");
+        //    return View();
+        //}
 
-        // POST: Users/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,UserName,RoleID,DisplayName,Password,Email,Status,RegistrationTime,LoginTime,LoginIP")] User user)
-        {
-            if (ModelState.IsValid)
-            {
-                //默认密码
-                user.Password = Encode.Sha256("123456");
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //// POST: Users/Create
+        //// 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
+        //// 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "UserID,UserName,RoleID,DisplayName,Password,Email,Status,RegistrationTime,LoginTime,LoginIP")] User user)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        //默认密码
+        //        user.Password = Encode.Sha256("123456");
+        //        db.Users.Add(user);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(user);
-        }
+        //    return View(user);
+        //}
 
-        // GET: Users/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", user.RoleID);
-            return View(user);
-        }
+        //// GET: Users/Edit/5
+        //public ActionResult Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    User user = db.Users.Find(id);
+        //    if (user == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", user.RoleID);
+        //    return View(user);
+        //}
 
-        // POST: Users/Edit/5
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserID,UserName,DisplayName,RoleID,Password,Email,Status,RegistrationTime,LoginTime,LoginIP")] User user)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", user.RoleID);
-            return View(user);
-        }
+        //// POST: Users/Edit/5
+        //// 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
+        //// 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "UserID,UserName,DisplayName,RoleID,Password,Email,Status,RegistrationTime,LoginTime,LoginIP")] User user)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(user).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", user.RoleID);
+        //    return View(user);
+        //}
 
-        // GET: Users/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
+        //// GET: Users/Delete/5
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    User user = db.Users.Find(id);
+        //    if (user == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(user);
+        //}
 
-        // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //// POST: Users/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    User user = db.Users.Find(id);
+        //    db.Users.Remove(user);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
@@ -153,12 +154,12 @@ namespace MyPhotos.Controllers
         }
         #endregion
 
-        #region 用户管理
+        #region 用户、角色以及授权管理
 
         /// <summary>
         /// 获取验证码图片
         /// </summary>
-        /// <returns>验证码</returns>
+        /// <returns>验证码图片</returns>
         public ActionResult GetValidateCode()
         {
             ValidateCode vCode = new ValidateCode();
@@ -179,9 +180,9 @@ namespace MyPhotos.Controllers
         }
 
         /// <summary>
-        /// 处理用户提交的注册数据
+        /// 处理用户提交的注册数据POST
         /// </summary>
-        /// <param name="register"></param>
+        /// <param name="register">UsersRegisterViewModel</param>
         /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
@@ -247,10 +248,11 @@ namespace MyPhotos.Controllers
         }
 
         /// <summary>
-        /// 用户登录逻辑
-        /// 用ModelState.IsValid验证模型是否通过，没通过直接返回，通过则检查用户密码是否正确。用户名密码正确用CreateIdentity方法创建标识，然后用SignOut方法清空Cookies，然后用SignIn登录。
+        /// 用户登录逻辑POST
         /// </summary>
-        /// <param name="UsersloginViewModel"></param>
+        /// 用ModelState.IsValid验证模型是否通过，没通过直接返回，通过则检查用户密码是否正确。用户名密码正确用CreateIdentity方法创建标识，然后用SignOut方法清空Cookies，然后用SignIn登录。
+        /// <param name="loginViewModel">UsersLoginViewModel</param>
+        /// <param name="returnUrl">返回Url</param>
         /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
@@ -348,9 +350,9 @@ namespace MyPhotos.Controllers
         }
 
         /// <summary>
-        /// 修改密码
+        /// 修改密码POPST
         /// </summary>
-        /// <param name="passwordViewModel"></param>
+        /// <param name="passwordViewModel">UsersChangePasswordViewModel</param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -374,6 +376,47 @@ namespace MyPhotos.Controllers
             }
             //return View(passwordViewModel);
             return Redirect(Url.Content("~/"));
+        }
+
+        /// <summary>
+        /// 修改用户角色GET
+        /// </summary>
+        /// <param name="id">用户ID</param>
+        /// <returns></returns>
+        public ActionResult EditRole(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", user.RoleID);
+            return View(user);
+        }
+
+        /// <summary>
+        /// 修改用户角色POST
+        /// </summary>
+        /// 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
+        /// 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
+        /// <param name="user">用户对象</param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditRole([Bind(Include = "UserID,UserName,DisplayName,RoleID,Password,Email,Status,RegistrationTime,LoginTime,LoginIP")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", user.RoleID);
+            return View(user);
         }
 
         #endregion
