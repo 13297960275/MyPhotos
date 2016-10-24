@@ -22,15 +22,15 @@ namespace MyPhotos.Models
         public string _typename { get; set; }
 
         /// <summary>
-        /// 类型XX1
+        /// 类型描述
         /// </summary>
-        [Display(Name = "类型XX1")]
+        [Display(Name = "类型描述")]
         public string _typedes { get; set; }
 
         /// <summary>
-        /// 类型XX2
+        /// 封面图片
         /// </summary>
-        [Display(Name = "类型XX2")]
+        [Display(Name = "封面图片")]
         public string _tcover { get; set; }
     }
 }

@@ -24,21 +24,21 @@ namespace MyPhotos.Models
         public int _ptypeid { get; set; }
 
         /// <summary>
-        /// 标题
+        /// 图片标题
         /// </summary>
-        [Display(Name = "标题")]
+        [Display(Name = "图片标题")]
         public string _ptitle { get; set; }
 
         /// <summary>
-        /// 路径
+        /// 图片路径
         /// </summary>
-        [Display(Name = "路径")]
+        [Display(Name = "图片路径")]
         public string _purl { get; set; }
 
         /// <summary>
-        /// 图片XX
+        /// 图片描述
         /// </summary>
-        [Display(Name = "图片XX")]
+        [Display(Name = "图片描述")]
         public string _pdes { get; set; }
 
         /// <summary>
@@ -48,9 +48,9 @@ namespace MyPhotos.Models
         public int? _pclicks { get; set; }
 
         /// <summary>
-        /// 时间
+        /// 录入时间
         /// </summary>
-        [Display(Name = "时间")]
+        [Display(Name = "录入时间")]
         public DateTime? _ptime { get; set; }
 
         /// <summary>

@@ -38,38 +38,40 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhotoTypes._typename)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item._ptitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item._purl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item._pdes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item._pclicks)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item._ptime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item._pup)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item._pdown)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item._pid }) |
-            @Html.ActionLink("Details", "Details", new { id=item._pid }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item._pid })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoTypes._typename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._ptitle)
+            </td>
+            <td>
+                <div><img style="width:180px" src="~/Images/@item._purl" /></div>
+                @*@Html.DisplayFor(modelItem => item._purl)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._pdes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._pclicks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._ptime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._pup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._pdown)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item._pid }) |
+                @Html.ActionLink("Details", "Details", new { id = item._pid }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item._pid })
+            </td>
+        </tr>
+    }
 
 </table>

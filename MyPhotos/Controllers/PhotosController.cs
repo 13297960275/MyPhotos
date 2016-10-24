@@ -19,6 +19,7 @@ namespace MyPhotos.Controllers
         public ActionResult Index()
         {
             var photos = db.Photos.Include(p => p.PhotoTypes);
+            //ViewBag.url = HttpContext.Server.MapPath("");
             return View(photos.ToList());
         }
 
@@ -53,6 +54,12 @@ namespace MyPhotos.Controllers
         {
             if (ModelState.IsValid)
             {
+                //for (int i = 1; i <= 5; i++)
+                //{
+                //    photos._ptypeid = 3;
+                //    photos._purl = "W (" + i + ").jpg";
+                //}
+                photos._ptime = DateTime.Now;
                 db.Photos.Add(photos);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -87,6 +94,7 @@ namespace MyPhotos.Controllers
         {
             if (ModelState.IsValid)
             {
+                photos._ptime = DateTime.Now;
                 db.Entry(photos).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
