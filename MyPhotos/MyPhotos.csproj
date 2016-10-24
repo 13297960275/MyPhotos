@@ -196,6 +196,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Common\Authentication.cs" />
+    <Compile Include="Common\Download.cs" />
+    <Compile Include="Common\Upload.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="DAL\DALBaseRepository.cs" />
     <Compile Include="Common\Encode.cs" />

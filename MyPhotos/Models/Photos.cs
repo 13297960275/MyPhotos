@@ -30,9 +30,9 @@ namespace MyPhotos.Models
         public string _ptitle { get; set; }
 
         /// <summary>
-        /// 图片路径
+        /// 图片
         /// </summary>
-        [Display(Name = "图片路径")]
+        [Display(Name = "图片")]
         public string _purl { get; set; }
 
         /// <summary>

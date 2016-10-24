@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using MyPhotos.Models;
 using MyPhotos.DAL;
+using MyPhotos.Common;
+using System.IO;
 
 namespace MyPhotos.Controllers
 {
@@ -52,19 +54,25 @@ namespace MyPhotos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_pclicks,_ptime,_pup,_pdown")] Photos photos)
         {
-            if (ModelState.IsValid)
+            foreach (string upload in Request.Files)
             {
-                //for (int i = 1; i <= 5; i++)
-                //{
-                //    photos._ptypeid = 3;
-                //    photos._purl = "W (" + i + ").jpg";
-                //}
-                photos._ptime = DateTime.Now;
-                db.Photos.Add(photos);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (!Request.Files[upload].HasFile()) continue;
+                string path = AppDomain.CurrentDomain.BaseDirectory + "Images/";
+                string filename = Path.GetFileName(Request.Files[upload].FileName);
+                photos._purl = filename;
+                Request.Files[upload].SaveAs(Path.Combine(path, filename));
 
+                if (ModelState.IsValid)
+                {
+                    photos._pclicks = 0;
+                    photos._pdown = 0;
+                    photos._pup = 0;
+                    photos._ptime = DateTime.Now;
+                    db.Photos.Add(photos);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
             ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename", photos._ptypeid);
             return View(photos);
         }
