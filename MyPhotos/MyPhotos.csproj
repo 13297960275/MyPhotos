@@ -315,10 +315,13 @@
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Users\EditRole.cshtml" />
     <Content Include="Test\T02_Upload.cshtml" />
+    <Content Include="Views\Photos\test.cshtml" />
+    <None Include="Views\Photos\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+    <Folder Include="plugins\uploadify\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

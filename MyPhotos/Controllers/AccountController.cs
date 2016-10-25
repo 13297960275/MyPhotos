@@ -2,7 +2,6 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MyPhotos.Common;
-using MyPhotos.Models;
 using MyPhotos.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;

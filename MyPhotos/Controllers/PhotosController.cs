@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using MyPhotos.DAL;
+using MyPhotos.Models;
+using System;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MyPhotos.Models;
-using MyPhotos.DAL;
-using MyPhotos.Common;
-using System.IO;
 
 namespace MyPhotos.Controllers
 {
@@ -52,25 +49,16 @@ namespace MyPhotos.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_pclicks,_ptime,_pup,_pdown")] Photos photos, HttpPostedFileBase filedata)
+        public ActionResult Create([Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_pclicks,_ptime,_pup,_pdown")] Photos photos, HttpPostedFileBase uploadFile)
         {
-            //foreach (string upload in Request.Files)
-            //{
-            //    if (!Request.Files[upload].HasFile()) continue;
-            //    string path = AppDomain.CurrentDomain.BaseDirectory + "Images/";
-            //    string filename = Path.GetFileName(Request.Files[upload].FileName);
-            //    photos._purl = filename;
-            //    Request.Files[upload].SaveAs(Path.Combine(path, filename));
-            //}
-
-            if ((filedata != null && filedata.ContentLength > 0))
+            if (uploadFile != null && uploadFile.ContentLength > 0)
             {
                 string path = Server.MapPath("~/Images/");
-                string oldname = filedata.FileName;
+                string oldname = uploadFile.FileName;
                 string newname = Guid.NewGuid().ToString() + Path.GetExtension(oldname);
                 //string filetype = filedata.ContentType;
                 //int filesize = filedata.ContentLength;
-                filedata.SaveAs(Path.Combine(path, newname));
+                uploadFile.SaveAs(Path.Combine(path, newname));
                 photos._purl = newname;
             }
             if (ModelState.IsValid)
@@ -85,6 +73,27 @@ namespace MyPhotos.Controllers
             }
             ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename", photos._ptypeid);
             return View(photos);
+        }
+
+        public ActionResult Upload()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase uploadFile)
+        {
+            if (uploadFile != null && uploadFile.ContentLength > 0)
+            {
+                string path = Server.MapPath("~/Images/");
+                string oldname = uploadFile.FileName;
+                string newname = Guid.NewGuid().ToString() + Path.GetExtension(oldname);
+                //string filetype = filedata.ContentType;
+                //int filesize = filedata.ContentLength;
+                uploadFile.SaveAs(Path.Combine(path, newname));
+                return Content("成功");
+            }
+            return Content("失败");
         }
 
         // GET: Photos/Edit/5
@@ -155,5 +164,104 @@ namespace MyPhotos.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //public ActionResult test()
+        //{
+        //    return View();
+        //}
+
+        //public ActionResult Upload()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public ActionResult Upload(HttpPostedFileBase Filedata)
+        //{
+        //    // 没有文件上传，直接返回
+        //    if (Filedata == null || string.IsNullOrEmpty(Filedata.FileName) || Filedata.ContentLength == 0)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    //获取文件完整文件名(包含绝对路径)
+        //    //文件存放路径格式：/files/upload/{日期}/{md5}.{后缀名}
+        //    //例如：/files/upload/20130913/43CA215D947F8C1F1DDFCED383C4D706.jpg
+        //    //string fileMD5 = CommonFuncs.GetStreamMD5(Filedata.InputStream);
+        //    string FileEextension = Path.GetExtension(Filedata.FileName);
+        //    string uploadDate = DateTime.Now.ToString("yyyyMMdd");
+
+        //    string imgType = Request["imgType"];
+        //    string virtualPath = "/";
+        //    if (imgType == "normal")
+        //    {
+        //        virtualPath = string.Format("~/Images/{0}{1}", uploadDate, /*fileMD5, */FileEextension);
+        //    }
+        //    else
+        //    {
+        //        virtualPath = string.Format("~/Images/{0}{1}", uploadDate, /*fileMD5,*/ FileEextension);
+        //    }
+        //    string fullFileName = this.Server.MapPath(virtualPath);
+
+        //    //创建文件夹，保存文件
+        //    string path = Path.GetDirectoryName(fullFileName);
+        //    Directory.CreateDirectory(path);
+        //    if (!System.IO.File.Exists(fullFileName))
+        //    {
+        //        Filedata.SaveAs(fullFileName);
+        //    }
+
+        //    var data = new { imgtype = imgType, imgpath = virtualPath.Remove(0, 1) };
+        //    return Json(data, JsonRequestBehavior.AllowGet);
+        //}
+
+        //     /// <summary>
+        //     /// 上传功能
+        //     /// </summary>
+        //     /// <param name="uploadedFile">从HttpPostedfileBase对象中获取文件信息，该对象包含上传的文件的基本信息如Filename属性，Contenttype属性，inputStream属性等内容，这些信息都可以用来验证服务器端接收的文件是否有错，也可以用来保存文件。</param>
+        //     /// <returns></returns>
+        //     [HttpPost]
+        //     public JsonResult Upload(HttpPostedFileBase uploadedFile)
+        //     {
+        //         if (uploadedFile != null && uploadedFile.ContentLength > 0)
+        //         {
+        //             byte[] FileByteArray = new byte[uploadedFile.ContentLength];
+        //             uploadedFile.InputStream.Read(FileByteArray, 0, uploadedFile.ContentLength);
+        //             Attachment newAttchment = new Attachment();
+        //             newAttchment.FileName = uploadedFile.FileName;
+        //             newAttchment.FileType = uploadedFile.ContentType;
+        //             newAttchment.FileContent = FileByteArray;
+        //             OperationResult operationResult = attachmentManager.SaveAttachment(newAttchment);
+        //             if (operationResult.Success)
+        //             {
+        //                 string HTMLString = CaptureHelper.RenderViewToString
+        //                   ("_AttachmentItem", newAttchment, this.ControllerContext);
+        //                 return Json(new
+        //                 {
+        //                     statusCode = 200,
+        //                     status = operationResult.Message,
+        //                     NewRow = HTMLString
+        //                 }, JsonRequestBehavior.AllowGet);
+        //             }
+        //             else
+        //             {
+        //                 return Json(new
+        //                 {
+        //                     statusCode = 400,
+        //                     status = operationResult.Message,
+        //                     file = uploadedFile.FileName
+        //                 }, JsonRequestBehavior.AllowGet);
+        //             }
+        //         }
+        //         return Json(new
+        //         {
+        //             statusCode = 400,
+        //             status = "Bad Request! Upload Failed",
+        //             file = string.Empty
+        //         }, JsonRequestBehavior.AllowGet);
+        //     }
+
+        //     public JsonResult UplodMultiple(HttpPostedFileBase[] uploadedFiles)
+        //2:  dataString.append("uploadedFiles", selectedFiles[i]);
     }
 }
