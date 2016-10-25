@@ -52,26 +52,36 @@ namespace MyPhotos.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_pclicks,_ptime,_pup,_pdown")] Photos photos)
+        public ActionResult Create([Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_pclicks,_ptime,_pup,_pdown")] Photos photos, HttpPostedFileBase filedata)
         {
-            foreach (string upload in Request.Files)
-            {
-                if (!Request.Files[upload].HasFile()) continue;
-                string path = AppDomain.CurrentDomain.BaseDirectory + "Images/";
-                string filename = Path.GetFileName(Request.Files[upload].FileName);
-                photos._purl = filename;
-                Request.Files[upload].SaveAs(Path.Combine(path, filename));
+            //foreach (string upload in Request.Files)
+            //{
+            //    if (!Request.Files[upload].HasFile()) continue;
+            //    string path = AppDomain.CurrentDomain.BaseDirectory + "Images/";
+            //    string filename = Path.GetFileName(Request.Files[upload].FileName);
+            //    photos._purl = filename;
+            //    Request.Files[upload].SaveAs(Path.Combine(path, filename));
+            //}
 
-                if (ModelState.IsValid)
-                {
-                    photos._pclicks = 0;
-                    photos._pdown = 0;
-                    photos._pup = 0;
-                    photos._ptime = DateTime.Now;
-                    db.Photos.Add(photos);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
+            if ((filedata != null && filedata.ContentLength > 0))
+            {
+                string path = Server.MapPath("~/Images/");
+                string oldname = filedata.FileName;
+                string newname = Guid.NewGuid().ToString() + Path.GetExtension(oldname);
+                //string filetype = filedata.ContentType;
+                //int filesize = filedata.ContentLength;
+                filedata.SaveAs(Path.Combine(path, newname));
+                photos._purl = newname;
+            }
+            if (ModelState.IsValid)
+            {
+                photos._pclicks = 0;
+                photos._pdown = 0;
+                photos._pup = 0;
+                photos._ptime = DateTime.Now;
+                db.Photos.Add(photos);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename", photos._ptypeid);
             return View(photos);
@@ -102,7 +112,7 @@ namespace MyPhotos.Controllers
         {
             if (ModelState.IsValid)
             {
-                photos._ptime = DateTime.Now;
+                //photos._ptime = DateTime.Now;
                 db.Entry(photos).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
