@@ -49,20 +49,20 @@ namespace MyPhotos.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_pclicks,_ptime,_pup,_pdown")] Photos photos, HttpPostedFileBase uploadFile)
+        public ActionResult Create(HttpPostedFileBase uploadFile, [Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_pclicks,_ptime,_pup,_pdown")] Photos photos)
         {
-            if (uploadFile != null && uploadFile.ContentLength > 0)
-            {
-                string path = Server.MapPath("~/Images/");
-                string oldname = uploadFile.FileName;
-                string newname = Guid.NewGuid().ToString() + Path.GetExtension(oldname);
-                //string filetype = filedata.ContentType;
-                //int filesize = filedata.ContentLength;
-                uploadFile.SaveAs(Path.Combine(path, newname));
-                photos._purl = newname;
-            }
             if (ModelState.IsValid)
             {
+                if (uploadFile != null && uploadFile.ContentLength > 0)
+                {
+                    string path = Server.MapPath("~/Images/");
+                    string oldname = uploadFile.FileName;
+                    string newname = DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(oldname);
+                    //string filetype = filedata.ContentType;
+                    //int filesize = filedata.ContentLength;
+                    uploadFile.SaveAs(Path.Combine(path, newname));
+                    photos._purl = newname;
+                }
                 photos._pclicks = 0;
                 photos._pdown = 0;
                 photos._pup = 0;
@@ -77,17 +77,18 @@ namespace MyPhotos.Controllers
 
         public ActionResult Upload()
         {
+            //ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename");
             return View();
         }
 
         [HttpPost]
-        public ActionResult Upload(HttpPostedFileBase uploadFile)
+        public ActionResult Upload(HttpPostedFileBase uploadFile/*, [Bind(Include = "_ptypeid")] Photos photos*/)
         {
             if (uploadFile != null && uploadFile.ContentLength > 0)
             {
                 string path = Server.MapPath("~/Images/");
                 string oldname = uploadFile.FileName;
-                string newname = Guid.NewGuid().ToString() + Path.GetExtension(oldname);
+                string newname = DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(oldname);
                 //string filetype = filedata.ContentType;
                 //int filesize = filedata.ContentLength;
                 uploadFile.SaveAs(Path.Combine(path, newname));
