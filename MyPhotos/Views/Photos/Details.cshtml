@@ -1,13 +1,13 @@
 ﻿@model MyPhotos.Models.Photos
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "图片详情";
 }
 
-<h2>Details</h2>
+<h2>图片详情</h2>
 
 <div>
-    <h4>Photos</h4>
+    @*<h4>Photos</h4>*@
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -31,7 +31,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model._purl)
+            <img src="~/Images/@Html.DisplayFor(model => model._purl)" />
+            @*@Html.DisplayFor(model => model._purl)*@
         </dd>
 
         <dt>
@@ -77,6 +78,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model._pid }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("编辑", "Edit", new { id = Model._pid }) |
+    @Html.ActionLink("返回图片列表", "Index")
 </p>

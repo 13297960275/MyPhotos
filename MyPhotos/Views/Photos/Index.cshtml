@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<MyPhotos.Models.Photos>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "图片列表";
 }
 
-<h2>Index</h2>
+<h2>图片列表</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("添加图片", "Create")
 </p>
 <table class="table">
     <tr>
@@ -24,16 +24,22 @@
             @Html.DisplayNameFor(model => model._pdes)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model._pclicks)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model._ptime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model._pup)
+            <img src="~/fonts/Icon/clicks.png" />
+            @*@Html.DisplayNameFor(model => model._pclicks)*@
         </th>
         <th>
-            @Html.DisplayNameFor(model => model._pdown)
+            <img src="~/fonts/Icon/download.png" />
+        </th>
+        <th>
+            <img src="~/fonts/Icon/up.gif" />
+            @*@Html.DisplayNameFor(model => model._pup)*@
+        </th>
+        <th>
+            <img src="~/fonts/Icon/down.gif" />
+            @*@Html.DisplayNameFor(model => model._pdown)*@
         </th>
         <th></th>
     </tr>
@@ -48,18 +54,19 @@
                 @Html.DisplayFor(modelItem => item._ptitle)
             </td>
             <td>
-                <div><img style="width:180px" src="~/Images/@item._purl" /></div>
+                <a href="~/Photos/Details/@item._pid"><img style="width:180px" src="~/Images/@item._purl" /></a>
                 @*@Html.DisplayFor(modelItem => item._purl)*@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item._pdes)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item._pclicks)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item._ptime)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._pclicks)
+            </td>
+            <td></td>
             <td>
                 @Html.DisplayFor(modelItem => item._pup)
             </td>
@@ -67,10 +74,11 @@
                 @Html.DisplayFor(modelItem => item._pdown)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item._pid }) |
-                @Html.ActionLink("Details", "Details", new { id = item._pid }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item._pid })
-                @Html.ActionLink("Upload", "Upload")
+                @Html.ActionLink("编辑", "Edit", new { id = item._pid }) |
+                @*@Html.ActionLink("详情", "Details", new { id = item._pid }) |*@
+                @Html.ActionLink("删除", "Delete", new { id = item._pid })
+                @*@Html.ActionLink("Upload", "Upload")*@
+                <a href="asdfsdasdf" width=20 height=20></a>
             </td>
         </tr>
     }

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    上传界面
+    <title>文件上传</title>
+    <link href="../scripts/uploadify/uploadify.css" rel="stylesheet" />
+    <script src="../scripts/jquery-1.10.2.js"></script>
+    <script src="../scripts/uploadify/jquery.uploadify.js"></script>
+    <script src="../scripts/uploadify/jquery.uploadify.min.js"></script>
+    <!--<script src="../scripts/swfobject.js"></script>-->
+    <a href="../scripts/uploadify/uploadify.swf">../scripts/uploadify/uploadify.swf</a>
+    <!--<link href="scripts/uploadify.css" type="text/css" rel="Stylesheet" />
+    <script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="scripts/swfobject.js"></script>
+    <script type="text/javascript" src="scripts/jquery.uploadify.min.js"></script>-->
+    <script type="text/javascript">
+
+        $(function () {
+            //以下两句代码用于处理session丢失
+            var auth = "<% = Request.Cookies[FormsAuthentication.FormsCookieName]==null ? string.Empty : Request.Cookies[FormsAuthentication.FormsCookieName].Value %>";
+            var ASPSESSID = "<%= Session.SessionID %>";
+
+            $('#fileupload').uploadify({
+                'swf': '../scripts/uploadify/uploadify.swf',
+                'uploader': 'Upload.aspx',
+                'multi': true,      //是否允许多选
+                'auto': false,       //是否允许自动上传
+                'fileTypeExts': '*.jpg;*.gif;*.png;',
+                'fileTypeDesc': 'Image Files (.JPG, .GIF, .PNG, )',
+                'queueID': 'queue',
+                'queueSizeLimit': 300,      //同时上传数量
+                'uploadLimit': 10000,        //一次浏览器课上成总数量
+                'fileSizeLimit': '10MB',   //单个文件大小设置
+                'buttonText': '选择文件',
+                'formData': { 'ASPSESSID': ASPSESSID, 'AUTHID': auth },
+                'onSelect': function (file) {
+                    $('#fileupload').uploadifySettings('formData', { 'ASPSESSID': ASPSESSID, 'AUTHID': auth });
+                    alert(formDate);
+                },
+                'width': 100,//文件选择按钮大小
+                'height': 22,
+                'removeCompleted': true,
+                'removeTimeout': 0.1,    //上传完成后自动消失时间/秒
+                'onQueueComplete': function (file) {         //所有文件上传完成时触发此事件
+                    alert('上传完毕!');
+                }
+
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div style=" text-align:center; width:400px; margin:0 auto">
+            <input type="file" name="filedata" id="fileupload" /><br />
+            <input type="button" id="upload" value="上传吧" onclick="javascript:$('#fileupload').uploadify('upload','*')" />
+            <input type="button" id="cancel" value="取消一条" onclick="javascript:$('#fileupload').uploadify('cancel')" />
+            <input type="button" id="cancelall" value="取消全部" onclick="javascript:$('#fileupload').uploadify('cancel','*')" />
+            <div id="queue">
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

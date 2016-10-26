@@ -1,21 +1,26 @@
 ﻿@model MyPhotos.Models.Photos
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "图片编辑";
 }
 
-<h2>Edit</h2>
+<h2>图片编辑</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Photos", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Photos</h4>
+        @*<h4>Photos</h4>*@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model._pid)
+        @Html.HiddenFor(model => model._pclicks)
+        @Html.HiddenFor(model => model._pdown)
+        @Html.HiddenFor(model => model._ptime)
+        @Html.HiddenFor(model => model._pup)
+        @Html.HiddenFor(model => model._purl)
 
         <div class="form-group">
             @Html.LabelFor(model => model._ptypeid, "_ptypeid", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -36,8 +41,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model._purl, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model._purl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model._purl, "", new { @class = "text-danger" })
+                <img src="~/Images/@Html.DisplayFor(model => model._purl)" />
+                @*@Html.EditorFor(model => model._purl, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model._purl, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -49,48 +55,48 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model._pclicks, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model._pclicks, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model._pclicks, "", new { @class = "text-danger" })
+        @*<div class="form-group">
+                @Html.LabelFor(model => model._pclicks, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model._pclicks, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model._pclicks, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model._ptime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model._ptime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model._ptime, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model._ptime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model._ptime, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model._ptime, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model._pup, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model._pup, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model._pup, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model._pup, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model._pup, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model._pup, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model._pdown, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model._pdown, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model._pdown, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model._pdown, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model._pdown, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model._pdown, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="保存" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回图片列表", "Index")
 </div>
 
 @section Scripts {
