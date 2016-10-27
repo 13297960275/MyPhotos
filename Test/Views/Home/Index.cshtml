@@ -1,0 +1,50 @@
+﻿@model JPager.Net.PagerResult<JPager.Net.Web.Models.User>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>JPager.Net MVC好用的轻量级分页控件</h2>
+<div>
+    <div>
+        <form method="get">
+            Name：
+            <input name="Name" id="Name" />
+            Age：
+            <input name="Age" id="Age" />
+            <input type="submit" value="查询" />
+        </form>
+    </div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Score</th>
+            <th>Address</th>
+            <th>AddTime</th>
+        </tr>
+        @foreach (JPager.Net.Web.Models.User item in Model.DataList)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Age</td>
+                <td>@item.Score</td>
+                <td><a href="@item.Address" target="_target">@item.Address</a></td>
+                <td>@item.AddTime</td>
+            </tr>
+        }
+    </table>
+
+</div>
+<div>
+    @Html.Raw(Model.PagerHtml()) 共 @Model.Total 条
+</div>
+
+<script type="text/javascript">
+    //保持搜索条件
+    $(function () {
+        $('#Name').val('@ViewBag.SearchName');
+        $('#Age').val('@ViewBag.SearchAge');
+    });
+</script>

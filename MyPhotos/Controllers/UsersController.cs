@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using JPager.Net;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using MyPhotos.Common;
 using MyPhotos.DAL;
 using MyPhotos.Models;
 using MyPhotos.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -22,27 +24,70 @@ namespace MyPhotos.Controllers
 
         #region 用户操作
 
-        // GET: Users
-        public ActionResult Index()
+        /// <summary>
+        /// 分页显示用户列表
+        /// </summary>
+        /// <param name="param">继承了PagerInBase的User</param>
+        /// <returns></returns>
+        public ActionResult Index(UserParams param)
         {
-            var Users = db.Users.Include(u => u.Roles);
-            return View(Users.ToList());
+            //每页显示的条数默认10
+            param.PageSize = 6;
+
+            //保存搜索条件
+            ViewBag.SearchUserName = param.UserName;
+            //ViewBag.SearchRegisterTime = param.RegistrationTime;
+            //ViewBag.SearchRoleName = param.Roles.RoleName;
+
+            //获取数据集合
+            //var list = PageContent();
+            var list = db.Users.Include(u => u.Roles).ToList();
+            //var list = new List<User>();
+
+            //根据条件检索
+            var query = param.UserName != null ?
+              list.Where(t => t.UserName.Contains(param.UserName)).ToList() :
+              list.ToList();
+
+            //分页数据
+            var data = query.Skip(param.Skip).Take(param.PageSize);
+
+            //总页数
+            var count = query.Count;
+
+            var res = new PagerResult<User>
+            {
+                Code = 0,
+                DataList = data,
+                Total = count,
+                PageSize = param.PageSize,
+                PageIndex = param.PageIndex,
+                RequestUrl = param.RequetUrl
+            };
+            return View(res);
         }
 
-        // GET: Users/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
+        //// GET: Users
+        //public ActionResult Index1()
+        //{
+        //    var Users = db.Users.Include(u => u.Roles);
+        //    return View(Users.ToList());
+        //}
+
+        //// GET: Users/Details/5
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    User user = db.Users.Find(id);
+        //    if (user == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(user);
+        //}
 
         // 用户的增（由register代替）删改（由editrole、modify和changepassword代替）等操作
         // GET: Users/Create

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MyPhotos.Models.User>
+﻿@model JPager.Net.PagerResult<MyPhotos.Models.User>
 
 @{
     ViewBag.Title = "用户列表";
@@ -9,87 +9,91 @@
 @*<p>
         @Html.ActionLink("Create New", "Create")
     </p>*@
-<br />
+<div>
+    <form method="get">
+        用户名：
+        <input name="UserName" id="Name" value='' />@*value="根据用户名查找"*@
+        @*<img src="~/fonts/Icon/小图标 (19).png" />*@
+        @*Age：
+            <input name="Age" id="Age" />*@
+        <input type="submit" value="查询" />
+    </form>
+</div>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UserName)
+            用户名
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DisplayName)
+            显示名
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Roles.RoleName)
+            角色类型
         </th>
         @*<th>
                 @Html.DisplayNameFor(model => model.Password)
             </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            邮箱
         </th>
         @*<th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.RegistrationTime)
+            注册时间
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LoginTime)
+            上次登录时间
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LoginIP)
+            登录IP
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (MyPhotos.Models.User item in Model.DataList)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserName)
+                @item.UserName
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DisplayName)
+                @item.DisplayName
             </td>
-            <td id="EditRole">
-                <span id="ShowRole">@Html.DisplayFor(modelItem => item.Roles.RoleName)</span>
-                @*<div id="SelectRole">@Html.DropDownList("RoleID", null, htmlAttributes: new { @class = "form-control" })</div>*@
+            <td>
+                @item.Roles.RoleName
             </td>
             @*<td>
-                    @Html.DisplayFor(modelItem => item.Password)
+                    @Html.DisplayNameFor(model => model.Password)
                 </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @item.Email
             </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>*@
             <td>
-                @Html.DisplayFor(modelItem => item.RegistrationTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LoginTime)
+                @item.RegistrationTime
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LoginIP)
+                @item.LoginTime
             </td>
             <td>
-                @Html.ActionLink("修改权限", "EditRole", new { id = item.UserID }) @*|
-                    @Html.ActionLink("详情", "Details", new { id = item.UserID }) |
-                    @Html.ActionLink("删除", "Delete", new { id = item.UserID })*@
+                @item.LoginIP
             </td>
+            <td>@Html.ActionLink("修改权限", "EditRole", new { id = item.UserID })</td>
         </tr>
     }
 
 </table>
+<div>
+    @Html.Raw(Model.PagerHtml())  共 @Model.Total 条
+</div>
 
-@*<script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#EditRole").hover(function () {
-                $("#SelectRole").show();
-            }, function () {
-                $("#ShowRole").show();
-            });
-        });
-    </script>*@
+<script type="text/javascript">
+    //保持搜索条件
+    $(function () {
+        $('#Name').val('@ViewBag.SearchUserName');
+        @*$('#Age').val('@ViewBag.SearchRegisterTime');*@
+    });
+</script>
