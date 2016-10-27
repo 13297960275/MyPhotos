@@ -57,7 +57,7 @@ namespace MyPhotos.Controllers
                 {
                     string path = Server.MapPath("~/Images/");
                     string oldname = uploadFile.FileName;
-                    string newname = DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(oldname);
+                    string newname = Guid.NewGuid().ToString("yyyyMMddHHmmss") + Path.GetExtension(oldname);
                     //string filetype = filedata.ContentType;
                     //int filesize = filedata.ContentLength;
                     uploadFile.SaveAs(Path.Combine(path, newname));
@@ -88,7 +88,7 @@ namespace MyPhotos.Controllers
             {
                 string path = Server.MapPath("~/Images/");
                 string oldname = uploadFile.FileName;
-                string newname = DateTime.Now.ToString("yyyyMMddHHmmss") + Path.GetExtension(oldname);
+                string newname = Guid.NewGuid().ToString() + Path.GetExtension(oldname);
                 //string filetype = filedata.ContentType;
                 //int filesize = filedata.ContentLength;
                 uploadFile.SaveAs(Path.Combine(path, newname));
