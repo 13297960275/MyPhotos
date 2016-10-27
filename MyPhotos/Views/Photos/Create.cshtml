@@ -1,10 +1,29 @@
 ﻿@model MyPhotos.Models.Photos
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "添加图片";
 }
 
-<h2>Create</h2>
+<h2>添加图片</h2>
+
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#uploadFile').on("change", function () {
+            var file = this.files[0];
+            if (this.files && file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#img1').attr('src', e.target.result);
+                    //$('#fn').text(file.name);
+                    $('#fs').text(file.size / 1024 / 1024 + "Mb");
+                }
+                reader.readAsDataURL(file);
+            }
+        })
+    })
+</script>
 
 @*实现带模型上传功能的重点：修改new { enctype = "multipart/form-data" }或者指定Controller/Action，待确认*@
 @using (Html.BeginForm("Create", "Photos", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -35,7 +54,10 @@
             @Html.LabelFor(model => model._purl, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*实现上传功能的重点：name属性必须与后台httppostedfilebase的对象名一致*@
-                <input type="file" name="uploadFile" value="uploadFile" />
+                <input type="file" id="uploadFile" name="uploadFile" value="选择图片" /> <br />
+                <img src="" id="img1" alt="" width="180" /> <br />
+                @*<span id="fn"></span> <br />*@
+                <span id="fs"></span>
                 @*<input type="submit" name="Submit" id="Submit" value="Upload" />
                     @Html.EditorFor(model => model._purl, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model._purl, "", new { @class = "text-danger" })*@

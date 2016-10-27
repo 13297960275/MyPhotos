@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "PreViewing";
+}
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#file1').on("change", function () {
+            var file = this.files[0];
+            if (this.files && file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#img1').attr('src', e.target.result);
+                    $('#fn').text(file.name);
+                    $('#fs').text(file.size / 1024 / 1024 + "Mb");
+                }
+                reader.readAsDataURL(file);
+            }
+        })
+    })
+</script>
+<h2>PreViewing</h2>
+
+<div>
+    <input type="file" id="file1" /> <br />
+    <img src="" id="img1" alt="" width="180" /> <br />
+    <span id="fn"></span> <br />
+    <span id="fs"></span>
+</div>
