@@ -218,6 +218,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610280111404_AddPhotos_pdownload.cs" />
+    <Compile Include="Migrations\201610280111404_AddPhotos_pdownload.Designer.cs">
+      <DependentUpon>201610280111404_AddPhotos_pdownload.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\JPager.cs" />
     <Compile Include="Models\Role.cs" />
@@ -358,6 +362,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610280111404_AddPhotos_pdownload.resx">
+      <DependentUpon>201610280111404_AddPhotos_pdownload.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -49,7 +49,7 @@ namespace MyPhotos.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(HttpPostedFileBase uploadFile, [Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_pclicks,_ptime,_pup,_pdown")] Photos photos)
+        public ActionResult Create(HttpPostedFileBase uploadFile, [Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_ptime,_pclicks,_pdownload,_pup,_pdown")] Photos photos)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +63,7 @@ namespace MyPhotos.Controllers
                     uploadFile.SaveAs(Path.Combine(path, newname));
                     photos._purl = newname;
                 }
+                photos._pdownload = 0;
                 photos._pclicks = 0;
                 photos._pdown = 0;
                 photos._pup = 0;

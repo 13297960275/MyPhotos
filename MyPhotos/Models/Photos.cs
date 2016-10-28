@@ -42,16 +42,22 @@ namespace MyPhotos.Models
         public string _pdes { get; set; }
 
         /// <summary>
+        /// 录入时间
+        /// </summary>
+        [Display(Name = "录入时间")]
+        public DateTime? _ptime { get; set; }
+
+        /// <summary>
         /// 点击率
         /// </summary>
         [Display(Name = "点击率")]
         public int? _pclicks { get; set; }
 
         /// <summary>
-        /// 录入时间
+        /// 下载次数
         /// </summary>
-        [Display(Name = "录入时间")]
-        public DateTime? _ptime { get; set; }
+        [Display(Name = "下载次数")]
+        public int? _pdownload { get; set; }
 
         /// <summary>
         /// 支持
