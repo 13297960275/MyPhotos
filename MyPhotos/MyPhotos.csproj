@@ -345,6 +345,7 @@
     <Content Include="Views\Photos\test.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Photos\PagerIndex.cshtml" />
     <None Include="Views\Photos\Upload.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>

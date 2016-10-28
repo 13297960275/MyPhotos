@@ -1,0 +1,82 @@
+﻿@model JPager.Net.PagerResult<MyPhotos.Models.Photos>
+
+@{
+    ViewBag.Title = "图片列表";
+}
+
+<h2>图片列表</h2>
+
+<p>
+    @Html.ActionLink("添加图片", "Create")
+</p>
+<table class="table">
+    @*<tr>
+            <th>
+                图片类型
+            </th>
+            <th>
+                图片标题
+            </th>
+            <th>
+                图片
+            </th>
+            <th>
+                图片描述
+            </th>
+            <th>
+                上传时间
+            </th>
+            <th>
+                <img src="~/fonts/Icon/clicks.png" />
+            </th>
+            <th>
+                <img src="~/fonts/Icon/download.png" />
+            </th>
+            <th>
+                <img src="~/fonts/Icon/up.gif" />
+            </th>
+            <th>
+                <img src="~/fonts/Icon/down.gif" />
+            </th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoTypes._typename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._ptitle)
+            </td>
+            <td></td>
+            <td>
+                @Html.DisplayFor(modelItem => item._pdes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._ptime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._pclicks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._pdownload)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._pup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item._pdown)
+            </td>
+            <td>
+                @Html.ActionLink("编辑", "Edit", new { id = item._pid }) |
+                @Html.ActionLink("删除", "Delete", new { id = item._pid })
+            </td>
+        </tr>*@
+</table>
+
+@foreach (MyPhotos.Models.Photos item in Model.DataList)
+{
+    <a href="~/Photos/Details/@item._pid"><img style="width:210px;height:130px" src="~/Images/@item._purl" /></a>
+}
+<div>
+    @Html.Raw(Model.PagerHtml())  共 @Model.Total 条
+</div>

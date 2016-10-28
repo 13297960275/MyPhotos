@@ -1,4 +1,5 @@
-﻿using MyPhotos.DAL;
+﻿using JPager.Net;
+using MyPhotos.DAL;
 using MyPhotos.Models;
 using System;
 using System.Data.Entity;
@@ -13,6 +14,50 @@ namespace MyPhotos.Controllers
     public class PhotosController : Controller
     {
         private BaseDBContext db = new BaseDBContext();
+
+        /// <summary>
+        /// 分页显示图片列表
+        /// </summary>
+        /// <param name="param">继承了PagerInBase的Photos</param>
+        /// <returns></returns>
+        public ActionResult PagerIndex(PhotosParams param)
+        {
+            //每页显示的条数默认10
+            param.PageSize = 12;
+
+            //保存搜索条件
+            //ViewBag.SearchUserName = param.UserName;
+            //ViewBag.SearchRegisterTime = param.RegistrationTime;
+            //ViewBag.SearchRoleName = param.Roles.RoleName;
+
+            //获取数据集合
+            //var list = PageContent();
+            var list = db.Photos.Include(u => u.PhotoTypes).ToList();
+            //var list = new List<User>();
+
+            //根据条件检索
+            var query = param._purl
+                != null ?
+              list.Where(t => t._purl.Contains(param._purl)).ToList() :
+              list.ToList();
+
+            //分页数据
+            var data = query.Skip(param.Skip).Take(param.PageSize);
+
+            //总页数
+            var count = query.Count;
+
+            var res = new PagerResult<Photos>
+            {
+                Code = 0,
+                DataList = data,
+                Total = count,
+                PageSize = param.PageSize,
+                PageIndex = param.PageIndex,
+                RequestUrl = param.RequetUrl
+            };
+            return View(res);
+        }
 
         // GET: Photos
         public ActionResult Index()
@@ -51,26 +96,33 @@ namespace MyPhotos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(HttpPostedFileBase uploadFile, [Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_ptime,_pclicks,_pdownload,_pup,_pdown")] Photos photos)
         {
+            /*采用MD5识别相同文件，防止重复上传，实现方法在此处添加*/
+
             if (ModelState.IsValid)
             {
-                if (uploadFile != null && uploadFile.ContentLength > 0)
+                if (uploadFile != null && uploadFile.ContentLength > 0)//判断是否存在文件
                 {
-                    string path = Server.MapPath("~/Images/");
-                    string oldname = uploadFile.FileName;
-                    string newname = Guid.NewGuid().ToString() + Path.GetExtension(oldname);
-                    //string filetype = filedata.ContentType;
-                    //int filesize = filedata.ContentLength;
-                    uploadFile.SaveAs(Path.Combine(path, newname));
-                    photos._purl = newname;
+                    if (uploadFile.ContentType == "image/jpeg")//判断是否是图片文件
+                    {
+                        string path = Server.MapPath("~/Images/");
+                        string oldname = uploadFile.FileName;
+                        string newname = Guid.NewGuid().ToString() + Path.GetExtension(oldname);
+                        //string filetype = filedata.ContentType;
+                        //int filesize = filedata.ContentLength;
+                        uploadFile.SaveAs(Path.Combine(path, newname));
+                        photos._purl = newname;
+                        photos._pdownload = 0;
+                        photos._pclicks = 0;
+                        photos._pdown = 0;
+                        photos._pup = 0;
+                        photos._ptime = DateTime.Now;
+                        db.Photos.Add(photos);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    HttpContext.Response.Write("请选择图片文件！");
                 }
-                photos._pdownload = 0;
-                photos._pclicks = 0;
-                photos._pdown = 0;
-                photos._pup = 0;
-                photos._ptime = DateTime.Now;
-                db.Photos.Add(photos);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                HttpContext.Response.Write("请选择文件！");
             }
             ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename", photos._ptypeid);
             return View(photos);
