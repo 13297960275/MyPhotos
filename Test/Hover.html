@@ -1,0 +1,28 @@
+﻿<html>
+<head>
+    <script src="scripts/jquery-3.1.1.js"></script>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".aa").hover(function () {
+                $("#box").animate({ height: "40px" });
+            }, function () {
+                $("#box").animate({ height: "0px" });
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="aa" style="position:relative;width:200px;height:150px;background:#f00;margin:20px;overflow:hidden;">
+        <div id="box" style="background:#98bf21;position:absolute;height:0px;width:100%;bottom:0px;">
+            aaaaaaaaaaaaaaaaaaaaa
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    //下面引用Jquery和unobtrusive-ajax
+}
+@Scripts.Render("~/bundles/jquery")
+@{
+    //设置ajaxOptions
+    var ajaxOptions = new AjaxOptions()
+    {
+        OnSuccess = "SetPassSuccess",
+        OnFailure = "SetPassFailure",
+        Confirm = "设置留言审核状态为'通过'？",
+        HttpMethod = "Post"
+    };
+}
+<script type="text/javascript">
+
+    $(function () {
+        $("#alink").click(function () {
+            $.get("/Home/GetTime", function (response) {
+                $("#showInfo").html(response);
+            });
+        });
+    });
+    function SetPassSuccess() {
+        alert('审核通过');
+        location.reload();
+    }
+    function SetPassFailure(xhr) {
+        alert('审核失败（HTTP状态代码：' + xhr.status + ')');
+    }
+</script>
+
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <a id="alink" href="javascript:void(0);">①传统方式Ajax</a><br />
+        @Ajax.ActionLink("②MVC中使用Ajax", "GetTime", new AjaxOptions { UpdateTargetId = "showInfo" })<br />
+
+        @using (Ajax.BeginForm("GetPostStr", new AjaxOptions { UpdateTargetId = "showInfo" }))
+        {
+            <input type="text" name="username" /><br />
+            <input type="text" name="userage" /><br />
+            <input type="submit" value="③MVC Post方式提交Ajax" />
+        }
+        <br />
+
+        @Ajax.ActionLink("MVC中Ajax请求带回调执行", "ConfirmPass", new { id = 1 }, ajaxOptions)<br />
+
+        <div id="showInfo">更新区域</div>
+
+        @Ajax.ActionLink("Ajax删除数据", "DeleteUser", "Home", new { id = 1 },
+            new AjaxOptions()
+            {
+                UpdateTargetId = "strcontent",
+                HttpMethod = "Post",
+                Confirm = " 您确定要删除该记录吗？该操作不可恢复！"
+            })
+    </div>
+</div>
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")  

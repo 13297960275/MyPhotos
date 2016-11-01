@@ -5,9 +5,11 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPhotos", "MyPhotos\MyPhotos.csproj", "{554B9981-51AA-4582-896F-E326DB51D1A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{729D141E-019B-4E12-A2A3-F331408FCAD3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T1_Test", "Test\T1_Test.csproj", "{729D141E-019B-4E12-A2A3-F331408FCAD3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T5_JPager.Net", "T5_JPager.Net\T5_JPager.Net.csproj", "{28D2E7A4-B404-40FB-864B-5378B2076A8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T6_MvcAjax", "MvcAjax\T6_MvcAjax.csproj", "{50D701A0-729F-4C07-BF04-9133C8A20789}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{28D2E7A4-B404-40FB-864B-5378B2076A8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28D2E7A4-B404-40FB-864B-5378B2076A8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28D2E7A4-B404-40FB-864B-5378B2076A8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50D701A0-729F-4C07-BF04-9133C8A20789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50D701A0-729F-4C07-BF04-9133C8A20789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50D701A0-729F-4C07-BF04-9133C8A20789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50D701A0-729F-4C07-BF04-9133C8A20789}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

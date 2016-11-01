@@ -120,9 +120,11 @@ namespace MyPhotos.Controllers
                         db.SaveChanges();
                         return RedirectToAction("Index");
                     }
-                    HttpContext.Response.Write("请选择图片文件！");
+                    else
+                        HttpContext.Response.Write("<script>alert('请选择图片文件');</script>");
                 }
-                HttpContext.Response.Write("请选择文件！");
+                else
+                    HttpContext.Response.Write("<script>alert('请选择文件');</script>");
             }
             ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename", photos._ptypeid);
             return View(photos);
