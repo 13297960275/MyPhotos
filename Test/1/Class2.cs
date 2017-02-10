@@ -310,7 +310,7 @@ namespace CCNF.Plugin.Upload
             }
             else //要求生成水印 
             {
-                Image bitmap = new System.Drawing.Bitmap(sourcefile.InputStream);
+                Image bitmap = new Bitmap(sourcefile.InputStream);
                 Graphics g = Graphics.FromImage(bitmap);
                 g.InterpolationMode = InterpolationMode.High;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
@@ -431,7 +431,7 @@ namespace CCNF.Plugin.Upload
             {
                 new_width = ori_width * new_height / ori_height;
             }
-            Image bitmap = new System.Drawing.Bitmap(new_width, new_height);
+            Image bitmap = new Bitmap(new_width, new_height);
             Graphics g = Graphics.FromImage(bitmap);
             try
             {

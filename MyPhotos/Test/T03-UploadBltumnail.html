@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+        function $(id) {
+            return document.getElementById(id);
+        }
+        function Zoom() {
+            var div = $("container");
+            var bigImg = $("bigImg");
+            var width = parseInt(($("Width").value || 160), 10);
+            var height = parseInt(($("Height").value || 90), 10);
+            var oldWidth = bigImg.width;
+            var oldHeight = bigImg.height;
+            var scale = Math.max(width / oldWidth, height / oldHeight);
+
+            var newWidth = oldWidth * scale;
+            var newHeight = oldHeight * scale;
+
+            div.style.width = width + "px";
+            div.style.height = height + "px";
+            div.style.overflow = "hidden";
+
+            var smallImg = $("smallImg");
+            smallImg.style.display = "block";
+            smallImg.src = bigImg.src;
+            smallImg.style.width = newWidth + "px";
+            smallImg.style.height = newHeight + "px";
+            smallImg.style.marginLeft = (width - newWidth) / 2 + "px";
+            smallImg.style.marginTop = (height - newHeight) / 2 + "px";
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container"><img id="smallImg" style="display:none" /></div><br />
+    缩略图大小:<input type="text" name="Width" id="Width" size="4" /> - <input type="text" name="Height" id="Height" size="4" />
+    <input type="button" value="裁剪" onclick="Zoom()" />
+    <img id="bigImg" src="http://hiphotos.baidu.com/中国旅游名县/pic/item/56d16e00e83803a6e850cdb2.jpg" width="800" height="600" border="0" />
+</body>
+</html>

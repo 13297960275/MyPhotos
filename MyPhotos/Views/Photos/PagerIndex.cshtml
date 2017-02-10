@@ -66,6 +66,7 @@
         .dtl27 img {
             position: relative;
             width: 100%;
+            height: 170px;
             top: 0;
             left: 0;
             -webkit-transition: all 0.3s;
@@ -162,51 +163,47 @@
     @Html.ActionLink("添加图片", "Create")
 </p>
 
-<div>
-    @foreach (MyPhotos.Models.Photos item in Model.DataList)
-    {
-        <div class="item col-lg-3 col-sm-4 col-xs-6" style="padding:5px 5px;">
-            <div class="dtl27">
-                <a href="~/Photos/Details/@item._pid">
-                    <img src="~/Images/@item._purl" />
-                </a>
-                <div class="dtl">
-                    <h3>标题：@Html.DisplayFor(modelItem => item._ptitle)</h3>
-                    <p>描述：@Html.DisplayFor(modelItem => item._pdes)</p>
-                    <ul id="edde">
-                        <li>
+@foreach (MyPhotos.Models.Photos item in Model.DataList)
+{
+    <div class="item col-lg-3 col-sm-4 col-xs-6" style="padding:5px 5px;">
+        <div class="dtl27">
+            <a href="~/Photos/Details/@item._pid">
+                <img src="~/Images/@item._purl" />
+            </a>
+            <div class="dtl">
+                <h3>标题：@Html.DisplayFor(modelItem => item._ptitle)</h3>
+                <p>描述：@Html.DisplayFor(modelItem => item._pdes)</p>
+                <ul id="edde">
+                    @*<li>
                             <input type="checkbox" id="@item._pid" />
-                        </li>
-                        <li>
-                            <img src="~/fonts/Icon/24-Delete-24.png" onclick="return confirm('确定删除？');" id="@item._pid" alt="删除" />
-                        </li>
-                        <li>
-                            <img src="~/fonts/Icon/小图标 (33).png" data-toggle="modal" data-target="#Edit" alt="编辑" id="@item._pid" />
-                        </li>
-                    </ul>
-                    <ul id="img" width="100%">
-                        <li>
-                            <img src="~/fonts/Icon/clicksgreen.png" onclick="Edit();" alt="点击率" id="@item._pid" />
-                            <span>@Html.DisplayFor(modelItem => item._pclicks)</span>
-                        </li>
-                        <li>
-                            <img src="~/fonts/Icon/download.png" onclick="Download();" alt="下载量" id="@item._pid" />
-                            <span>@Html.DisplayFor(modelItem => item._pdownload)</span>
-                        </li>
-                        <li>
-                            <img src="~/fonts/Icon/up.gif" onclick="Edit();" alt="顶" id="@item._pid" />
-                            <span>@Html.DisplayFor(modelItem => item._pup)</span>
-                        </li>
-                        <li>
-                            <img src="~/fonts/Icon/down.gif" onclick="Edit();" alt="踩" id="@item._pid" />
-                            <span>@Html.DisplayFor(modelItem => item._pdown)</span>
-                        </li>
-                    </ul>
-                </div>
+                        </li>*@
+                    <li>
+                        <img src="~/fonts/Icon/24-Delete-24.png" onclick="return confirm('确定删除？');" id="@item._pid" alt="删除" />
+                    </li>
+                    <li>
+                        <img src="~/fonts/Icon/小图标 (33).png" data-toggle="modal" data-target="#Edit" alt="编辑" id="@item._pid" />
+                    </li>
+                </ul>
+                <ul id="img" width="100%">
+                    <li>
+                        <img src="~/fonts/Icon/clicksgreen.png" onclick="Edit();" alt="点击率" id="@item._pid" />
+                        <span>@Html.DisplayFor(modelItem => item._pclicks)</span>
+                    </li>
+                    <li>
+                        <img src="~/fonts/Icon/download.png" onclick="Download();" alt="下载量" id="@item._pid" />
+                        <span>@Html.DisplayFor(modelItem => item._pdownload)</span>
+                    </li>
+                    <li>
+                        <img src="~/fonts/Icon/up.gif" onclick="Edit();" alt="顶" id="@item._pid" />
+                        <span>@Html.DisplayFor(modelItem => item._pup)</span>
+                    </li>
+                    <li>
+                        <img src="~/fonts/Icon/down.gif" onclick="Edit();" alt="踩" id="@item._pid" />
+                        <span>@Html.DisplayFor(modelItem => item._pdown)</span>
+                    </li>
+                </ul>
             </div>
         </div>
-    }
-</div>
-<div>
-    @Html.Raw(Model.PagerHtml())  共 @Model.Total 条
-</div>
+    </div>
+}
+@Html.Raw(Model.PagerHtml())  共 @Model.Total 条
