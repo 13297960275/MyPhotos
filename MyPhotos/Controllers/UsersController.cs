@@ -32,7 +32,8 @@ namespace MyPhotos.Controllers
         public ActionResult Index(UserParams param)
         {
             //每页显示的条数默认10
-            param.PageSize = 6;
+            //param.PageSize = 6;
+            ViewBag.SearchUserName = param.PageSize;
 
             //保存搜索条件
             ViewBag.SearchUserName = param.UserName;
@@ -45,8 +46,7 @@ namespace MyPhotos.Controllers
             //var list = new List<User>();
 
             //根据条件检索
-            var query = param.UserName != null ?
-              list.Where(t => t.UserName.Contains(param.UserName)).ToList() :
+            var query = param.UserName != null ? list.Where(t => t.UserName.Contains(param.UserName)).ToList() :
               list.ToList();
 
             //分页数据
