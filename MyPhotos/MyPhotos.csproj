@@ -354,6 +354,7 @@
     <Content Include="Views\Photos\PagerIndex.cshtml" />
     <None Include="Views\Photos\Upload.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Photos\_EditPartialPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

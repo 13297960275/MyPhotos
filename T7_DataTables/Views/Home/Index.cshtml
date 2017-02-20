@@ -1,31 +1,64 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    Layout = null;
 }
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/Style/demo_page.css" rel="stylesheet" />
+    <link href="~/Style/jquery-ui-1.8.4.custom.css" rel="stylesheet" />
+    <link href="~/Style/demo_table_jui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $('#DataTable').dataTable({
+                "oLanguage": {//语言国际化
+                    "sUrl": "/Scripts/Plug-in/jquery.dataTable.cn.txt"
+                },
+                "bJQueryUI": true,
+                "sPaginationType": "full_numbers",
+                'bPaginate': true,  //是否分页。
+                "bProcessing": true, //当datatable获取数据时候是否显示正在处理提示信息。
+                "bServerSide": false,
+                "sAjaxSource": "Home/GetJsonCitys",
+                "aoColumns": [//aoColumns 参数用来定义表格的列，这是一个数组，其中的每一个对象用来定义一列。
+                    { "sTitle": "编号", "sClass": "center" },//对于每一个列对象： sTitle 定义列的标题 sClass 定义列的样式
+                    { "sTitle": "城市名称", "sClass": "center" },
+                    { "sTitle": "邮政编码", "sClass": "center" },
+                    {
+                        "sTitle": "操作",
+                        "sClass": "center",
+                        "fnRender": function (obj) {//fnRender 函数用来渲染列，这个函数将会传递一个参数对象，这个参数对象的 iDataColumn 属性表示当前的列索引，aData 表示当前的行数组。函数返回的结果将被填充到单元格中。//当然了，对于表示行的数组来说，长度应该是相同的。如果某一行数据缺失或者提供了过多地数据的话，就会得到一个警告。
+                            return '<a href=\"Details/' + obj.aData[0] + '\">查看详情</a>  <input tag=\"' + obj.aData[0] + '\" type=\"checkbox\" name=\"name\" />';
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+</head>
+<body style="font-size: 12px;">
+    <table class="display" id="DataTable">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    CityName
+                </th>
+                <th>
+                    ZipCode
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>

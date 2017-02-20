@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace MyPhotos.Controllers
 {
+    [Authorize]
     public class PhotosController : Controller
     {
         private BaseDBContext db = new BaseDBContext();

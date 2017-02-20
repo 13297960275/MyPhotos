@@ -4,7 +4,16 @@
 </div>
 
 @Ajax.ActionLink("Add Person", "Person", null,
-new AjaxOptions() { HttpMethod = "Get", UpdateTargetId = "modalContent", InsertionMode = InsertionMode.Replace, OnBegin = "onBegin", OnSuccess = "onSuccess", OnFailure = "onFailure", OnComplete = "onComplete" },
+new AjaxOptions()
+{
+    HttpMethod = "Get",
+    UpdateTargetId = "modalContent",
+    InsertionMode = InsertionMode.Replace,
+    OnBegin = "onBegin",
+    OnSuccess = "onSuccess",
+    OnFailure = "onFailure",
+    OnComplete = "onComplete"
+},
 new { id = "btnPerson", @class = "btn btn-lg btn-info" })
 
 
@@ -16,8 +25,10 @@ new { id = "btnPerson", @class = "btn btn-lg btn-info" })
 </div>
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+
     <script type="text/javascript">
         function onBegin() {
             //alert('begin');

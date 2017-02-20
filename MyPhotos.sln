@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T6_MvcAjax", "T6_MvcAjax\T6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T7_DataTables", "T7_DataTables\T7_DataTables.csproj", "{D0361492-ADE4-4341-8DD0-C6914B00755C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T7_DataTable", "T7_DataTable\T7_DataTable.csproj", "{5E04D17E-6712-48C8-A7E0-8B1E6D304507}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{D0361492-ADE4-4341-8DD0-C6914B00755C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0361492-ADE4-4341-8DD0-C6914B00755C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0361492-ADE4-4341-8DD0-C6914B00755C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E04D17E-6712-48C8-A7E0-8B1E6D304507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E04D17E-6712-48C8-A7E0-8B1E6D304507}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E04D17E-6712-48C8-A7E0-8B1E6D304507}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E04D17E-6712-48C8-A7E0-8B1E6D304507}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

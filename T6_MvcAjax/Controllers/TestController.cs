@@ -9,7 +9,6 @@ namespace MvcAjax.Controllers
 {
     public class TestController : Controller
     {
-        // GET: Test
         public ActionResult Index()
         {
             return View();
@@ -43,7 +42,7 @@ namespace MvcAjax.Controllers
 
         private object GetErrorsFromModelState()
         {
-            return "出错了";
+            throw new NotImplementedException();
         }
     }
 }
