@@ -17,10 +17,9 @@ namespace MvcAjax.Controllers
         public ActionResult Person(int? id)
         {
             //could add code here to get model based on id....
-            return PartialView("_Person");
+            return PartialView("_Person", id);
             //calling partial with existing model....
             //return PartialView("_Person", model);
-
         }
 
         [HttpPost]
@@ -42,7 +41,8 @@ namespace MvcAjax.Controllers
 
         private object GetErrorsFromModelState()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return "出错了";
         }
     }
 }

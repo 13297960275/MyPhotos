@@ -83,6 +83,42 @@ namespace MyPhotos.Controllers
             return View(photos);
         }
 
+        public ActionResult AddNew(HttpPostedFileBase uploadFile, [Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_ptime,_pclicks,_pdownload,_pup,_pdown")] Photos photos)
+        {
+            /*采用MD5识别相同文件，防止重复上传，实现方法在此处添加*/
+
+            if (ModelState.IsValid)
+            {
+                if (uploadFile != null && uploadFile.ContentLength > 0)//判断是否存在文件
+                {
+                    if (uploadFile.ContentType == "image/jpeg")//判断是否是图片文件
+                    {
+                        string path = Server.MapPath("~/Images/");
+                        string oldname = uploadFile.FileName;
+                        string newname = Guid.NewGuid().ToString() + Path.GetExtension(oldname);
+                        //string filetype = filedata.ContentType;
+                        //int filesize = filedata.ContentLength;
+                        uploadFile.SaveAs(Path.Combine(path, newname));
+                        photos._purl = newname;
+                        photos._pdownload = 0;
+                        photos._pclicks = 0;
+                        photos._pdown = 0;
+                        photos._pup = 0;
+                        photos._ptime = DateTime.Now;
+                        db.Photos.Add(photos);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                        HttpContext.Response.Write("<script>alert('请选择图片文件');</script>");
+                }
+                else
+                    HttpContext.Response.Write("<script>alert('请选择文件');</script>");
+            }
+            ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename", photos._ptypeid);
+            return PartialView("_AddNewPartialPage", photos);
+        }
+
         // GET: Photos/Create
         public ActionResult Create()
         {

@@ -1,0 +1,7 @@
+RELEASE version 3.4.5.15:
+
+New InferredValidator<TEntity, TBase> class, It's similar to Aggregate class but this one enables the execution the another validator which the instance to
+validate derives from TBase, and this class doesn't have own operations to execute, however operations to execute belong to base validator.
+
+
+

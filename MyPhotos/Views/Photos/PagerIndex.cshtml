@@ -165,11 +165,11 @@
             opacity: 1;
         }
 </style>
-
 <h2>图片列表</h2>
 
 <p>
-    @Html.ActionLink("添加图片", "Create")
+    @*@Html.ActionLink("添加图片", "Create")*@
+    <a href="#" onclick="OpenAddNew();">添加图片</a>
 </p>
 @*<button id="5" onclick="details(id);">详情测试</button>*@
 <div>
@@ -243,6 +243,7 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
 <script type="text/javascript">
     $(function () { $('#myModal').modal('hide') });
     $(function () {
@@ -250,9 +251,21 @@
             alert('嘿，我听说您喜欢模态框...');
         })
     });
+    function OpenAddNew() {
+        $.get("/Photos/AddNew").then(
+        function (r) {
+            $("<div id='DivCreateNew'></div>").html(r).dialog({
+                width: 'auto', height: 'auto', modal: true, title: "添加图片",
+                close: function () {
+                    $('#DivCreateNew').remove();
+                }
+            });
+        });
+    };
     function del(id) {
         if (confirm('确定删除？')) {
             window.location.href = "/Photos/Details/" + id;
         } else return;
     };
+
 </script>
