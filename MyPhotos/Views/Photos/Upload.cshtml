@@ -4,86 +4,83 @@
 }
 
 @*页面添加样式表和脚本库的引用：*@
-@*<script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script src="~/Scripts/MyJavaScript.js"></script>
-    <link href="/plugins/uploadify/uploadify.css" rel="stylesheet" />
-    <script src="/plugins/uploadify/jquery.uploadify.js"></script>
-    <script src="/plugins/uploadify/jquery.uploadify.min.js"></script>
-    <script>
-        $(function () {
-            alter("dsfas");
-            $('#btn_upload').uploadify({
-                uploader: '/Photos/Upload',            // 服务器处理地址
-                swf: '~/plugins/uploadify/uploadify.swf',
-                buttonText: "选择文件",                  //按钮文字
-                height: 34,                             //按钮高度
-                width: 82,                              //按钮宽度
-                fileTypeExts: "*.jpg;*.png;",           //允许的文件类型
-                fileTypeDesc: "请选择图片文件",           //文件说明
-                formData: { "imgType": "normal" }, //提交给服务器端的参数
-                onUploadSuccess: function (file, data, response) {   //一个文件上传成功后的响应事件处理
-                    var data = $.parseJSON(data);
-                    alert(data.imgpath);
-                }
-            });
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<link href="/plugins/uploadify/uploadify.css" rel="stylesheet" />
+<script src="/plugins/uploadify/jquery.uploadify.js"></script>
+<script src="/plugins/uploadify/jquery.uploadify.min.js"></script>
+<script src="~/Scripts/script/uploadTest.js"></script>
+<script>
+    $(function () {
+        alter("dsfas");
+        $('#btn_upload').uploadify({
+            uploader: '/Photos/Upload',            // 服务器处理地址
+            swf: '~/plugins/uploadify/uploadify.swf',
+            buttonText: "选择文件",                  //按钮文字
+            height: 34,                             //按钮高度
+            width: 82,                              //按钮宽度
+            fileTypeExts: "*.jpg;*.png;",           //允许的文件类型
+            fileTypeDesc: "请选择图片文件",           //文件说明
+            formData: { "imgType": "normal" }, //提交给服务器端的参数
+            onUploadSuccess: function (file, data, response) {   //一个文件上传成功后的响应事件处理
+                var data = $.parseJSON(data);
+                alert(data.imgpath);
+            }
         });
-    </script>
-    <h2>Upload</h2>
+    });
+</script>
+<h2>Upload</h2>
 
-    <div id="FormContent">
-        <form id="FormUpload"
-              enctype="multipart/form-data" method="post">
-            <span class="btn btn-success fileinput-button">
-                <i class="glyphicon glyphicon-plus"></i>
-                <span>Add files...</span>
-                <input type="file" name="UploadedFile" id="UploadedFile" />
-            </span>
+<div id="FormContent">
+    <form id="FormUpload"
+          enctype="multipart/form-data" method="post">
+        <span class="btn btn-success fileinput-button">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>Add files...</span>
+            <input type="file" name="UploadedFile" id="UploadedFile" />
+        </span>
+        <button class="btn btn-primary start" type="button" id="Submit_btn">
+            <i class="glyphicon glyphicon-upload"></i>
+            <span>Start upload</span>
+        </button>
+        <button class="btn btn-warning cancel" type="button" id="Cancel_btn">
+            <i class="glyphicon glyphicon-ban-circle"></i>
+            <span>close</span>
+        </button>
+    </form>
 
-            <button class="btn btn-primary start" type="button" id="Submit_btn">
-                <i class="glyphicon glyphicon-upload"></i>
-                <span>Start upload</span>
-            </button>
-
-            <button class="btn btn-warning cancel" type="button" id="Cancel_btn">
-                <i class="glyphicon glyphicon-ban-circle"></i>
-                <span>close</span>
-            </button>
-        </form>
-
-        <div class="progress CustomProgress">
-            <div id="FileProgress" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
-                <span></span>
-            </div>
+    <div class="progress CustomProgress">
+        <div id="FileProgress" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+            <span></span>
         </div>
+    </div>
 
-        <div class="InfoContainer">
-            <div id="Imagecontainer"></div>
-            <div id="FileName" class="info"></div>
-            <div id="FileType" class="info"></div>
-            <div id="FileSize" class="info"></div>
-        </div>
+    <div class="InfoContainer">
+        <div id="Imagecontainer"></div>
+        <div id="FileName" class="info"></div>
+        <div id="FileType" class="info"></div>
+        <div id="FileSize" class="info"></div>
+    </div>
 
-        <div id="drop_zone">Drop images Here</div>
-    </div>*@
+    <div id="drop_zone">Drop images Here</div>
+</div>
 
 
 @*页面添加用于生成上传按钮的标签：*@
-@*<span id="btn_upload">sfdssd</span>*@
-@*@using (Html.BeginForm(new { enctype = "multipart/form-data" }))
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            @*<h4>Photos</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model._ptypeid, "图片类型", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("_ptypeid", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model._ptypeid, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
+@*<span id="btn_upload">sfdssd</span>
+    @using (Html.BeginForm(new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <h4>Photos</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model._ptypeid, "图片类型", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("_ptypeid", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model._ptypeid, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
 <form action="/Photos/Upload" method="post" enctype="multipart/form-data">
     <input type="file" name="uploadFile" value="uploadFile" />
     <input type="submit" name="name" value="Upload" />

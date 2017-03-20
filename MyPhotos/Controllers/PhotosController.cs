@@ -11,7 +11,8 @@ using System.Web.Mvc;
 
 namespace MyPhotos.Controllers
 {
-    [Authorize]
+    //[Authorize]
+    [AllowAnonymous]
     public class PhotosController : Controller
     {
         private BaseDBContext db = new BaseDBContext();
@@ -107,7 +108,7 @@ namespace MyPhotos.Controllers
                         photos._ptime = DateTime.Now;
                         db.Photos.Add(photos);
                         db.SaveChanges();
-                        return RedirectToAction("Index");
+                        return RedirectToAction("PagerIndex");
                     }
                     else
                         HttpContext.Response.Write("<script>alert('请选择图片文件');</script>");
@@ -246,7 +247,7 @@ namespace MyPhotos.Controllers
             Photos photos = db.Photos.Find(id);
             db.Photos.Remove(photos);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("PagerIndex");
         }
 
         protected override void Dispose(bool disposing)
