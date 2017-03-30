@@ -7,13 +7,13 @@ namespace MyPhotos.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddPhotos_pdownload : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddPhotos_pdownload));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201610280111404_AddPhotos_pdownload"; }
+            get { return "201703300203402_Initial"; }
         }
         
         string IMigrationMetadata.Source

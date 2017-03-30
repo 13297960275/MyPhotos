@@ -219,9 +219,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610280111404_AddPhotos_pdownload.cs" />
-    <Compile Include="Migrations\201610280111404_AddPhotos_pdownload.Designer.cs">
-      <DependentUpon>201610280111404_AddPhotos_pdownload.cs</DependentUpon>
+    <Compile Include="Migrations\Initial.cs" />
+    <Compile Include="Migrations\Initial.Designer.cs">
+      <DependentUpon>Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\JPager.cs" />
@@ -419,8 +419,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610280111404_AddPhotos_pdownload.resx">
-      <DependentUpon>201610280111404_AddPhotos_pdownload.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Initial.resx">
+      <DependentUpon>Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

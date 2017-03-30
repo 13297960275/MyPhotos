@@ -59,7 +59,14 @@
     @Html.Raw(Model.PagerHtml())  共 @Model.Total 条
 </div>
 
+<div id="del-confirm" style="display:none;" title="删除图片">
+    <p>
+        <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>这张图片将被永久删除，并且无法恢复。您确定吗？
+    </p>
+</div>
+
 <script type="text/javascript">
+    var baseUrl = '../../';
     $(function () { $('#editModal').modal('hide') });
     $(function () {
         $('#editModal').on('hide.bs.modal', function () {
@@ -80,8 +87,38 @@
     };
 
     function del(id) {
-        if (confirm('确定删除？')) {
-            window.location.href = "/Photos/Delete/" + id;
-        } else return;
+        $("#del-confirm").dialog({
+            resizable: true,
+            modal: true,
+            buttons: {
+                删除: function () {
+                    $.ajax({
+                        url: baseUrl + 'Photos/Del/' + id,
+                        type: 'POST',
+                        data: { "id": id },
+                        async: true,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function () {
+                            //alert("成功");
+                            $("#del-confirm").dialog("close");
+                            window.location.href = "/Photos/PagerIndex";
+                        },
+                        error: function (returndata) {
+                            alert("失败");
+                            $("#del-confirm").dialog("close");
+                            window.location.href = "/Photos/PagerIndex";
+                        }
+                    });
+                },
+                取消: function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+        //if (confirm('确定删除？')) {
+        //    window.location.href = "/Photos/Delete/" + id;
+        //} else return;
     };
 </script>

@@ -250,6 +250,14 @@ namespace MyPhotos.Controllers
             return RedirectToAction("PagerIndex");
         }
 
+        public ActionResult Del(int id)
+        {
+            Photos photos = db.Photos.Find(id);
+            db.Photos.Remove(photos);
+            db.SaveChanges();
+            return RedirectToAction("PagerIndex");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
