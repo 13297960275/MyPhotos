@@ -38,10 +38,7 @@ namespace MyPhotos.Controllers
             //var list = new List<User>();
 
             //根据条件检索
-            var query = param._purl
-                != null ?
-              list.Where(t => t._purl.Contains(param._purl)).ToList() :
-              list.ToList();
+            var query = param._purl != null ? list.Where(t => t._purl.Contains(param._purl)).ToList() : list.ToList();
 
             //分页数据
             var data = query.Skip(param.Skip).Take(param.PageSize);
@@ -84,6 +81,13 @@ namespace MyPhotos.Controllers
             return View(photos);
         }
 
+        public ActionResult AddNew()
+        {
+            ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename");
+            return PartialView("_AddNewPartialPage");
+        }
+
+        [HttpPost]
         public ActionResult AddNew(HttpPostedFileBase uploadFile, [Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_ptime,_pclicks,_pdownload,_pup,_pdown")] Photos photos)
         {
             /*采用MD5识别相同文件，防止重复上传，实现方法在此处添加*/
@@ -92,7 +96,7 @@ namespace MyPhotos.Controllers
             {
                 if (uploadFile != null && uploadFile.ContentLength > 0)//判断是否存在文件
                 {
-                    if (uploadFile.ContentType == "image/jpeg")//判断是否是图片文件
+                    if (uploadFile.ContentType == "image/*")//判断是否是图片文件
                     {
                         string path = Server.MapPath("~/Images/");
                         string oldname = uploadFile.FileName;
@@ -110,14 +114,13 @@ namespace MyPhotos.Controllers
                         db.SaveChanges();
                         return RedirectToAction("PagerIndex");
                     }
-                    else
-                        HttpContext.Response.Write("<script>alert('请选择图片文件');</script>");
+                    //else HttpContext.Response.Write("<script>alert('请选择图片文件server');</script>");
                 }
-                else
-                    HttpContext.Response.Write("<script>alert('请选择文件');</script>");
+                //else HttpContext.Response.Write("<script>alert('请选择文件server');</script>");
             }
             ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename", photos._ptypeid);
-            return PartialView("_AddNewPartialPage", photos);
+            //return PartialView("_AddNewPartialPage", photos);
+            return RedirectToAction("PagerIndex");
         }
 
         // GET: Photos/Create
@@ -140,7 +143,7 @@ namespace MyPhotos.Controllers
             {
                 if (uploadFile != null && uploadFile.ContentLength > 0)//判断是否存在文件
                 {
-                    if (uploadFile.ContentType == "image/jpeg")//判断是否是图片文件
+                    if (uploadFile.ContentType == "image/gif")//判断是否是图片文件
                     {
                         string path = Server.MapPath("~/Images/");
                         string oldname = uploadFile.FileName;
@@ -159,10 +162,10 @@ namespace MyPhotos.Controllers
                         return RedirectToAction("Index");
                     }
                     else
-                        HttpContext.Response.Write("<script>alert('请选择图片文件');</script>");
+                        HttpContext.Response.Write("<script>alert('请选择图片文件server');</script>");
                 }
                 else
-                    HttpContext.Response.Write("<script>alert('请选择文件');</script>");
+                    HttpContext.Response.Write("<script>alert('请选择文件server');</script>");
             }
             ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename", photos._ptypeid);
             return View(photos);

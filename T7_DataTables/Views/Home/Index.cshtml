@@ -23,7 +23,7 @@
                 'bPaginate': true,  //是否分页。
                 "bProcessing": true, //当datatable获取数据时候是否显示正在处理提示信息。
                 "bServerSide": false,
-                "sAjaxSource": "Home/GetJsonCitys",
+                "sAjaxSource": "/Home/GetJsonCitys",
                 "aoColumns": [//aoColumns 参数用来定义表格的列，这是一个数组，其中的每一个对象用来定义一列。
                     { "sTitle": "编号", "sClass": "center" },//对于每一个列对象： sTitle 定义列的标题 sClass 定义列的样式
                     { "sTitle": "城市名称", "sClass": "center" },
@@ -40,7 +40,7 @@
         });
     </script>
 </head>
-<body style="font-size: 12px;">
+<body style="font-size: 12px;margin:56px 300px; background-image: url('../../Content/DataTables/images/a11938a28e5b5a9c474fd428a157cdcc.jpg');background-size:100% 200%;background-repeat:no-repeat;">
     <table class="display" id="DataTable">
         <thead>
             <tr>

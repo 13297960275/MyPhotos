@@ -1,5 +1,7 @@
 ﻿@model MyPhotos.Models.Photos
 @*实现带模型上传功能的重点：修改new { enctype = "multipart/form-data" }或者指定Controller/Action，待确认*@
+<link href="~/Content/themes/base/all.css" rel="stylesheet" />
+<link href="~/Content/style/PagerIndex.css" rel="stylesheet" />
 @using (Html.BeginForm("AddNew", "Photos", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
