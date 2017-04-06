@@ -96,7 +96,7 @@ namespace MyPhotos.Controllers
             {
                 if (uploadFile != null && uploadFile.ContentLength > 0)//判断是否存在文件
                 {
-                    if (uploadFile.ContentType == "image/*")//判断是否是图片文件
+                    if (uploadFile.ContentType == "image/jpeg" || uploadFile.ContentType == "image/gif")//判断是否是图片文件
                     {
                         string path = Server.MapPath("~/Images/");
                         string oldname = uploadFile.FileName;
