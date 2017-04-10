@@ -40,7 +40,7 @@
                             <span>@Html.DisplayFor(modelItem => item._pclicks)</span>
                         </li>
                         <li>
-                            <img src="~/fonts/Icon/download.png" onclick="Download();" alt="下载量" id="@item._pid" />
+                            <img src="~/fonts/Icon/download.png" onclick="Download(id);" alt="下载量" id="@item._purl" />
                             <span>@Html.DisplayFor(modelItem => item._pdownload)</span>
                         </li>
                         <li>
@@ -120,5 +120,17 @@
         //if (confirm('确定删除？')) {
         //    window.location.href = "/Photos/Delete/" + id;
         //} else return;
+    };
+
+    function Download(id) {
+        $.ajax({
+            url: baseUrl + 'Photos/Download/' + id,
+            type: 'POST',
+            data: { "id": id },
+            async: true,
+            cache: false,
+            contentType: false,
+            processData: false
+        })
     };
 </script>

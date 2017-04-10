@@ -1,0 +1,377 @@
+html {
+	overflow: hidden;
+}
+body {
+	position: absolute;
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px;
+	background: #111;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-weight: normal;
+	color: #fff;
+	scrollbar-face-color: #525252;
+	scrollbar-highlight-color: #7A7875;
+	scrollbar-shadow-color: #000000;
+	scrollbar-3dlight-color: #2C2A2C;
+	scrollbar-arrow-color: #ff8000;
+	scrollbar-track-color: #2C2A2C;
+	scrollbar-darkshadow-color: #2C2A2C;
+}
+a {
+	text-decoration: none;
+	color:#ff8000;
+}
+a:hover	{
+	text-decoration: none;
+	background:#ff8000;
+	color:#ffffff;
+}
+a:visited {
+	text-decoration: none;
+	color:#ff8000;
+}
+a:visited:hover {
+	text-decoration: none;
+	background:#ff8000;
+	color:#ffffff;
+}
+.hid {
+	visibility: hidden;
+}
+.turn_on {
+	visibility: hidden;
+}
+h1 {
+	text-align: center;
+}
+h3 {
+	text-align: center;
+	color: #888;
+}
+h4 {
+	text-align: center;
+	color: #F80;
+}
+#upx {
+	position: absolute;
+	overflow: hidden;
+	background-color: #111;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 7%;
+	visibility: hidden;
+}
+#up {
+	position: absolute;
+	overflow: hidden;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+}
+#uptitle {
+	position: absolute;
+	left: 0px;
+	top: -0.2em;
+	width: 100%;
+	height: 60%;
+	text-align: center;
+	color: #ccc;
+	font-weight: bold;
+	color: #fff;
+	white-space: nowrap;
+	font-size: 1.4em;
+}
+#upsubtitle {
+	position: absolute;
+	left: 0px;
+	bottom: 0.2em;
+	width: 100%;
+	height: 40%;
+	text-align: left;
+	color: #fff;
+	font-weight: normal;
+	font-size: 0.9em;
+}
+.textScript {
+	font-size: 0.7em;
+	text-align: center;
+	margin-right: 1em;
+}
+#bodyFrame {
+	position: absolute;
+	left: 0px;
+	top: 7%;
+	width: 100%;
+	height: 86%;
+	overflow: auto;
+	background-color: #000;
+	visibility: hidden;
+}
+#splash {
+	position: absolute;
+	left: 49%;
+	top: 49%;
+}
+#down {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 7%;
+	overflow: hidden;
+	background-color: #111;
+	visibility: hidden;
+}
+#titup{
+	position: absolute;
+	left: 0px;
+	top: -0.2em;
+	font-size: 1.5em;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+#uptxt {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 100%;
+	font-size: 0.7em;
+	font-weight: normal;
+	color: #e0e0e0;
+	text-align: center;
+	width: 100%;
+}
+#upbar {
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	bottom: 0.2em;
+	text-align: center;
+	font-weight: normal;
+	letter-spacing: 0px;
+	white-space: nowrap;
+}
+#uptit{
+	position: absolute;
+	left: 0px;
+	bottom: 0.65em;
+	font-size: 1.8em;
+	font-weight: normal;
+	color: #e0e0e0;
+	text-align: center;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+#up1 {
+	overflow: hidden;
+	background:#00F;
+	font-size: 0.5em;
+	height: 0.6em;
+	top: -0.1em;
+}
+#up2 {
+	overflow: hidden;
+	background:#000;
+	font-size: 0.5em;
+	height: 0.6em;
+	top: -0.1em;
+}
+#logo {
+	position: absolute;
+	width: 14%;
+	height: 100%;
+	overflow: hidden;
+	background-color: #111;
+	cursor: pointer;
+	text-align: center;
+}
+
+#dhtml {
+	position: absolute;
+	left: 0px;
+	bottom: 0.1em;
+	font-weight: bold;
+	color: #666;
+	margin: 0px;
+	padding: 0px;
+	white-space: nowrap;
+}
+#demos {
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	font-size: 0.6em;
+	color: #fff;
+	white-space: nowrap;
+	font-weight: bold;
+	text-align: center;
+}
+#ge1doot {
+	position: absolute;
+	left: 14%;
+	width: 14%;
+	height: 100%;
+	background-color: #111;
+	cursor: default;
+	text-align: center;
+}
+#menu {
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: #111;
+	font-size: 1.5em;
+	text-align: left;
+	font-weight: bold;
+}
+#rid {
+	position: absolute;
+	color: #fff;
+	background: #ff6600;
+	left: 0px;
+	width: 100%;
+	top: 33%;
+	height: 33%;
+	cursor: pointer;
+	overflow: hidden;
+}
+#ri2 {
+	position: absolute;
+	left: 0px;
+	color: #fff;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+#ar {
+	position: absolute;
+	left: -1000px;
+	cursor: pointer;
+	border-style: solid;
+	width: 0px;
+	height: 0px;
+	line-height: 0px;
+	border-color: #111 #111 #111 #ff6600;
+}
+#intro {
+	position: absolute;
+	right: 80px;
+	width: 60%;
+	height: 100%;
+	cursor: default;
+}
+.dom {
+	position: relative;
+	font-weight: bold;
+	padding: 0.1em;
+	text-align: center;
+	font-size: .7em;
+	font-family: verdana, arial, helvetica, sans-serif;
+	background-color: #ff6600;
+	color: #fff;
+}
+a.dom {
+	text-decoration: none;
+	color:#fff;
+}
+a.dom:hover	{text-decoration: none;background:#ff8000;color:#fff;}
+a.dom:visited {text-decoration: none;color:#fff;}
+a.dom:visited:hover {text-decoration: none;background:#ff8000;color:#fff;}
+.ie {
+	position: relative;
+	font-weight: bold;
+	padding: 0.1em;
+	text-align: center;
+	font-size: .7em;
+	font-family: verdana, arial, helvetica, sans-serif;
+	background-color: #036dc5;
+	color: #fff;
+}
+#close {
+	position: absolute;
+	right: 0.2em;
+	top: 0.2em;
+	cursor: pointer;
+	text-align: center;
+	width: 1em;
+	height: 1em;
+	overflow: hidden;
+}
+.form {
+	font-size: 0.8em;
+}
+.field {
+	background: #ccc;
+	color: #000;
+	border: #000 solid 1px;
+	font-size: 1em;
+	height: 1em;
+}
+.but {
+	background: #666;
+	color: #fff;
+	cursor: pointer;
+	font-size: 1em;
+	border: none;
+	height: 1.1em;
+}
+.but:hover {
+	background: #eee;
+	color: #000;
+}
+#ack {
+	color: #888;
+	font-size: 0.7em;
+}
+#tabgal {
+	position: absolute;
+	right: 0.5em;
+	top: -0.3em;
+	margin: 0.1em;
+}
+#paypalbut {
+	cursor: pointer;
+}
+#stat30{
+	position: absolute;
+	background-color: #000;
+	left: 0.1em;
+	top:1.3em;
+	width: 62px;
+	height: 17px;
+	overflow: hidden;
+	font-family: verdana, arial, helvetica, sans-serif;
+}
+#stat30 div {
+	position:absolute;
+	bottom: 0px;
+	left: 60px;
+	width: 1px;
+	font-size: 0px;
+	background-color:#f80;
+}
+#stat30 span {
+	position:absolute;
+	bottom: 0px;
+	width: 1px;
+	font-size: 0px;
+	background-color: #666;
+}
+
+.sfx {
+	position: absolute;
+	font-family: verdana, arial, helvetica, sans-serif;
+	color: #fff;
+}

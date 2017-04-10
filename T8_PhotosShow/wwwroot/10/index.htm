@@ -1,0 +1,287 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><title>10</title>
+<meta http-equiv="imagetoolbar" content="no">
+<style type="text/css">
+	body {
+		background: #222;
+		overflow: hidden;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	#screen span {
+		position:absolute;
+		overflow:hidden;
+		border:#FFF solid 1px;
+		background:#FFF;
+	}
+	#screen img{
+		position:absolute;
+		left:-32px;
+		top:-32px;
+		cursor: pointer;
+	}
+	#caption, #title{
+		color: #FFF;
+		font-family: georgia, 'times new roman', times, veronica, serif;
+		font-size: 1em;
+		text-align: center;
+	}
+	#caption b {
+		font-size: 2em;
+	}
+
+</style>
+
+<script type="text/javascript"><!--
+window.onerror = new Function("return true");
+var obj = [];
+var scr;
+var spa;
+var img;
+var W;
+var Wi;
+var Hi;
+var wi;
+var hi;
+var Sx;
+var Sy;
+var M;
+var xm;
+var ym;
+var xb = 0;
+var yb = 0;
+var ob =  - 1;
+var cl = false;
+
+/* needed in standard mode */
+px = function(x)
+{
+	return Math.round(x) + "px";
+}
+
+/* center image  - do not resize for perf. reason */
+img_center = function(o)
+{
+	with(img[o])
+	{
+		style.left = px( - (width - Wi) / 2);
+		style.top = px( - (height - Hi) / 2);
+	}
+}
+
+//////////////////////////////////////////////////////////
+var Nx = 4; //size grid x
+var Ny = 4; //size grid y
+var Tx = 3; // image width
+var Ty = 3; // image height
+var Mg = 40; // margin
+var SP = 1; // speed
+//////////////////////////////////////////////////////////
+
+function Cobj(o, x, y)
+{
+	this.o = o;
+	this.ix = Math.min(Nx - Tx, Math.max(0, Math.round(x - (Tx / 2))));
+	this.iy = Math.min(Ny - Ty, Math.max(0, Math.round(y - (Ty / 2))));
+	this.li = ((this.ix * M + this.ix * Sx) - (x * M + x * Sx)) / SP;
+	this.ti = ((this.iy * M + this.iy * Sy) - (y * M + y * Sy)) / SP;
+	this.l = 0;
+	this.t = 0;
+	this.w = 0;
+	this.h = 0;
+	this.s = 0;
+	this.mv = false;
+	this.spa = spa[o].style;
+	this.img = img[o];
+	this.txt = img[o].alt;
+	img[o].alt = "";
+
+	/* zooming loop */
+	this.zoom = function()
+	{
+		with(this)
+		{
+			l += li * s;
+			t += ti * s;
+			w += wi * s;
+			h += hi * s;
+			if ((s > 0 && w < Wi) || (s < 0 && w > Sx))
+			{
+				/* force window.event */
+				window.focus();
+				/* loop */
+				setTimeout("obj[" + o + "].zoom()", 16);
+			}
+			else
+			{
+				/* finished */
+				mv = false;
+				/* set final position */
+				if (s > 0)
+				{
+					l = ix * M + ix * Sx;
+					t = iy * M + iy * Sy;
+					w = Wi;
+					h = Hi;
+				}
+				else
+				{
+					l = x * M + x * Sx;
+					t = y * M + y * Sy;
+					w = Sx;
+					h = Sy;
+				}
+			}
+			/* html animation */
+			with(spa)
+			{
+				left = px(l);
+				top = px(t);
+				width = px(w);
+				height = px(h);
+				zIndex = Math.round(w);
+			}
+		}
+	}
+
+	this.click = function()
+	{
+		with(this)
+		{
+			img_center(o);
+			/* zooming logic */
+			if ( ! mv || cl)
+			{
+				if (s > 0)
+				{
+					if (cl || Math.abs(xm - xb) > Sx * .4 || Math.abs(ym - yb) > Sy * .4)
+					{
+						s =  - 2;
+						mv = true;
+						zoom();
+						cap.innerHTML = txt;
+					}
+				}
+				else
+				{
+					if (cl || ob != o)
+					{
+						if (ob >= 0)
+						{
+							with(obj[ob])
+							{
+								s =  - 2;
+								mv = true;
+								zoom();
+							}
+						}
+						ob = o;
+						s = 1;
+						xb = xm;
+						yb = ym;
+						mv = true;
+						zoom();
+						cap.innerHTML = txt;
+					}
+				}
+			}
+		}
+	}
+	
+	/* hook up events */
+	img[o].onmouseover = img[o].onmousemove = img[o].onmouseout = new Function("cl=false;obj[" + o + "].click()");
+	img[o].onclick = new Function("cl=true;obj[" + o + "].click()");
+	img[o].onload = new Function("img_center(" + o + ")");
+
+	/* initial display */
+	this.zoom();
+}
+
+/* mouse */
+document.onmousemove = function(e)
+{
+	if ( ! e)
+	{
+		e = window.event;
+	}
+	xm = (e.x || e.clientX);
+	ym = (e.y || e.clientY);
+}
+
+/* init */
+function load()
+{
+	/* html elements */
+	scr = document.getElementById("screen");
+	spa = scr.getElementsByTagName("span");
+	img = scr.getElementsByTagName("img");
+	cap = document.getElementById("caption");
+	
+	/* mouseover border */ 
+	document.getElementById("border").onmouseover = function()
+	{
+		cl = true;
+		if(ob >= 0 && obj[ob].s > 0) obj[ob].click();
+		ob = -1;
+	}
+
+	/* global variables */
+	W = parseInt(scr.style.width);
+	H = parseInt(scr.style.height);
+	M = W / Mg;
+	Sx = (W - (Nx - 1) * M) / Nx;
+	Sy = (H - (Ny - 1) * M) / Ny;
+	Wi = Tx * Sx + (Tx - 1) * M;
+	Hi = Ty * Sy + (Ty - 1) * M;
+	SP = M * Tx * SP;
+	wi = (Wi - Sx) / SP;
+	hi = (Hi - Sy) / SP;
+	
+	/* create objects */
+	for (k = 0, i = 0; i < Nx; i ++)
+	{
+		for (j = 0; j < Ny; j ++)
+		{
+			obj[k] = new Cobj(k ++, i, j);
+		}
+	}
+}
+//-->
+</script></head><body>
+
+<div style="position: absolute; left: 50%; top: 50%;">
+	<div id="title" style="position: absolute; width: 440px; height: 40px; left: -220px; top: -200px;"></div>
+	<div id="border" style="border: 1px solid rgb(85, 85, 85); background: rgb(0, 0, 0) none repeat scroll 0%; position: absolute; width: 440px; height: 340px; left: -220px; top: -170px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"></div>
+	<div id="screen" style="background: rgb(0, 0, 0) none repeat scroll 0%; position: absolute; width: 400px; height: 300px; left: -200px; top: -150px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+		<span style="left: 0px; top: 0px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im6.jpg" alt=""></span>
+		<span style="left: 0px; top: 78px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -8px;" src="slide-M_data/im2.jpg" alt=""></span>
+		<span style="left: 0px; top: 155px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im3.jpg" alt=""></span>
+		<span style="left: 0px; top: 233px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im4.jpg" alt=""></span>
+		<span style="left: 103px; top: 0px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im5.jpg" alt=""></span>
+		<span style="left: 103px; top: 78px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im1.jpg" alt=""></span>
+		<span style="left: 103px; top: 155px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im7.jpg" alt=""></span>
+		<span style="left: 103px; top: 233px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im18.jpg" alt=""></span>
+		<span style="left: 205px; top: 0px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im8.jpg" alt=""></span>
+		<span style="left: 205px; top: 78px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im10.jpg" alt=""></span>
+		<span style="left: 205px; top: 155px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im12.jpg" alt=""></span>
+		<span style="left: 205px; top: 233px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im17.jpg" alt=""></span>
+		<span style="left: 308px; top: 0px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im14.jpg" alt=""></span>
+		<span style="left: 308px; top: 78px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im15.jpg" alt=""></span>
+		<span style="left: 308px; top: 155px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im16.jpg" alt=""></span>
+		<span style="left: 308px; top: 233px; width: 93px; height: 68px; z-index: 93;"><img style="left: -11px; top: -9px;" src="slide-M_data/im9.jpg" alt=""></span>
+	</div>
+	<div id="caption" style="position: absolute; width: 440px; height: 60px; left: -220px; top: 175px;"><b>carefully</b> weight the options</div>
+</div>
+
+<script type="text/javascript"><!--
+// starter
+load();
+//-->
+</script>
+
+
+</body></html>

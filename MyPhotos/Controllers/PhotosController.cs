@@ -58,39 +58,27 @@ namespace MyPhotos.Controllers
             return View(res);
         }
 
-        // GET: Photos
-        public ActionResult Index()
-        {
-            var photos = db.Photos.Include(p => p.PhotoTypes);
-            //ViewBag.url = HttpContext.Server.MapPath("");
-            return View(photos.ToList());
-        }
-
-        // GET: Photos/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Photos photos = db.Photos.Find(id);
-            if (photos == null)
-            {
-                return HttpNotFound();
-            }
-            return View(photos);
-        }
-
+        /// <summary>
+        /// GET:_AddNewPartialPage
+        /// </summary>
+        /// <returns></returns>
         public ActionResult AddNew()
         {
             ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename");
             return PartialView("_AddNewPartialPage");
         }
 
+        /// <summary>
+        /// POST:Upload photos
+        /// </summary>
+        /// <param name="uploadFile"></param>
+        /// <param name="photos"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult AddNew(HttpPostedFileBase uploadFile, [Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_ptime,_pclicks,_pdownload,_pup,_pdown")] Photos photos)
         {
             /*采用MD5识别相同文件，防止重复上传，实现方法在此处添加*/
+            //string fileMD5 = CommonFuncs.GetStreamMD5(Filedata.InputStream);
 
             if (ModelState.IsValid)
             {
@@ -123,6 +111,111 @@ namespace MyPhotos.Controllers
             return RedirectToAction("PagerIndex");
         }
 
+        /// <summary>
+        /// GET:Del photos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Del(int id)
+        {
+            Photos photos = db.Photos.Find(id);
+            db.Photos.Remove(photos);
+            db.SaveChanges();
+            return RedirectToAction("PagerIndex");
+        }
+
+        /// <summary>
+        /// GET:Download
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Download()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// POST:Download
+        /// </summary>
+        /// <param name="fileName"></param>
+        [HttpPost]
+        public ActionResult Download(string fileName)
+        {
+            if (ModelState.IsValid)
+            {
+                //客户端保存的文件名
+                string filePath = Server.MapPath("/Images/" + fileName);//路径
+                FileInfo fileInfo = new FileInfo(filePath);
+                if (fileInfo.Exists == true)
+                {
+                    const long ChunkSize = 102400;//100K 每次读取文件，只读取100Ｋ，这样可以缓解服务器的压力
+                    byte[] buffer = new byte[ChunkSize];
+                    Response.Clear();
+                    System.IO.FileStream iStream = System.IO.File.OpenRead(filePath);
+                    long dataLengthToRead = iStream.Length;//获取下载的文件总大小
+                    Response.ContentType = "application/octet-stream";
+                    Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(fileName));
+                    while (dataLengthToRead > 0 && Response.IsClientConnected)
+                    {
+                        int lengthRead = iStream.Read(buffer, 0, Convert.ToInt32(ChunkSize));//读取的大小
+                        Response.OutputStream.Write(buffer, 0, lengthRead);
+                        Response.Flush();
+                        dataLengthToRead = dataLengthToRead - lengthRead;
+                    }
+                    Response.Close();
+                }
+                else Response.Write("<script>alert('您所选择的文件不存在');</script>");
+            }
+            return View();
+        }
+
+        public ActionResult Upload()
+        {
+            //ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase uploadFile/*, [Bind(Include = "_ptypeid")] Photos photos*/)
+        {
+            if (uploadFile != null && uploadFile.ContentLength > 0)
+            {
+                string path = Server.MapPath("~/Images/");
+                string oldname = uploadFile.FileName;
+                string newname = Guid.NewGuid().ToString() + Path.GetExtension(oldname);
+                //string filetype = filedata.ContentType;
+                //int filesize = filedata.ContentLength;
+                uploadFile.SaveAs(Path.Combine(path, newname));
+                return Content("成功");
+            }
+            return Content("失败");
+        }
+
+        /// <summary>
+        ///  GET: Photos/Index
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Index()
+        {
+            var photos = db.Photos.Include(p => p.PhotoTypes);
+            //ViewBag.url = HttpContext.Server.MapPath("");
+            return View(photos.ToList());
+        }
+
+        // GET: Photos/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Photos photos = db.Photos.Find(id);
+            if (photos == null)
+            {
+                return HttpNotFound();
+            }
+            return View(photos);
+        }
+
         // GET: Photos/Create
         public ActionResult Create()
         {
@@ -138,6 +231,7 @@ namespace MyPhotos.Controllers
         public ActionResult Create(HttpPostedFileBase uploadFile, [Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_ptime,_pclicks,_pdownload,_pup,_pdown")] Photos photos)
         {
             /*采用MD5识别相同文件，防止重复上传，实现方法在此处添加*/
+            //string fileMD5 = CommonFuncs.GetStreamMD5(Filedata.InputStream);
 
             if (ModelState.IsValid)
             {
@@ -169,28 +263,6 @@ namespace MyPhotos.Controllers
             }
             ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename", photos._ptypeid);
             return View(photos);
-        }
-
-        public ActionResult Upload()
-        {
-            //ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename");
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Upload(HttpPostedFileBase uploadFile/*, [Bind(Include = "_ptypeid")] Photos photos*/)
-        {
-            if (uploadFile != null && uploadFile.ContentLength > 0)
-            {
-                string path = Server.MapPath("~/Images/");
-                string oldname = uploadFile.FileName;
-                string newname = Guid.NewGuid().ToString() + Path.GetExtension(oldname);
-                //string filetype = filedata.ContentType;
-                //int filesize = filedata.ContentLength;
-                uploadFile.SaveAs(Path.Combine(path, newname));
-                return Content("成功");
-            }
-            return Content("失败");
         }
 
         // GET: Photos/Edit/5
@@ -253,14 +325,6 @@ namespace MyPhotos.Controllers
             return RedirectToAction("PagerIndex");
         }
 
-        public ActionResult Del(int id)
-        {
-            Photos photos = db.Photos.Find(id);
-            db.Photos.Remove(photos);
-            db.SaveChanges();
-            return RedirectToAction("PagerIndex");
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -269,104 +333,5 @@ namespace MyPhotos.Controllers
             }
             base.Dispose(disposing);
         }
-
-        //public ActionResult test()
-        //{
-        //    return View();
-        //}
-
-        //public ActionResult Upload()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult Upload(HttpPostedFileBase Filedata)
-        //{
-        //    // 没有文件上传，直接返回
-        //    if (Filedata == null || string.IsNullOrEmpty(Filedata.FileName) || Filedata.ContentLength == 0)
-        //    {
-        //        return HttpNotFound();
-        //    }
-
-        //    //获取文件完整文件名(包含绝对路径)
-        //    //文件存放路径格式：/files/upload/{日期}/{md5}.{后缀名}
-        //    //例如：/files/upload/20130913/43CA215D947F8C1F1DDFCED383C4D706.jpg
-        //    //string fileMD5 = CommonFuncs.GetStreamMD5(Filedata.InputStream);
-        //    string FileEextension = Path.GetExtension(Filedata.FileName);
-        //    string uploadDate = DateTime.Now.ToString("yyyyMMdd");
-
-        //    string imgType = Request["imgType"];
-        //    string virtualPath = "/";
-        //    if (imgType == "normal")
-        //    {
-        //        virtualPath = string.Format("~/Images/{0}{1}", uploadDate, /*fileMD5, */FileEextension);
-        //    }
-        //    else
-        //    {
-        //        virtualPath = string.Format("~/Images/{0}{1}", uploadDate, /*fileMD5,*/ FileEextension);
-        //    }
-        //    string fullFileName = this.Server.MapPath(virtualPath);
-
-        //    //创建文件夹，保存文件
-        //    string path = Path.GetDirectoryName(fullFileName);
-        //    Directory.CreateDirectory(path);
-        //    if (!System.IO.File.Exists(fullFileName))
-        //    {
-        //        Filedata.SaveAs(fullFileName);
-        //    }
-
-        //    var data = new { imgtype = imgType, imgpath = virtualPath.Remove(0, 1) };
-        //    return Json(data, JsonRequestBehavior.AllowGet);
-        //}
-
-        //     /// <summary>
-        //     /// 上传功能
-        //     /// </summary>
-        //     /// <param name="uploadedFile">从HttpPostedfileBase对象中获取文件信息，该对象包含上传的文件的基本信息如Filename属性，Contenttype属性，inputStream属性等内容，这些信息都可以用来验证服务器端接收的文件是否有错，也可以用来保存文件。</param>
-        //     /// <returns></returns>
-        //     [HttpPost]
-        //     public JsonResult Upload(HttpPostedFileBase uploadedFile)
-        //     {
-        //         if (uploadedFile != null && uploadedFile.ContentLength > 0)
-        //         {
-        //             byte[] FileByteArray = new byte[uploadedFile.ContentLength];
-        //             uploadedFile.InputStream.Read(FileByteArray, 0, uploadedFile.ContentLength);
-        //             Attachment newAttchment = new Attachment();
-        //             newAttchment.FileName = uploadedFile.FileName;
-        //             newAttchment.FileType = uploadedFile.ContentType;
-        //             newAttchment.FileContent = FileByteArray;
-        //             OperationResult operationResult = attachmentManager.SaveAttachment(newAttchment);
-        //             if (operationResult.Success)
-        //             {
-        //                 string HTMLString = CaptureHelper.RenderViewToString
-        //                   ("_AttachmentItem", newAttchment, this.ControllerContext);
-        //                 return Json(new
-        //                 {
-        //                     statusCode = 200,
-        //                     status = operationResult.Message,
-        //                     NewRow = HTMLString
-        //                 }, JsonRequestBehavior.AllowGet);
-        //             }
-        //             else
-        //             {
-        //                 return Json(new
-        //                 {
-        //                     statusCode = 400,
-        //                     status = operationResult.Message,
-        //                     file = uploadedFile.FileName
-        //                 }, JsonRequestBehavior.AllowGet);
-        //             }
-        //         }
-        //         return Json(new
-        //         {
-        //             statusCode = 400,
-        //             status = "Bad Request! Upload Failed",
-        //             file = string.Empty
-        //         }, JsonRequestBehavior.AllowGet);
-        //     }
-
-        //     public JsonResult UplodMultiple(HttpPostedFileBase[] uploadedFiles)
-        //2:  dataString.append("uploadedFiles", selectedFiles[i]);
     }
 }

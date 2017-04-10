@@ -164,12 +164,13 @@
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery.validate.js" />
     <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="T3\Download.aspx" />
     <Content Include="Upload.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="1\Handler1.ashx" />
+    <Content Include="Utilities\Handler1.ashx" />
     <None Include="scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="scripts\jquery-3.1.1.js" />
     <Content Include="scripts\jquery-3.1.1.min.js" />
@@ -193,30 +194,35 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="2\WebForm1.aspx" />
     <Content Include="Global.asax" />
     <Content Include="scripts\swfobject.js" />
     <Content Include="T3\HtmlPage1.html" />
-    <Content Include="T3\Upload.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="1\Class1.cs" />
-    <Compile Include="1\Class2.cs" />
-    <Compile Include="1\Class3.cs" />
-    <Compile Include="1\Handler1.ashx.cs">
+    <Compile Include="Utilities\Class1.cs" />
+    <Compile Include="Utilities\Class2.cs" />
+    <Compile Include="Utilities\Class3.cs" />
+    <Compile Include="Utilities\Handler1.ashx.cs">
       <DependentUpon>Handler1.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="2\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="2\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="T3\Download.aspx.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="T3\Download.aspx.designer.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\DownLoad.cs" />
+    <Compile Include="Utilities\DownLoadHelper.cs" />
+    <Compile Include="Utilities\FileDown.cs" />
+    <Compile Include="Utilities\FileUp.cs" />
+    <Compile Include="Utilities\UpLoadFiles.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -224,17 +230,10 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="T3\Upload.aspx.cs">
-      <DependentUpon>Upload.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="T3\Upload.aspx.designer.cs">
-      <DependentUpon>Upload.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="File\" />
+    <Folder Include="Files\" />
     <Folder Include="scripts\uploadify\" />
   </ItemGroup>
   <PropertyGroup>
