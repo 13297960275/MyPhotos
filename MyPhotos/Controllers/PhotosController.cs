@@ -125,47 +125,34 @@ namespace MyPhotos.Controllers
         }
 
         /// <summary>
-        /// GET:Download
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Download()
-        {
-            return View();
-        }
-
-        /// <summary>
         /// POST:Download
         /// </summary>
         /// <param name="fileName"></param>
         [HttpPost]
-        public ActionResult Download(string fileName)
+        public void Download(int id)
         {
-            if (ModelState.IsValid)
+            string fileName = db.Photos.Find(id)._purl;
+            //客户端保存的文件名
+            string filePath = Server.MapPath("/Images/" + fileName);//路径
+            FileInfo fileInfo = new FileInfo(filePath);
+            if (fileInfo.Exists == true)
             {
-                //客户端保存的文件名
-                string filePath = Server.MapPath("/Images/" + fileName);//路径
-                FileInfo fileInfo = new FileInfo(filePath);
-                if (fileInfo.Exists == true)
+                const long ChunkSize = 102400;//100K 每次读取文件，只读取100Ｋ，这样可以缓解服务器的压力
+                byte[] buffer = new byte[ChunkSize];
+                Response.Clear();
+                System.IO.FileStream iStream = System.IO.File.OpenRead(filePath);
+                long dataLengthToRead = iStream.Length;//获取下载的文件总大小
+                Response.ContentType = "application/octet-stream";
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(fileName));
+                while (dataLengthToRead > 0 && Response.IsClientConnected)
                 {
-                    const long ChunkSize = 102400;//100K 每次读取文件，只读取100Ｋ，这样可以缓解服务器的压力
-                    byte[] buffer = new byte[ChunkSize];
-                    Response.Clear();
-                    System.IO.FileStream iStream = System.IO.File.OpenRead(filePath);
-                    long dataLengthToRead = iStream.Length;//获取下载的文件总大小
-                    Response.ContentType = "application/octet-stream";
-                    Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(fileName));
-                    while (dataLengthToRead > 0 && Response.IsClientConnected)
-                    {
-                        int lengthRead = iStream.Read(buffer, 0, Convert.ToInt32(ChunkSize));//读取的大小
-                        Response.OutputStream.Write(buffer, 0, lengthRead);
-                        Response.Flush();
-                        dataLengthToRead = dataLengthToRead - lengthRead;
-                    }
-                    Response.Close();
+                    int lengthRead = iStream.Read(buffer, 0, Convert.ToInt32(ChunkSize));//读取的大小
+                    Response.OutputStream.Write(buffer, 0, lengthRead);
+                    Response.Flush();
+                    dataLengthToRead = dataLengthToRead - lengthRead;
                 }
-                else Response.Write("<script>alert('您所选择的文件不存在');</script>");
+                Response.Close();
             }
-            return View();
         }
 
         public ActionResult Upload()

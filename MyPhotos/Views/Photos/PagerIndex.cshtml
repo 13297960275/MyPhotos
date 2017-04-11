@@ -40,7 +40,7 @@
                             <span>@Html.DisplayFor(modelItem => item._pclicks)</span>
                         </li>
                         <li>
-                            <img src="~/fonts/Icon/download.png" onclick="Download(id);" alt="下载量" id="@item._purl" />
+                            <img src="~/fonts/Icon/download.png" onclick="Download(id);" alt="下载量" id="@item._pid" />
                             <span>@Html.DisplayFor(modelItem => item._pdownload)</span>
                         </li>
                         <li>
@@ -130,7 +130,13 @@
             async: true,
             cache: false,
             contentType: false,
-            processData: false
+            processData: false,
+            success: function (data) {
+                alert("success");
+            },
+            error: function () {
+                alert("error");
+            }
         })
     };
 </script>
