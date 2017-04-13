@@ -38,11 +38,12 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2016--@DateTime.Now.Year - 自恋的小邓子</p>
-        </footer>
     </div>
+
+    <br />
+    <footer class="container body-content navbar-fixed-bottom">
+        <p>&copy; 2016--@DateTime.Now.Year - 自恋的小邓子</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jquery-ui")

@@ -153,12 +153,17 @@ namespace MyPhotos.Controllers
                     Response.Flush();
                     dataLengthToRead = dataLengthToRead - lengthRead;
                 }
+                Photos photos = db.Photos.Find(id);
+                photos._pdownload += 1;
+                //db.Photos.Add(photos);
+                db.Entry(photos).State = EntityState.Modified;
+                db.SaveChanges();
                 Response.Close();
             }
             else Response.Write("<script>alert('您所选择的文件不存在');</script>");
         }
 
-        #region
+        #region EF自带和测试用Action
 
         /// <summary>
         /// FilePathResult方式下载
