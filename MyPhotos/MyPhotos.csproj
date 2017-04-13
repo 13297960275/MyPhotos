@@ -216,11 +216,11 @@
     <Compile Include="Controllers\PhotosController.cs" />
     <Compile Include="Controllers\PhotoTypesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Download.aspx.cs">
+    <Compile Include="Test\Download.aspx.cs">
       <DependentUpon>Download.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Download.aspx.designer.cs">
+    <Compile Include="Test\Download.aspx.designer.cs">
       <DependentUpon>Download.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -233,6 +233,13 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\JPager.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Test\Upload.aspx.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\Upload.aspx.designer.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="DAL\BaseDBContext.cs" />
     <Compile Include="Models\Comments.cs" />
@@ -292,7 +299,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
-    <Content Include="Download.aspx" />
+    <Content Include="Test\Download.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\Icon\24-Delete-24.png" />
@@ -339,6 +346,7 @@
     <Content Include="Test\T01-Upload.html" />
     <Content Include="Test\T03-UploadBltumnail.html" />
     <Content Include="Test\T04-BootstrapModel.html" />
+    <Content Include="Test\Upload.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

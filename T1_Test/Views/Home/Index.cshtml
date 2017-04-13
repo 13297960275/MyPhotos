@@ -41,10 +41,163 @@
     @Html.Raw(Model.PagerHtml()) 共 @Model.Total 条
 </div>
 
+<div>
+    <div>
+        页面上传需要注意以下几点：<br />
+        1、同一个页面可以有不止一个form但是不能嵌套<br />
+        2、form：method="post" enctype="multipart/form-data"<br />
+        3、input：type="file" name="XX" 必须要有name值<br />
+    </div>
+
+    <div style="margin-top:20px;">
+        submit直接提交：提交后刷新页面,直接使用ajax不能把file传到后台处理<br />
+        <form method="post" action="UpLoadPic" enctype="multipart/form-data">
+            <input type="file" name="filename" id="filename" accept="image/*" />
+            <input type="submit" value="提交" />
+        </form>
+    </div>
+
+    <div style="margin-top:20px;">
+        jQuery.Form.js参照：http://www.cnblogs.com/heyuquan/p/form-plug-async-submit.html <br />
+        http://www.vaikan.com/docs/jquery.form.plugin/jquery.form.plugin.html <br />
+        http://www.cnblogs.com/xiaofeixiang/p/3676597.html <br />
+        每次还会刷新页面
+        <form id="myform1" method="post" action="UpLoadPic1" enctype="multipart/form-data">
+            <input type="file" name="filename1" id="filename1" accept="image/*" />
+            <input id="tijiao1" type="submit" value="提交" />
+        </form>
+        <div id="outputdiv"></div>
+    </div>
+
+    <div style="margin-top:20px;">
+        ajaxfileupload.js参照：http://www.cnblogs.com/kissdodog/archive/2012/12/15/2819025.html <br />
+        <form method="post" action="GetPic" enctype="multipart/form-data">
+            <input type="file" name="filename2" id="filename2" accept="image/*" />
+            <input type="button" value="提交" onclick="f2submit();" />
+        </form>
+    </div>
+
+    <div style="margin-top:20px;">
+        jquery.uploadify.js参照：http://blog.sina.com.cn/s/blog_5079086b0101fkmh.html <br />
+        局部刷新
+        <form method="post" enctype="multipart/form-data">
+            <input type="text" id="FilePathName" readonly="readonly" style="width: 300px;" />
+            <input type="file" name="filename3" id="filename3" accept="image/*" />
+            <input type="button" value="提交" onclick="f3submit()" />
+        </form>
+    </div>
+
+    <div style="margin-top:20px;">
+        FormData提交参照：http://www.cnblogs.com/hutuzhu/p/4409292.html <br />
+        FormData为HTML5对象，只支持新浏览器<br />
+        <form id="myform4" name="myform4">
+            <input type="file" name="filename4" id="filename4" accept="image/*" />
+            <input type="button" value="提交" onclick="f4submit()" />
+        </form>
+    </div>
+
+    <hr />
+    <a href="/Home/GetFileByContent">根据文件内容下载二进制方式上传的文件</a>
+    <br />
+    <a href="/Home/GetFileByPath">根据文件保存路径下载上传的文件</a>
+</div>
+
+<script src="~/Scripts/ajaxfileupload.js"></script>
+<script src="~/Scripts/uploadify/jquery.uploadify.min.js"></script>
 <script type="text/javascript">
     //保持搜索条件
     $(function () {
         $('#Name').val('@ViewBag.SearchName');
         $('#Age').val('@ViewBag.SearchAge');
     });
+
+    $(function () {
+        var options = {
+            success: function (data) {
+                alert("成功");
+            }
+        };
+        //$("#myform1").ajaxForm(options);
+        $("#myform1").submit(function () {
+            $(this).ajaxSubmit(options);
+            return false;
+        });
+    });
+
+    function f2submit() {
+        //文件上传
+        $.ajaxFileUpload({
+            url: 'UpLoadPic2',
+            secureuri: false,
+            fileElementId: 'filename2',
+            success: function () {
+                alert("成功");
+            },
+            error: function () {
+                alert("失败");
+            },
+        });
+        return false;
+    };
+
+    $(function () {
+        $('#filename3').uploadify({
+            //'multi': false,
+            //'uploadLimit': 100,
+            auto: false, // 是否直接上传
+            //width: 64,
+            //height: 28,
+            buttonText: "浏览",
+            'fileSizeLimit': '20MB',
+            'fileTypeExts': '*.doc;*.docx;*.xlsx;*.pdf;*.ppt;*.pptx;*.xls;*.jpg;*.png;',
+            swf: '/Scripts/uploadify/uploadify.swf',
+            //uploader: '/Scripts/uploadify/UploadFile.ashx',
+            uploader: '/Home/UpLoadPic3',
+            onSelect: function (file) {
+                $("#FilePathName").val(file.name);
+            },
+            'onSelectError': function (file, errorCode, errorMsg) {
+                if (errorCode == -110) {
+                    errorMsg = "文件大小不能超过20MB！";
+                }
+                else if (errorCode == -100) {
+                    errorMsg = "已经有文件在队列中，请先取消之前的文件！";
+                }
+                else if (errorCode == -130) {
+                    errorMsg = "文件格式错误，请选择正确格式的文件！";
+                }
+                else {
+                    errorMsg = "未知错误！";
+                }
+                alert(errorMsg);
+
+                return false;
+            },
+            onUploadSuccess: function (file) {
+                alert("成功");
+            }
+        });
+    });
+    function f3submit() {
+        $('#filename3').uploadify('upload');
+    };
+
+    function f4submit() {
+        var form = document.getElementById("myform4");
+        var formData = new FormData(form);
+        var oReq = new XMLHttpRequest();
+        oReq.onreadystatechange = function () {
+            if (oReq.readyState == 4) {
+                if (oReq.status == 200) {
+                    alert(xhr.responseText);
+                }
+                else {
+                    alert("失败");
+                }
+            }
+        }
+        oReq.open("POST", "UpLoadPic4");
+        oReq.send(formData);
+        return false;
+    };
 </script>

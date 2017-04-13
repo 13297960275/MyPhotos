@@ -165,6 +165,7 @@
     <Content Include="scripts\jquery.validate.js" />
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="T3\Download.aspx" />
+    <Content Include="T3\Upload.aspx" />
     <Content Include="Upload.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -200,6 +201,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="T3\Upload.aspx.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="T3\Upload.aspx.designer.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\Class1.cs" />
     <Compile Include="Utilities\Class2.cs" />
     <Compile Include="Utilities\Class3.cs" />

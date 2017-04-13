@@ -11,6 +11,7 @@
     @*@Html.ActionLink("添加图片", "Create")*@
     <a href="#" onclick="OpenAddNew();">添加图片</a>
 </p>
+<a href="/Photos/GetFileByPath">根据文件保存路径下载上传的文件</a>
 @*<button id="5" onclick="details(id);">详情测试</button>*@
 <div>
     @foreach (MyPhotos.Models.Photos item in Model.DataList)
@@ -123,20 +124,22 @@
     };
 
     function Download(id) {
-        $.ajax({
-            url: baseUrl + 'Photos/Download/' + id,
-            type: 'POST',
-            data: { "id": id },
-            async: true,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (data) {
-                alert("success");
-            },
-            error: function () {
-                alert("error");
-            }
-        })
+        window.location.href = "/Photos/Download/" + id;
+        //window.location.href = "/Photos/GetFileByPath/" + id;
+        //$.ajax({//ajax能获取文件数据，无法完成下载
+        //    url: baseUrl + 'Photos/Download/' + id,
+        //    type: 'POST',
+        //    data: { "id": id },
+        //    async: true,
+        //    cache: false,
+        //    contentType: false,
+        //    processData: false,
+        //    success: function (data) {
+        //        alert("success");
+        //    },
+        //    error: function () {
+        //        alert("error");
+        //    }
+        //})
     };
 </script>

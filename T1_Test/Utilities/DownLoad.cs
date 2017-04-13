@@ -51,7 +51,7 @@ namespace Test.Utilities
                 const long ChunkSize = 102400;//100K 每次读取文件，只读取100Ｋ，这样可以缓解服务器的压力
                 byte[] buffer = new byte[ChunkSize];
                 HttpContext.Current.Response.Clear();
-                System.IO.FileStream iStream = System.IO.File.OpenRead(filePath);
+                FileStream iStream = System.IO.File.OpenRead(filePath);
                 long dataLengthToRead = iStream.Length;//获取下载的文件总大小
                 HttpContext.Current.Response.ContentType = "application/octet-stream";
                 HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(fileName));

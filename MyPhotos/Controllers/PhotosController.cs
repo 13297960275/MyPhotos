@@ -2,6 +2,7 @@
 using MyPhotos.DAL;
 using MyPhotos.Models;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -128,7 +129,7 @@ namespace MyPhotos.Controllers
         /// POST:Download
         /// </summary>
         /// <param name="fileName"></param>
-        [HttpPost]
+        //[HttpPost]
         public void Download(int id)
         {
             string fileName = db.Photos.Find(id)._purl;
@@ -140,10 +141,11 @@ namespace MyPhotos.Controllers
                 const long ChunkSize = 102400;//100K 每次读取文件，只读取100Ｋ，这样可以缓解服务器的压力
                 byte[] buffer = new byte[ChunkSize];
                 Response.Clear();
-                System.IO.FileStream iStream = System.IO.File.OpenRead(filePath);
+                FileStream iStream = System.IO.File.OpenRead(filePath);
                 long dataLengthToRead = iStream.Length;//获取下载的文件总大小
                 Response.ContentType = "application/octet-stream";
-                Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(fileName));
+                //Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(fileName));
+                Response.AddHeader("Content-Disposition", "attachment;  filename=" + HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8));
                 while (dataLengthToRead > 0 && Response.IsClientConnected)
                 {
                     int lengthRead = iStream.Read(buffer, 0, Convert.ToInt32(ChunkSize));//读取的大小
@@ -153,14 +155,50 @@ namespace MyPhotos.Controllers
                 }
                 Response.Close();
             }
+            else Response.Write("<script>alert('您所选择的文件不存在');</script>");
         }
 
+        #region
+
+        /// <summary>
+        /// FilePathResult方式下载
+        /// </summary>
+        /// <returns></returns>
+        public FileResult GetFileByPath(int id)
+        {
+            string fileName = db.Photos.Find(id)._purl;
+            //客户端保存的文件名
+            string filePath = Server.MapPath("/Images/" + fileName);//路径
+            List<string> typeList = new List<string>() { ".png", ".jpg", ".jpeg", ".gif", "bmp" };
+            //string FileName = Path.GetFileName(FilePath);
+
+            if (fileName != null)
+            {
+                if (typeList.Contains(Path.GetExtension(fileName)))
+                {
+                    return File(filePath, "image/jpg");
+                }
+                // 存在fileDownLoad属性的FileResult以附件形式下载，默认会以内联方式打开
+                return File(filePath, "application/octet-stream", fileName);
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// GET:Upload
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Upload()
         {
             //ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename");
             return View();
         }
 
+        /// <summary>
+        /// POST:Upload
+        /// </summary>
+        /// <param name="uploadFile">上传的文件</param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Upload(HttpPostedFileBase uploadFile/*, [Bind(Include = "_ptypeid")] Photos photos*/)
         {
@@ -188,7 +226,11 @@ namespace MyPhotos.Controllers
             return View(photos.ToList());
         }
 
-        // GET: Photos/Details/5
+        /// <summary>
+        /// GET: Photos/Details/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -203,16 +245,23 @@ namespace MyPhotos.Controllers
             return View(photos);
         }
 
-        // GET: Photos/Create
+        /// <summary>
+        /// GET: Photos/Create
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Create()
         {
             ViewBag._ptypeid = new SelectList(db.PhotoTypes, "_typeid", "_typename");
             return View();
         }
 
-        // POST: Photos/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
+        /// <summary>
+        /// POST: Photos/Create
+        /// </summary>
+        /// <param name="uploadFile">上传的文件</param>
+        /// <param name="photos">photos实体类</param>
+        /// 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(HttpPostedFileBase uploadFile, [Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_ptime,_pclicks,_pdownload,_pup,_pdown")] Photos photos)
@@ -252,7 +301,11 @@ namespace MyPhotos.Controllers
             return View(photos);
         }
 
-        // GET: Photos/Edit/5
+        /// <summary>
+        /// GET: Photos/Edit/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -268,9 +321,12 @@ namespace MyPhotos.Controllers
             return View(photos);
         }
 
-        // POST: Photos/Edit/5
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
+        /// <summary>
+        /// POST: Photos/Edit/5
+        /// </summary>
+        /// 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
+        /// <param name="photos"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_pclicks,_ptime,_pup,_pdown")] Photos photos)
@@ -286,7 +342,11 @@ namespace MyPhotos.Controllers
             return View(photos);
         }
 
-        // GET: Photos/Delete/5
+        /// <summary>
+        /// GET: Photos/Delete/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -301,7 +361,11 @@ namespace MyPhotos.Controllers
             return View(photos);
         }
 
-        // POST: Photos/Delete/5
+        /// <summary>
+        /// POST: Photos/Delete/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -311,6 +375,8 @@ namespace MyPhotos.Controllers
             db.SaveChanges();
             return RedirectToAction("PagerIndex");
         }
+
+        #endregion
 
         protected override void Dispose(bool disposing)
         {

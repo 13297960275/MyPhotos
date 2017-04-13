@@ -26,7 +26,7 @@ namespace DotNet.Utilities
                 try
                 {
                     Fsm = File.OpenRead(filename);
-                    return this.ConvertStreamToByteBuffer(Fsm);
+                    return ConvertStreamToByteBuffer(Fsm);
                 }
                 catch
                 {
@@ -84,7 +84,7 @@ namespace DotNet.Utilities
                 if (PosPhotoUpload.PostedFile.ContentLength / 1024 < 10240)
                 {
                     string MimeType = PosPhotoUpload.PostedFile.ContentType;
-                    if (String.Equals(MimeType, "image/gif") || String.Equals(MimeType, "image/pjpeg"))
+                    if (string.Equals(MimeType, "image/gif") || string.Equals(MimeType, "image/pjpeg"))
                     {
                         string extFileString = System.IO.Path.GetExtension(PosPhotoUpload.PostedFile.FileName);
                         PosPhotoUpload.PostedFile.SaveAs(HttpContext.Current.Server.MapPath(imagePath));

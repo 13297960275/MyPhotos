@@ -37,19 +37,19 @@ namespace CCNF.Plugin.Upload
         {
             get
             {
-                if (string.IsNullOrEmpty(this.uploadExtention))
+                if (string.IsNullOrEmpty(uploadExtention))
                 {
                     if (string.IsNullOrEmpty(UPLOADEXTENTION))
                     {
                         throw new Exception("web.config中未配置UploadExtention属性");
                     }
-                    this.uploadExtention = UPLOADEXTENTION;
+                    uploadExtention = UPLOADEXTENTION;
                 }
-                return this.uploadExtention;
+                return uploadExtention;
             }
             set
             {
-                this.uploadExtention = value;
+                uploadExtention = value;
             }
         }
         /// <summary> 
@@ -68,15 +68,15 @@ namespace CCNF.Plugin.Upload
         {
             get
             {
-                if (this.uploadLength == 0)
+                if (uploadLength == 0)
                 {
-                    this.uploadLength = UPLOADLENGTH;
+                    uploadLength = UPLOADLENGTH;
                 }
-                return this.uploadLength;
+                return uploadLength;
             }
             set
             {
-                this.uploadLength = value;
+                uploadLength = value;
             }
         }
         /// <summary> 
@@ -99,19 +99,19 @@ namespace CCNF.Plugin.Upload
         {
             get
             {
-                if (string.IsNullOrEmpty(this.uploadPhysicalPath))
+                if (string.IsNullOrEmpty(uploadPhysicalPath))
                 {
                     if (string.IsNullOrEmpty(UPLOADPHYSICALPATH))
                     {
                         throw new Exception("web.config中未配置UploadPhysicalPath属性");
                     }
-                    this.uploadPhysicalPath = UPLOADPHYSICALPATH;
+                    uploadPhysicalPath = UPLOADPHYSICALPATH;
                 }
-                return this.uploadPhysicalPath;
+                return uploadPhysicalPath;
             }
             set
             {
-                this.uploadPhysicalPath = value;
+                uploadPhysicalPath = value;
             }
         }
         #endregion
@@ -204,11 +204,11 @@ namespace CCNF.Plugin.Upload
         {
             get
             {
-                return this.watermarkType;
+                return watermarkType;
             }
             set
             {
-                this.watermarkType = value;
+                watermarkType = value;
             }
         }
         /// <summary> 
@@ -370,7 +370,7 @@ namespace CCNF.Plugin.Upload
                 }
             }
             #endregion
-            this.NewFilePath = newFilePath.Replace("\\", "/");
+            NewFilePath = newFilePath.Replace("\\", "/");
             #region 生成各种规格的缩略图 
             //生成各种规格的缩略图 
             if (PicSize != null && PicSize.Length > 0)
@@ -469,7 +469,7 @@ namespace CCNF.Plugin.Upload
         protected bool CheckExtention(string extention)
         {
             bool b = false;
-            string[] extentions = this.UploadExtention.Split(',');
+            string[] extentions = UploadExtention.Split(',');
             for (int i = 0; i < extentions.Length; i++)
             {
                 if (extention.ToLower() == extentions[i].ToLower())
