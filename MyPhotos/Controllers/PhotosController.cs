@@ -153,14 +153,25 @@ namespace MyPhotos.Controllers
                     Response.Flush();
                     dataLengthToRead = dataLengthToRead - lengthRead;
                 }
-                Photos photos = db.Photos.Find(id);
-                photos._pdownload += 1;
-                //db.Photos.Add(photos);
-                db.Entry(photos).State = EntityState.Modified;
-                db.SaveChanges();
+                Update(id, 2);
                 Response.Close();
             }
             else Response.Write("<script>alert('您所选择的文件不存在');</script>");
+        }
+
+        public void Update(int id, int type)
+        {
+            Photos photos = db.Photos.Find(id);
+            switch (type)
+            {
+                case 1: photos._pclicks += 1; break;
+                case 2: photos._pdownload += 1; photos._pclicks += 1; break;
+                case 3: photos._pup += 1; photos._pclicks += 1; break;
+                case 4: photos._pdown += 1; photos._pclicks += 1; break;
+                default: return;
+            }
+            db.Entry(photos).State = EntityState.Modified;
+            db.SaveChanges();
         }
 
         #region EF自带和测试用Action

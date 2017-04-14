@@ -55,8 +55,13 @@ function del(id) {
 };
 
 function Download(id) {
-    alert(id);
-    //window.location.href = "/Photos/Download/" + id;
+    //debugger
+    arr = id.split("+");
+    var type = arr[0];
+    var id = parseInt(arr[1]);
+    //var id = $(".img-thumbnail.img-responsive").attr("id");
+    //alert(id);
+    window.location.href = "/Photos/Download/" + id;
     //window.location.href = "/Photos/GetFileByPath/" + id;
     //$.ajax({//ajax能获取文件数据，无法完成下载
     //    url: baseUrl + 'Photos/Download/' + id,
@@ -73,4 +78,40 @@ function Download(id) {
     //        alert("error");
     //    }
     //})
+};
+
+function Edit(id) {
+    //debugger
+    arr = id.split("+");
+    var type = arr[0];
+    var id = parseInt(arr[1]);
+    //alert(typeof arr[0] + "\n" + typeof arr[1]);
+    //return;
+    //var type = id;
+    //var id = $(".img-thumbnail.img-responsive").attr("id");
+    switch (type) {
+        case "click": type = 1; break;
+        case "download": type = 2; break;
+        case "up": type = 3; break;
+        case "down": type = 4; break;
+        default: return;
+    }
+    //alert("type=" + type + "\nid=" + id);
+    $.ajax({
+        url: baseUrl + 'Photos/Update?&id=' + id + '&type=' + type,
+        type: 'GET',
+        data: { "id": id, "type": type },
+        async: true,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function () {
+            //alert("success");
+            window.location.href = "/Photos/PagerIndex";
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            //alert(XMLHttpRequest.status + "\n" + XMLHttpRequest.readyState + "\n" + textStatus);
+            window.location.href = "/Photos/PagerIndex";
+        },
+    });
 };

@@ -35,20 +35,20 @@
                     </ul>
                     <ul id="edit_level" width="100%">
                         <li>
-                            <img src="~/fonts/Icon/clicksgreen.png" onclick="Edit(id);" alt="点击率" id="@item._pid" />
-                            <span>@Html.DisplayFor(modelItem => item._pclicks)</span>
+                            <img src="~/fonts/Icon/clicksgreen.png" onclick="Edit(id);" alt="点击率" id="click+@item._pid" />
+                            <span id="click_span">@Html.DisplayFor(modelItem => item._pclicks)</span>
                         </li>
                         <li>
-                            <img src="~/fonts/Icon/download.png" onclick="Download(id);" alt="下载量" id="@item._pid" />
-                            <span>@Html.DisplayFor(modelItem => item._pdownload)</span>
+                            <img src="~/fonts/Icon/download.png" onclick="Download(id);" alt="下载量" id="download+@item._pid" />
+                            <span id="download_span">@Html.DisplayFor(modelItem => item._pdownload)</span>
                         </li>
                         <li>
-                            <img src="~/fonts/Icon/up.gif" onclick="Edit(id);" alt="顶" id="@item._pid" />
-                            <span>@Html.DisplayFor(modelItem => item._pup)</span>
+                            <img src="~/fonts/Icon/up.gif" onclick="Edit(id);" alt="顶" id="up+@item._pid" />
+                            <span id="up_span">@Html.DisplayFor(modelItem => item._pup)</span>
                         </li>
                         <li>
-                            <img src="~/fonts/Icon/down.gif" onclick="Edit(id);" alt="踩" id="@item._pid" />
-                            <span>@Html.DisplayFor(modelItem => item._pdown)</span>
+                            <img src="~/fonts/Icon/down.gif" onclick="Edit(id);" alt="踩" id="down+@item._pid" />
+                            <span id="down_span">@Html.DisplayFor(modelItem => item._pdown)</span>
                         </li>
                     </ul>
                 </div>
