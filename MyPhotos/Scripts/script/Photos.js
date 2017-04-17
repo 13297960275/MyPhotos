@@ -1,10 +1,4 @@
 ﻿var baseUrl = '../../';
-$(function () { $('#editModal').modal('hide') });
-$(function () {
-    $('#editModal').on('hide.bs.modal', function () {
-        alert('嘿，我听说您喜欢模态框...');
-    })
-});
 
 function OpenAddNew() {
     $.get("/Photos/AddNew").then(
@@ -107,11 +101,11 @@ function Edit(id) {
         processData: false,
         success: function () {
             //alert("success");
-            window.location.href = "/Photos/PagerIndex";
+            //window.location.href = "/Photos/PagerIndex";
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             //alert(XMLHttpRequest.status + "\n" + XMLHttpRequest.readyState + "\n" + textStatus);
-            window.location.href = "/Photos/PagerIndex";
+            //window.location.href = "/Photos/PagerIndex";
         },
     });
 };

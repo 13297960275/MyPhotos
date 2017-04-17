@@ -122,6 +122,9 @@ namespace MyPhotos.Controllers
             Photos photos = db.Photos.Find(id);
             db.Photos.Remove(photos);
             db.SaveChanges();
+            string fileName = photos._purl;
+            string filePath = Server.MapPath("/Images/" + fileName);
+            System.IO.File.Delete(filePath);
             return RedirectToAction("PagerIndex");
         }
 
@@ -159,7 +162,7 @@ namespace MyPhotos.Controllers
             else Response.Write("<script>alert('您所选择的文件不存在');</script>");
         }
 
-        public void Update(int id, int type)
+        public ActionResult Update(int id, int type)
         {
             Photos photos = db.Photos.Find(id);
             switch (type)
@@ -168,10 +171,11 @@ namespace MyPhotos.Controllers
                 case 2: photos._pdownload += 1; photos._pclicks += 1; break;
                 case 3: photos._pup += 1; photos._pclicks += 1; break;
                 case 4: photos._pdown += 1; photos._pclicks += 1; break;
-                default: return;
+                default: photos._pclicks += 1; break;
             }
             db.Entry(photos).State = EntityState.Modified;
             db.SaveChanges();
+            return RedirectToAction("PagerIndex");
         }
 
         #region EF自带和测试用Action
@@ -389,6 +393,9 @@ namespace MyPhotos.Controllers
             Photos photos = db.Photos.Find(id);
             db.Photos.Remove(photos);
             db.SaveChanges();
+            string fileName = photos._purl;
+            string filePath = Server.MapPath("/Images/" + fileName);
+            System.IO.File.Delete(filePath);
             return RedirectToAction("PagerIndex");
         }
 
