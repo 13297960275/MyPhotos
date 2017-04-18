@@ -55,6 +55,13 @@ function Download(id) {
     var id = parseInt(arr[1]);
     //var id = $(".img-thumbnail.img-responsive").attr("id");
     //alert(id);
+    var download_span = "download_span+" + id;
+    var download_count = document.getElementById(download_span).innerHTML;//string
+    var click_span = "click_span+" + id;
+    var click_count = document.getElementById(click_span).innerHTML;//string
+    document.getElementById(download_span).innerHTML = parseInt(download_count) + 1;
+    document.getElementById(click_span).innerHTML = parseInt(click_count) + 1;
+
     window.location.href = "/Photos/Download/" + id;
     //window.location.href = "/Photos/GetFileByPath/" + id;
     //$.ajax({//ajax能获取文件数据，无法完成下载
@@ -76,9 +83,16 @@ function Download(id) {
 
 function Edit(id) {
     //debugger
+    //alert(id);
     arr = id.split("+");
     var type = arr[0];
     var id = parseInt(arr[1]);
+    var span = type + "_span+" + id;
+    var click_span = "click_span+" + id;
+    var count = document.getElementById(span).innerHTML;//string
+    var click_count = document.getElementById(click_span).innerHTML;//string
+    //alert(typeof count);
+    //alert(span);
     //alert(typeof arr[0] + "\n" + typeof arr[1]);
     //return;
     //var type = id;
@@ -100,6 +114,11 @@ function Edit(id) {
         contentType: false,
         processData: false,
         success: function () {
+            if (span != click_span) {
+                document.getElementById(span).innerHTML = parseInt(count) + 1;
+                document.getElementById(click_span).innerHTML = parseInt(click_count) + 1;
+            } else document.getElementById(click_span).innerHTML = parseInt(click_count) + 1;
+
             //alert("success");
             //window.location.href = "/Photos/PagerIndex";
         },

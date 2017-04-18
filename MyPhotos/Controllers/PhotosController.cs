@@ -138,37 +138,44 @@ namespace MyPhotos.Controllers
             string fileName = db.Photos.Find(id)._purl;
             //客户端保存的文件名
             string filePath = Server.MapPath("/Images/" + fileName);//路径
-            FileInfo fileInfo = new FileInfo(filePath);
-            if (fileInfo.Exists == true)
-            {
-                const long ChunkSize = 102400;//100K 每次读取文件，只读取100Ｋ，这样可以缓解服务器的压力
-                byte[] buffer = new byte[ChunkSize];
-                Response.Clear();
-                FileStream iStream = System.IO.File.OpenRead(filePath);
-                long dataLengthToRead = iStream.Length;//获取下载的文件总大小
-                Response.ContentType = "application/octet-stream";
-                //Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(fileName));
-                Response.AddHeader("Content-Disposition", "attachment;  filename=" + HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8));
-                while (dataLengthToRead > 0 && Response.IsClientConnected)
-                {
-                    int lengthRead = iStream.Read(buffer, 0, Convert.ToInt32(ChunkSize));//读取的大小
-                    Response.OutputStream.Write(buffer, 0, lengthRead);
-                    Response.Flush();
-                    dataLengthToRead = dataLengthToRead - lengthRead;
-                }
-                Update(id, 2);
-                Response.Close();
-            }
-            else Response.Write("<script>alert('您所选择的文件不存在');</script>");
+
+            Response.ContentType = "application/octet-stream";
+            Response.AddHeader("Content-Disposition", "attachment;filename=" + fileName);
+            Response.TransmitFile(filePath);
+
+            //FileInfo fileInfo = new FileInfo(filePath);
+            //if (fileInfo.Exists == true)
+            //{
+            //    const long ChunkSize = 102400;//100K 每次读取文件，只读取100Ｋ，这样可以缓解服务器的压力
+            //    byte[] buffer = new byte[ChunkSize];
+            //    Response.Clear();
+            //    FileStream iStream = System.IO.File.OpenRead(filePath);
+            //    long dataLengthToRead = iStream.Length;//获取下载的文件总大小
+            //    Response.ContentType = "application/octet-stream";
+            //    //Response.AddHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(fileName));
+            //    Response.AddHeader("Content-Disposition", "attachment;  filename=" + HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8));
+            //    while (dataLengthToRead > 0 && Response.IsClientConnected)
+            //    {
+            //        int lengthRead = iStream.Read(buffer, 0, Convert.ToInt32(ChunkSize));//读取的大小
+            //        Response.OutputStream.Write(buffer, 0, lengthRead);
+            //        Response.Flush();
+            //        dataLengthToRead = dataLengthToRead - lengthRead;
+            //    }
+            //    Update(id, 2);
+            //    Response.Close();
+            //}
+            //else Response.Write("<script>alert('您所选择的文件不存在');</script>");
         }
 
         public ActionResult Update(int id, int type)
         {
+            //Dictionary<string, object> dicResult = new Dictionary<string, object>();
+            //int? count = 0;
             Photos photos = db.Photos.Find(id);
             switch (type)
             {
                 case 1: photos._pclicks += 1; break;
-                case 2: photos._pdownload += 1; photos._pclicks += 1; break;
+                case 2: photos._pdownload += 1; photos._pclicks += 1; /*count = photos._pdownload;*/ break;
                 case 3: photos._pup += 1; photos._pclicks += 1; break;
                 case 4: photos._pdown += 1; photos._pclicks += 1; break;
                 default: photos._pclicks += 1; break;
