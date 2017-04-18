@@ -257,8 +257,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\style\MeteorShower.css" />
     <Content Include="Content\style\PagerIndex.css" />
+    <Content Include="Content\style\Canvas_Moon_MeteorShower.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -300,10 +300,10 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Images\rabit.png" />
     <Content Include="Images\StarrySky.jpg" />
-    <Content Include="Scripts\script\MeteorShowerByCanvas.js" />
-    <Content Include="Scripts\script\MeteorShower.js" />
     <Content Include="Scripts\script\Photos.js" />
+    <Content Include="Scripts\script\Canvas_Moon_MeteorShower.js" />
     <Content Include="Test\Download.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

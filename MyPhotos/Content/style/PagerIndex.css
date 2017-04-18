@@ -50,8 +50,8 @@
 .dtl27 {
     max-width: 275px;
     max-height: 170px;
-    min-width: 110px;
-    min-height: 68px;
+    /*min-width: 110px;
+    min-height: 68px;*/
     margin: auto 0;
     position: relative;
     overflow: hidden;
