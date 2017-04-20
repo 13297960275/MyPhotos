@@ -63,32 +63,42 @@ namespace Test
 
         protected void Application_Start(object sender, EventArgs e)
         {
-
+            //在应用程序启动时运行的代码
+            Application.Lock();//解决并发问题,防止多用户同时访问
+            Application["count"] = 0;
+            Application.UnLock();
         }
 
         protected void Session_Start(object sender, EventArgs e)
         {
-
+            //在新会话启动时运行的代码
+            Application.Lock();
+            Application["count"] = Convert.ToInt32(Application["count"]) + 1;
+            Application.UnLock();
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {
 
+
         }
 
         protected void Application_Error(object sender, EventArgs e)
         {
-
+            //在出现未处理的错误是运行的代码
         }
 
         protected void Session_End(object sender, EventArgs e)
         {
-
+            //在新会话关闭时运行的代码
+            Application.Lock();
+            Application["count"] = Convert.ToInt32(Application["count"]) - 1;
+            Application.UnLock();
         }
 
         protected void Application_End(object sender, EventArgs e)
         {
-
+            //在应用程序关闭时运行的代码
         }
     }
 }

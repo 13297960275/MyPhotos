@@ -10,6 +10,7 @@ function reupload() {
 };
 $(function () {
     //选择图片后显示预览和文件大小
+    debugger
     $('#uploadFile').on("change", function () {
         var file = this.files[0];
         if (this.files && file) {
@@ -32,6 +33,14 @@ function btnsubmit() {
         return false;
     }
 
+    //判断文件大小是否超过10M
+    var size = document.getElementById('uploadFile').files[0].size;
+    if (size > 10240000) {
+        alert("允许上传的文件大小最大为10M，请重新选择文件，谢谢合作！");
+        reupload();
+        return false;
+    }
+
     //判断文件类型是否允许上传
     var isnext = false;
     var ext = name.substr(name.lastIndexOf(".") + 1).toLocaleLowerCase();//获取文件后缀名
@@ -44,6 +53,7 @@ function btnsubmit() {
     }
     if (!isnext) {
         alert("请选择图片文件！");
+        reupload();
         return false;
     }
 }

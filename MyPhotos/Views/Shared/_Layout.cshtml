@@ -44,12 +44,14 @@
         <div class="content container body-content">
             <img src="~/Images/rabit.png" class="rabitBg" />
             @RenderBody()
-            <br />
-            <p>&copy; 2016--@DateTime.Now.Year - 自恋的小邓子</p>
+
         </div>
     </div>
 
-    <footer class="container body-content"></footer>
+    <footer class="container body-content">
+        <br />
+        <p>&copy; 2016--@DateTime.Now.Year - 自恋的小邓子</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jquery-ui")

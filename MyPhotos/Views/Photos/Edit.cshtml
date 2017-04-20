@@ -41,7 +41,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model._purl, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <img style="width:61.8%;" src="~/Images/@Html.DisplayFor(model => model._purl)" />
+                <img src="~/Images/@Html.DisplayFor(model => model._purl)" />
                 @*@Html.EditorFor(model => model._purl, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model._purl, "", new { @class = "text-danger" })*@
             </div>
@@ -89,7 +89,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="保存" class="btn btn-default" />
+                <input type="submit" value="保存" class="btn btn-primary" />
             </div>
         </div>
     </div>

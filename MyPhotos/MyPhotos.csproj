@@ -324,6 +324,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="img.ashx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\ai.1.0.8-build01310.js" />
     <Content Include="Scripts\ai.1.0.8-build01310.min.js" />

@@ -159,6 +159,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="ApplicationCount.ashx" />
     <None Include="scripts\jquery.validate-vsdoc.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
@@ -201,6 +202,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationCount.ashx.cs">
+      <DependentUpon>ApplicationCount.ashx</DependentUpon>
+    </Compile>
     <Compile Include="T3\Upload.aspx.cs">
       <DependentUpon>Upload.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

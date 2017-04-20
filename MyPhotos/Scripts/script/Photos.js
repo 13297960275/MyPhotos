@@ -48,6 +48,18 @@ function del(id) {
     //} else return;
 };
 
+function Modify(id) {
+    $.get("/Photos/AddNew").then(
+    function (r) {
+        $("<div id='editModal'></div>").html(r).dialog({
+            //width: 540,
+            modal: true,
+            closable: true,
+            title: "添加图片"
+        });
+    });
+};
+
 function Download(id) {
     //debugger
     arr = id.split("+");
