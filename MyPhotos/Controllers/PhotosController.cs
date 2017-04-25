@@ -85,7 +85,8 @@ namespace MyPhotos.Controllers
             {
                 if (uploadFile != null && uploadFile.ContentLength > 0)//判断是否存在文件
                 {
-                    if (uploadFile.ContentType == "image/jpeg" || uploadFile.ContentType == "image/gif")//判断是否是图片文件
+                    //暂不允许上传GIF || uploadFile.ContentType == "image/gif"
+                    if (uploadFile.ContentType == "image/jpeg")//判断是否是图片文件 
                     {
                         string path = Server.MapPath("~/Images/");
                         string oldname = uploadFile.FileName;
@@ -119,12 +120,20 @@ namespace MyPhotos.Controllers
         /// <returns></returns>
         public ActionResult Del(int id)
         {
-            Photos photos = db.Photos.Find(id);
-            db.Photos.Remove(photos);
-            db.SaveChanges();
-            string fileName = photos._purl;
-            string filePath = Server.MapPath("/Images/" + fileName);
-            System.IO.File.Delete(filePath);
+            try
+            {
+                Photos photos = db.Photos.Find(id);
+                db.Photos.Remove(photos);
+                db.SaveChanges();
+                string fileName = photos._purl;
+                string filePath = Server.MapPath("/Images/" + fileName);
+                System.IO.File.Delete(filePath);
+            }
+            catch
+            {
+
+            }
+
             return RedirectToAction("PagerIndex");
         }
 

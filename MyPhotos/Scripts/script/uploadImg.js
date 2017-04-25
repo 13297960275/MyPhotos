@@ -44,7 +44,7 @@ function btnsubmit() {
     //判断文件类型是否允许上传
     var isnext = false;
     var ext = name.substr(name.lastIndexOf(".") + 1).toLocaleLowerCase();//获取文件后缀名
-    var filetypes = ["jpg", "png", "gif", "jpeg", "bmp"];//图片后缀
+    var filetypes = ["jpg", "png", "jpeg", "bmp"];//图片后缀  //暂不允许上传GIF   "gif",
     for (var i = 0; i < filetypes.length; i++) {
         if (filetypes[i] == ext) {
             isnext = true;

@@ -204,6 +204,7 @@
     <Compile Include="Common\Download.cs" />
     <Compile Include="Common\Thumbnail.cs" />
     <Compile Include="Common\Upload.cs" />
+    <Compile Include="Common\WaterMaker.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="DAL\DALBaseRepository.cs" />
     <Compile Include="Common\Encode.cs" />
@@ -253,6 +254,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SQLTest.sql" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -300,8 +302,9 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
-    <Content Include="Images\rabit.png" />
-    <Content Include="Images\StarrySky.jpg" />
+    <Content Include="Images\Referances\rabit.png" />
+    <Content Include="Images\Referances\RabitLogo.png" />
+    <Content Include="Images\Referances\StarrySky.jpg" />
     <Content Include="Scripts\script\Photos.js" />
     <Content Include="Scripts\script\Canvas_Moon_MeteorShower.js" />
     <Content Include="Test\Download.aspx" />
@@ -422,9 +425,9 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Photos\_EditPartialPage.cshtml" />
     <Content Include="Views\Photos\_AddNewPartialPage.cshtml" />
+    <Content Include="wm.ashx" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="plugins\fancyapps-fancyBox-18d1712\" />
     <Folder Include="plugins\HoverFly\" />
     <Folder Include="plugins\jsimages10good\" />

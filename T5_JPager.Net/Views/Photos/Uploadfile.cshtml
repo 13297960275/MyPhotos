@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Uploadfile", "Photos", FormMethod.Post, new { id = "submitform", enctype = "multipart/form-data" }))
+{
+    <input type="file" name="pic" />
+    <input type="button" value="提交" onclick="submitformkkk();" />
+}
+
+<script src="/scripts/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script src="/scripts/jquery.form.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function submitformkkk() {
+        $("#submitform").ajaxSubmit({
+            success: function (responseText) {
+                $("#photo").attr("src", responseText);
+            }
+        });
+    }
+</script>
+
