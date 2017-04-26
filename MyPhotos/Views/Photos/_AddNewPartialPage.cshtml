@@ -15,7 +15,7 @@
                 @Html.DropDownList("_ptypeid", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model._ptypeid, "", new { @class = "text-danger" })
             </div>
-            <a href="~/PhotoTypes/Create" class="btn btn-link">添加相册</a>
+            @*<a href="~/PhotoTypes/Create" class="btn btn-link">添加相册</a>*@
         </div>
 
         <div class="form-group">
@@ -31,9 +31,9 @@
             <div class="col-md-10">
                 @*实现上传功能的重点：name属性必须与后台httppostedfilebase的对象名一致*@
                 <input type="file" id="uploadFile" name="uploadFile" value="" /> <br />
-                <div style="max-width:275px;max-height:170px;overflow: hidden;">
-                    <img src="" id="img" alt="" />
-                </div><br />
+                <div>
+                    <img id="img" src="" alt="" style="max-width:275px;max-height:170px;overflow: hidden;" />
+                </div>
                 <span id="fs"></span> <br />
                 <input type="button" hidden id="reselect" value="取消选择" onclick="reupload();" />
             </div>
@@ -58,4 +58,5 @@
 <div>
     @Html.ActionLink("返回图片列表", "PagerIndex")
 </div>
+
 <script src="~/Scripts/script/uploadImg.js"></script>

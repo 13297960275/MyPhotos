@@ -36,7 +36,7 @@ namespace Test.Utilities
             checkfile = FileExistMapPath(picpath, FileCheckModel.C, out _sourceimg_common_mappath);
 
             System.Drawing.Image _sourceimg_common = null;
-            System.Drawing.Bitmap _currimg_common = null;
+            Bitmap _currimg_common = null;
             System.Drawing.Graphics _g_common = null;
 
             if (checkfile == true)
@@ -45,7 +45,7 @@ namespace Test.Utilities
                 _sourceimg_common = System.Drawing.Image.FromFile(_sourceimg_common_mappath);
 
                 //从指定width、height创建bitmap对象
-                _currimg_common = new System.Drawing.Bitmap(width, height);
+                _currimg_common = new Bitmap(width, height);
 
                 //从_currimg_common创建画笔
                 _g_common = Graphics.FromImage(_currimg_common);

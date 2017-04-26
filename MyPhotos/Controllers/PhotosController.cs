@@ -120,20 +120,19 @@ namespace MyPhotos.Controllers
         /// <returns></returns>
         public ActionResult Del(int id)
         {
+            Photos photos = db.Photos.Find(id);
+            db.Photos.Remove(photos);
+            db.SaveChanges();
             try
             {
-                Photos photos = db.Photos.Find(id);
-                db.Photos.Remove(photos);
-                db.SaveChanges();
                 string fileName = photos._purl;
                 string filePath = Server.MapPath("/Images/" + fileName);
                 System.IO.File.Delete(filePath);
             }
-            catch
+            catch (Exception e)
             {
-
+                Console.WriteLine(e.Message);
             }
-
             return RedirectToAction("PagerIndex");
         }
 

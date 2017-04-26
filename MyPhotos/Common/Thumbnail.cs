@@ -23,22 +23,30 @@ namespace MyPhotos.Common
         //生成按比例缩放的图片
         public Image GetScaleImage(int width, int height, string path)
         {
-            //原图
-            Image img = Image.FromFile(path);
-            //保持横纵比例
-            if (img.Width < img.Height)
+            try
             {
-                height = width * img.Height / img.Width;
+                //原图
+                Image img = Image.FromFile(path);
+                //保持横纵比例
+                if (img.Width < img.Height)
+                {
+                    height = width * img.Height / img.Width;
+                }
+                else
+                {
+                    height = height * img.Width / img.Height;
+                }
+                //缩略图
+                Bitmap bitmap = new Bitmap(width, height);
+                Graphics g = Graphics.FromImage(bitmap);
+                g.DrawImage(img, 0, 0, bitmap.Width, bitmap.Height);
+                return bitmap;
             }
-            else
+            catch (Exception e)
             {
-                height = height * img.Width / img.Height;
+                Console.WriteLine(e.Message);
+                return null;
             }
-            //缩略图
-            Bitmap bitmap = new Bitmap(width, height);
-            Graphics g = Graphics.FromImage(bitmap);
-            g.DrawImage(img, 0, 0, bitmap.Width, bitmap.Height);
-            return bitmap;
         }
 
     }

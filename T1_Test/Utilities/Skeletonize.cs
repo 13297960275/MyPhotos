@@ -49,7 +49,7 @@ namespace Test.Utilities
             checkfile = FileExistMapPath(picpath, FileCheckModel.C, out _sourceimg_common_mappath);
 
             System.Drawing.Image _sourceimg_common = null;
-            System.Drawing.Bitmap _currimg_common = null;
+            Bitmap _currimg_common = null;
             System.Drawing.Graphics _g_common = null;
 
             if (checkfile == true)
@@ -116,7 +116,7 @@ namespace Test.Utilities
             if (string.IsNullOrEmpty(checkmessage.ToString()))
             {
                 //创建bitmap对象
-                _currimg_common = new System.Drawing.Bitmap((int)swidth, (int)sheight);
+                _currimg_common = new Bitmap((int)swidth, (int)sheight);
 
                 _g_common = Graphics.FromImage(_currimg_common);
 
