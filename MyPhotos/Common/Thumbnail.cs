@@ -17,6 +17,7 @@ namespace MyPhotos.Common
             Graphics g = Graphics.FromImage(bitmap);
             g.DrawImage(img, 0, 0);
             //bitmap.Save(context.Response.OutputStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+            img.Dispose();
             return bitmap;
         }
 
@@ -40,6 +41,7 @@ namespace MyPhotos.Common
                 Bitmap bitmap = new Bitmap(width, height);
                 Graphics g = Graphics.FromImage(bitmap);
                 g.DrawImage(img, 0, 0, bitmap.Width, bitmap.Height);
+                img.Dispose();
                 return bitmap;
             }
             catch (Exception e)

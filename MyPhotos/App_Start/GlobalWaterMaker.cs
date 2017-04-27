@@ -27,24 +27,19 @@ namespace MyPhotos.App_Start
             //  RawUrl:  /images/01.jpg
             string imgPath = context.Request.MapPath(context.Request.RawUrl);
             string logoPath = context.Request.MapPath("Referances/rabit.png");//LOGO路径
-
+            Thumbnail thb = new Thumbnail();
             try
             {
-                Thumbnail thb = new Thumbnail();
-                //Image scaleimg = thb.GetScaleImage(90, 90, logoPath);
-                Image scaleimg = thb.GetScaleImage(90, 90, logoPath);
-                Image bmp = new Bitmap(scaleimg);
-                scaleimg.Dispose();
-                using (bmp)
+                using (Image img = Image.FromFile(imgPath))
                 {
-                    using (bmp)
+                    using (Image logo = thb.GetScaleImage(90, 90, logoPath))
                     {
-                        int x = 0;
-                        int y = bmp.Height - scaleimg.Height;
-                        using (Graphics g = Graphics.FromImage(bmp))
+                        using (Graphics g = Graphics.FromImage(img))
                         {
-                            g.DrawImage(scaleimg, x, y, scaleimg.Width, scaleimg.Height);
-                            bmp.Save(context.Response.OutputStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            int x = 0;
+                            int y = img.Height - logo.Height;
+                            g.DrawImage(logo, x, y, logo.Width, logo.Height);
+                            img.Save(context.Response.OutputStream, System.Drawing.Imaging.ImageFormat.Jpeg);
                         }
                     }
                 }
@@ -54,5 +49,6 @@ namespace MyPhotos.App_Start
                 Console.WriteLine(e.Message);
             }
         }
+
     }
 }

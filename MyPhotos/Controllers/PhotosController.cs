@@ -127,7 +127,16 @@ namespace MyPhotos.Controllers
             {
                 string fileName = photos._purl;
                 string filePath = Server.MapPath("/Images/" + fileName);
-                System.IO.File.Delete(filePath);
+                FileInfo fileInfo = new FileInfo(filePath);
+                if (fileInfo.Exists == true)
+                {
+                    System.IO.File.Delete(filePath);
+                }
+                else
+                {
+                    HttpContext.Response.Write("<script>alert('删除失败！请稍后重试。');</script>");
+                }
+
             }
             catch (Exception e)
             {

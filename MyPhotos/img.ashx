@@ -17,9 +17,11 @@ public class img : IHttpHandler
         int width = int.Parse(s1);
         int height = int.Parse(s2);
         Thumbnail thb = new Thumbnail();
-        Image scaleimg = thb.GetScaleImage(width, height, path);
+        //Image scaleimg = thb.GetScaleImage(width, height, path);
         Image thbimg = thb.GetThumbnail(width, height, path);
         thbimg.Save(context.Response.OutputStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+        //scaleimg.Dispose();
+        thbimg.Dispose();
     }
 
     public bool IsReusable
