@@ -25,6 +25,7 @@ namespace MyPhotos.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PhotoType photoType = db.PhotoTypes.Find(id);
+            //Photos photos = db.Photos.Find(id);
             if (photoType == null)
             {
                 return HttpNotFound();
@@ -43,15 +44,15 @@ namespace MyPhotos.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "_typeid,_typename,_typedes,_tcover")] PhotoType photoType)
+        public ActionResult Create([Bind(Include = "_typeid,_typename,_typedes")] PhotoType photoType)
         {
             if (ModelState.IsValid)
             {
+                photoType._tcover = "AddPhotos.png";
                 db.PhotoTypes.Add(photoType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(photoType);
         }
 
