@@ -1,0 +1,70 @@
+﻿/*html {
+        overflow: hidden;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        background: #000;
+        position: absolute; 
+        width: 100%; 
+        height: 100%; 
+        cursor: crosshair;
+    } */
+
+#box {
+    position: absolute;
+    /*background: #111;*/
+    border: gray solid 1px;
+    visibility: hidden;
+}
+
+#screen {
+    position: absolute;
+    /*left: 20%;
+        width: 60%;*/
+    top: 20%;
+    height: 60%;
+    /*background: #000;*/
+    border: gray solid 1px;
+}
+
+#box img {
+    position: absolute;
+    border: gray solid 1px;
+    cursor: pointer;
+}
+
+#box span {
+    position: absolute;
+    color: #ccc;
+    font-family: verdana;
+    font-size: 12px;
+    width: 200px;
+}
+
+#box a {
+    text-decoration: none;
+    color: #ff8000;
+}
+
+    #box a:hover {
+        text-decoration: none;
+        background: #ff8000;
+        color: #ffffff;
+    }
+
+    #box a:visited {
+        text-decoration: none;
+        color: #ff8000;
+    }
+
+        #box a:visited:hover {
+            text-decoration: none;
+            background: #ff8000;
+            color: #ffffff;
+        }
+
+#lnk {
+    visibility: hidden;
+}

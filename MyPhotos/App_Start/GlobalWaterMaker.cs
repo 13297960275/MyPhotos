@@ -26,7 +26,7 @@ namespace MyPhotos.App_Start
             context.Response.ContentType = "image/jpeg";
             //  RawUrl:  /images/01.jpg
             string imgPath = context.Request.MapPath(context.Request.RawUrl);
-            string logoPath = context.Request.MapPath("Referances/rabit.png");//LOGO路径
+            string logoPath = context.Request.MapPath("~/Referances/Pictures/rabit.png");//LOGO路径
             Thumbnail thb = new Thumbnail();
             try
             {

@@ -17,7 +17,7 @@ public class wm : IHttpHandler
         //string s3 = context.Request.QueryString["a"];//页面传值的水印图片添加的位置
         //int logoAddress = int.Parse(s3);//添加水印图片的位置
 
-        string logoPath = context.Request.MapPath("~/Images/Referances/rabit.png");//LOGO路径
+        string logoPath = context.Request.MapPath("~/Referances/Pictures/rabit.png");//LOGO路径
         string s1 = context.Request.QueryString["w"];//页面传值的LOGO宽度
         string s2 = context.Request.QueryString["h"];//页面传值的LOGO高度
         int logoWidth = int.Parse(s1);//水印图片宽度

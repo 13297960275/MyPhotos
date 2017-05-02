@@ -3,78 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-<style type="text/css">
-    html {
-        overflow: hidden;
-    }
-
-    body {
-        margin: 0px;
-        padding: 0px;
-        /*background: #000;*/
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        cursor: crosshair;
-    }
-
-    #box {
-        position: absolute;
-        /*background: #111;*/
-        border: gray solid 1px;
-        visibility: hidden;
-    }
-
-    #screen {
-        position: absolute;
-        /*left: 20%;
-        width: 60%;*/
-        top: 20%;
-        height: 60%;
-        /*background: #000;*/
-        border: gray solid 1px;
-    }
-
-    #box img {
-        position: absolute;
-        border: gray solid 1px;
-        cursor: pointer;
-    }
-
-    #box span {
-        position: absolute;
-        color: #ccc;
-        font-family: verdana;
-        font-size: 12px;
-        width: 200px;
-    }
-
-    #box a {
-        text-decoration: none;
-        color: #ff8000;
-    }
-
-        #box a:hover {
-            text-decoration: none;
-            background: #ff8000;
-            color: #ffffff;
-        }
-
-        #box a:visited {
-            text-decoration: none;
-            color: #ff8000;
-        }
-
-            #box a:visited:hover {
-                text-decoration: none;
-                background: #ff8000;
-                color: #ffffff;
-            }
-
-    #lnk {
-        visibility: hidden;
-    }
-</style>
+<link href="~/Referances/style/PhotoTypesIndex.css" rel="stylesheet" />
 <script type="text/javascript">
 
     document.onselectstart = new Function("return false");
@@ -140,6 +69,7 @@
                 is.style.top = Math.round((H - w * rImg) * .5) + 'px';
                 is.style.width = Math.round(w) + 'px';
                 is.style.height = Math.round(w * rImg) + 'px';
+                //is.style.height = scr.style.height + 'px';
                 if (sel == n) {
                     if (sel < nI * .5) {
                         tit.style.left = txt.style.left = Math.round(l + w + 6) + 'px';
@@ -216,12 +146,8 @@
         run();
     }
 </script>
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
+<h2>相册</h2>
 
 <div id="screen" class="content container body-content">
     <div id="box">
@@ -232,7 +158,7 @@
             </a>
         }
         <a href="~/PhotoTypes/Create">
-            <img src="~/Images/Referances/AddAlbum.png" title="添加相册" alt="添加相册以保存您想上传的图片！">
+            <img src="~/Referances/Pictures/AddAlbum.png" title="添加相册" alt="添加相册以保存您想上传的图片！">
         </a>
         <span id="txt"></span>
         <span id="tit"></span>
@@ -241,8 +167,13 @@
 
 <!-- crossbrowser images_loading_bar - Gerard Ferrandez - www.dhteumeuleu.com - Feb 2005 -->
 <span id="LB0" style="position:absolute;left:50%;top:50%;">
-    <span style="position:absolute;font-family:arial;font-size:10px;color:#FFFFFF;left:-50px;top:-18px">Loading...</span>
-    <span style="position:absolute;left:-50px;top:-5px;font-size:1px;width:100px;height:10px;background:#333"><span id="LB1" style="position:absolute;left:0px;top:0px;font-size:1px;width:0px;height:10px;background:#FFFFFF"></span></span>
+    <span style="position:absolute;font-family:arial;font-size:10px;color:#FFFFFF;left:-50px;top:-18px">
+        Loading...
+    </span>
+    <span style="position:absolute;left:-50px;top:-5px;font-size:1px;width:100px;height:10px;background:#333">
+        <span id="LB1" style="position:absolute;left:0px;top:0px;font-size:1px;width:0px;height:10px;background:#FFFFFF">
+        </span>
+    </span>
 </span>
 <script>
     m00 = document.getElementById("box").getElementsByTagName("img");
