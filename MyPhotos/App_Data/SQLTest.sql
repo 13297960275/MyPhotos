@@ -85,3 +85,13 @@ ON Websites.id=access_log.site_id
 WHERE Websites.alexa < 200 
 GROUP BY Websites.name
 HAVING SUM(access_log.count) > 200;
+
+update PhotoTypes set _tcover=(select _purl from Photos where _ptime in (select max(_ptime) as time from  Photos group by _ptypeid)) where Photos._ptypeid = PhotoTypes._typeid
+
+select _ptypeid, max(_ptime) as times from Photos  group by _ptypeid
+
+--获取相册对应封面图片的URL
+select _typeid,_tcover from PhotoTypes  group by _typeid,_tcover
+
+--获取每个相册中最新上传的图片的URL
+select _ptypeid, _purl from Photos where _ptime in (select max(_ptime) as time from  Photos group by _ptypeid) order by _ptypeid

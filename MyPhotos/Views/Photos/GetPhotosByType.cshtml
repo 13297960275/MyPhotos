@@ -161,14 +161,13 @@
 
 </script>
 
-@*<div id="center" class="content container body-content">*@
 <h2>风景</h2>
 <div id="slider" class="content container body-content">
     @foreach (var item in Model)
     {
         <div class="slide">
             <a href="~/Photos/Details/@item._pid">
-                <img class="diapo" src="~/img.ashx?w=860&h=532&u=@item._purl" alt="">
+                <img class="diapo" src="~/img.ashx?w=680&h=586&u=@item._purl" alt="">
                 @*<img class="diapo" src="~/Images/@item._purl"
                 *@
             </a>
@@ -179,7 +178,6 @@
         </div>
     }
 </div>
-@*</div>*@
 
 <script type="text/javascript">
     /* ==== start script ==== */

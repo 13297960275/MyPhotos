@@ -154,7 +154,7 @@
         @foreach (var item in Model)
         {
             <a href="~/Photos/GetPhotosByType/@item._typeid">
-                <img title="@Html.DisplayFor(modelItem => item._typename)" src="~/Images/Referances/@Html.DisplayFor(modelItem => item._tcover)" alt="@Html.DisplayFor(modelItem => item._typedes)">
+                <img title="@Html.DisplayFor(modelItem => item._typename)" src="~/img.ashx?w=541&h=466&u=@Html.DisplayFor(modelItem => item._tcover)" alt="@Html.DisplayFor(modelItem => item._typedes)">
             </a>
         }
         <a href="~/PhotoTypes/Create">

@@ -11,14 +11,22 @@ namespace MyPhotos.Common
         //生成指定大小的图片
         public Image GetThumbnail(int width, int height, string path)
         {
-            Image img = GetScaleImage(width, height, path);
-            //200*200
-            Bitmap bitmap = new Bitmap(width, height);
-            Graphics g = Graphics.FromImage(bitmap);
-            g.DrawImage(img, 0, 0);
-            //bitmap.Save(context.Response.OutputStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-            img.Dispose();
-            return bitmap;
+            try
+            {
+                Image img = GetScaleImage(width, height, path);
+                //200*200
+                Bitmap bitmap = new Bitmap(width, height);
+                Graphics g = Graphics.FromImage(bitmap);
+                g.DrawImage(img, 0, 0);
+                //bitmap.Save(context.Response.OutputStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                img.Dispose();
+                return bitmap;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
         }
 
         //生成按比例缩放的图片
