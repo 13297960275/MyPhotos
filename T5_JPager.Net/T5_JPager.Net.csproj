@@ -221,18 +221,6 @@
     <Compile Include="Utilities\Watermark.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\MY.SQL" />
-    <Content Include="App_Data\UNION.sql" />
-    <Content Include="App_Data\一次性添加多条记录.sql" />
-    <Content Include="App_Data\复习.sql" />
-    <Content Include="App_Data\字符串函数.sql" />
-    <Content Include="App_Data\带条件的查询.sql" />
-    <Content Include="App_Data\数学函数.sql" />
-    <Content Include="App_Data\数据分组-统计信息.sql" />
-    <Content Include="App_Data\日期函数.sql" />
-    <Content Include="App_Data\模糊查询.sql" />
-    <Content Include="App_Data\类型转换函数.sql" />
-    <Content Include="App_Data\聚合函数.sql" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -311,6 +299,7 @@
     <Content Include="Views\Photos\Uploadfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
