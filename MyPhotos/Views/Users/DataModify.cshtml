@@ -19,14 +19,14 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-10 padtop7">
                         @Html.DisplayFor(model => model.UserName)
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.DisplayName, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-10 padtop7">
                         @Html.EditorFor(model => model.DisplayName)
                         @Html.ValidationMessageFor(model => model.DisplayName)
                     </div>
@@ -34,7 +34,7 @@
 
                 @*<div class="form-group">
                     <label class="control-label col-md-2">用户组</label>
-                    <div class="col-md-10">
+                    <div class="col-md-10 padtop7">
                          @foreach (var _relation in Model.UserRoleRelations)
                             { <span>@_relation.Role.Name</span><br />}
                                     </div>
@@ -42,7 +42,7 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-10 padtop7">
                         @Html.EditorFor(model => model.Email)
                         @Html.ValidationMessageFor(model => model.Email)
                     </div>

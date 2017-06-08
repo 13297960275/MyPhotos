@@ -16,6 +16,8 @@ using System.Web.Security;
 
 namespace MyPhotos.Controllers
 {
+    [Authorize]
+    //[AllowAnonymous]
     public class UsersController : Controller
     {
         private BaseDBContext db = new BaseDBContext();
@@ -46,8 +48,7 @@ namespace MyPhotos.Controllers
             //var list = new List<User>();
 
             //根据条件检索
-            var query = param.UserName != null ? list.Where(t => t.UserName.Contains(param.UserName)).ToList() :
-              list.ToList();
+            var query = param.UserName != null ? list.Where(t => t.UserName.Contains(param.UserName)).ToList() : list.ToList();
 
             //分页数据
             var data = query.Skip(param.Skip).Take(param.PageSize);
@@ -175,15 +176,6 @@ namespace MyPhotos.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
         #endregion
 
         #region 获取AuthenticationManager（认证管理器）
@@ -205,6 +197,7 @@ namespace MyPhotos.Controllers
         /// 获取验证码图片
         /// </summary>
         /// <returns>验证码图片</returns>
+        [AllowAnonymous]
         public ActionResult GetValidateCode()
         {
             ValidateCode vCode = new ValidateCode();
@@ -390,7 +383,10 @@ namespace MyPhotos.Controllers
         /// <returns></returns>
         public ActionResult ChangePassword()
         {
+            User _user = udbr.Find(u => u.UserName == User.Identity.Name);
             UsersChangePasswordViewModel passwordViewModel = new UsersChangePasswordViewModel();
+            passwordViewModel.UserName = _user.UserName;
+            //passwordViewModel.Password = _user.Password;
             return PartialView("ChangePassword", passwordViewModel);
         }
 
@@ -465,6 +461,15 @@ namespace MyPhotos.Controllers
         }
 
         #endregion
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
     }
 }

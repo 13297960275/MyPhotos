@@ -7,6 +7,7 @@ using MyPhotos.DAL;
 
 namespace MyPhotos.Controllers
 {
+    [Authorize]
     public class PhotoTypesController : Controller
     {
         private BaseDBContext db = new BaseDBContext();

@@ -6,21 +6,20 @@
 
 <h2>用户列表</h2>
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
-<div>
-    <form method="get">
-        每页数据条数：<span>@ViewBag.PageSize</span>
-        <input name="PageSize" id="Size" value='' />
-        用户名：
-        <input name="UserName" id="Name" value='' />@*value="根据用户名查找"*@
-        @*<img src="~/fonts/Icon/小图标 (19).png" />*@
-        @*Age：
-            <input name="Age" id="Age" />*@
-        <input type="submit" value="查询" />
-    </form>
-</div>
+<br />
+<form method="get" class="form-inline">
+    <div class="form-group" style="margin-right:36px;">
+        <label for="Size" style="margin-right:12px;">每页数据条数</label>
+        <input type="text" class="form-control" name="PageSize" id="Size" placeholder="每页显示的数据条数">
+    </div>
+    <div class="form-group" style="margin-right:36px;">
+        <label for="Name" style="margin-right:12px;">用户名</label>
+        <input type="text" class="form-control" name="UserName" id="Name" placeholder="根据用户名查询">
+    </div>
+    <button type="submit" class="btn btn-default">查询</button>
+</form>
+<br />
+
 <table class="table">
     <tr>
         <th>
@@ -50,7 +49,7 @@
         <th>
             登录IP
         </th>
-        <th></th>
+        <th>修改权限</th>
     </tr>
 
     @foreach (MyPhotos.Models.User item in Model.DataList)

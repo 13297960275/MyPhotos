@@ -1,89 +1,89 @@
 ﻿@using MyPhotos.ViewModels
-    @model LoginViewModel
-    @{
+@model LoginViewModel
+@{
         ViewBag.Title = "登录";
-    }
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $("#valiCode").bind("click", function () {
-                this.src = "/Account/GetValidateCode?time=" + (new Date()).getTime();
-            });
-            //alert("good");
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#valiCode").bind("click", function () {
+            this.src = "/Account/GetValidateCode?time=" + (new Date()).getTime();
         });
-    </script>
-    <h2>@ViewBag.Title。</h2>
-    <div class="row">
-        <div class="col-md-8">
-            <section id="loginForm">
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        //alert("good");
+    });
+</script>
+<h2>@ViewBag.Title。</h2>
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-                    @Html.AntiForgeryToken()
-                    <h4>使用本地帐户登录。</h4>
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                        </div>
+                @Html.AntiForgeryToken()
+                <h4>使用本地帐户登录。</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10 padtop7">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10 padtop7">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
+                </div>
 
-                    @*<div class="form-group">
-                            <label class="col-md-2 control-label">验证码</label>
-                            <div class="col-md-10">
-                                <input type="text" name="textvc" /><img id="valiCode" style="cursor: pointer;" src="/Account/GetValidateCode" alt="验证码" />
-                            </div>
-                        </div>*@
+                @*<div class="form-group">
+                        <label class="col-md-2 control-label">验证码</label>
+                        <div class="col-md-10 padtop7">
+                            <input type="text" name="textvc" /><img id="valiCode" style="cursor: pointer;" src="/Account/GetValidateCode" alt="验证码" />
+                        </div>
+                    </div>*@
 
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.VCode, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.VCode, new { @class = "form-control" })
-                            <img id="valiCode" style="cursor: pointer;" src="/Account/GetValidateCode" alt="验证码" />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VCode, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10 padtop7">
+                        @Html.TextBoxFor(m => m.VCode, new { @class = "form-control" })
+                        <img id="valiCode" style="cursor: pointer;" src="/Account/GetValidateCode" alt="验证码" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <div class="checkbox">
-                                @Html.CheckBoxFor(m => m.RememberMe)
-                                @Html.LabelFor(m => m.RememberMe)
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="登录" class="btn btn-default" />
-                            <p>
-                                @Html.ActionLink("注册为新用户", "Register")
-                            </p>
-                        </div>
-                    </div>
-
-                    @* 在为密码重置功能启用帐户确认后启用此项
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="登录" class="btn btn-default" />
                         <p>
-                            @Html.ActionLink("忘记了密码?", "ForgotPassword")
-                        </p>*@
+                            @Html.ActionLink("注册为新用户", "Register")
+                        </p>
+                    </div>
+                </div>
+
+                @* 在为密码重置功能启用帐户确认后启用此项
+                    <p>
+                        @Html.ActionLink("忘记了密码?", "ForgotPassword")
+                    </p>*@
                 }
-            </section>
+        </section>
 
-        </div>
-        <div class="col-md-4">
-            <section id="socialLoginForm">
-                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-            </section>
-        </div>
     </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>
+</div>
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

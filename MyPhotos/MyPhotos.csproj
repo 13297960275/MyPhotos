@@ -432,6 +432,7 @@
     <Content Include="Views\Photos\_EditPartialPage.cshtml" />
     <Content Include="Views\Photos\_AddNewPartialPage.cshtml" />
     <Content Include="wm.ashx" />
+    <Content Include="Views\Users\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="plugins\fancyapps-fancyBox-18d1712\" />

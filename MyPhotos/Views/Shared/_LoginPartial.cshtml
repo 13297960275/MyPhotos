@@ -7,7 +7,9 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li id="userDetails">
-                @Html.ActionLink("你好，" + User.Identity.GetUserName() + "!", "Details", "Users", routeValues: null, htmlAttributes: new { title = "Manage" })
+                @*@Html.DisplayForModel("你好，" + User.Identity.GetUserName())*@
+                <a href="javascript:void(0);">你好，@User.Identity.GetUserName() !</a>
+                @*@Html.ActionLink("你好，" + User.Identity.GetUserName() + "!", null, null, routeValues: null, htmlAttributes: new { id="userlink",title = "Manage" })*@
                 <ul hidden id="userManager" class="nav nav-pills nav-stacked">
                     <li>
                         @*<a onclick="Modify();">修改资料</a>*@

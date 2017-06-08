@@ -52,7 +52,7 @@ namespace MyPhotos.Models
         /// </summary>
         [Required(ErrorMessage = "必填")]
         [Display(Name = "邮箱")]
-        [DataType(DataType.EmailAddress)]
+        [DataType(DataType.EmailAddress, ErrorMessage = "邮箱格式不合法")]
         public string Email { get; set; }
 
         /// <summary>

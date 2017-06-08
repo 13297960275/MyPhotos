@@ -19,7 +19,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 padtop7">
                 @Html.DisplayFor(model => model.UserName)
                 @*@Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })*@
@@ -28,7 +28,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.DisplayName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 padtop7">
                 @Html.DisplayFor(model => model.DisplayName)
                 @*@Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "text-danger" })*@
@@ -37,7 +37,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.RoleID, "用户角色", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 padtop7">
                 @*@Html.DisplayFor(model => model.DisplayName)*@
                 @Html.DropDownList("RoleID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "text-danger" })
@@ -46,7 +46,7 @@
 
         @*<div class="form-group">
                 @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-10 padtop7">
                     @Html.DisplayFor(model => model.Password)
                     @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
@@ -55,7 +55,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 padtop7">
                 @Html.DisplayFor(model => model.Email)
                 @*@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })*@
@@ -64,7 +64,7 @@
 
         @*<div class="form-group">
                 @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-10 padtop7">
                     @Html.DisplayFor(model => model.Status)
                     @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
@@ -73,7 +73,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.RegistrationTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 padtop7">
                 @Html.DisplayFor(model => model.RegistrationTime)
                 @*@Html.EditorFor(model => model.RegistrationTime, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.RegistrationTime, "", new { @class = "text-danger" })*@
@@ -82,7 +82,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.LoginTime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 padtop7">
                 @Html.DisplayFor(model => model.LoginTime)
                 @*@Html.EditorFor(model => model.LoginTime, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.LoginTime, "", new { @class = "text-danger" })*@
@@ -91,7 +91,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.LoginIP, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 padtop7">
                 @Html.DisplayFor(model => model.LoginIP)
                 @*@Html.EditorFor(model => model.LoginIP, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.LoginIP, "", new { @class = "text-danger" })*@

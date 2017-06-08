@@ -12,8 +12,8 @@ using System.Web.Mvc;
 
 namespace MyPhotos.Controllers
 {
-    //[Authorize]
-    [AllowAnonymous]
+    [Authorize]
+    //[AllowAnonymous]
     public class PhotosController : Controller
     {
         private BaseDBContext db = new BaseDBContext();

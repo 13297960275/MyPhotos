@@ -18,7 +18,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 padtop7">
                 @Html.EditorFor(model => model.UserName)
                 @Html.ValidationMessageFor(model => model.UserName)
             </div>
@@ -26,7 +26,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 padtop7">
                 @Html.EditorFor(model => model.Password)
                 @Html.ValidationMessageFor(model => model.Password)
             </div>
@@ -34,7 +34,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.VerificationCode, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 padtop7">
                 @Html.EditorFor(model => model.VerificationCode)
                 <img id="verificationcode" title="点击刷新" src="@Url.Action("GetValidateCode")" style="cursor:pointer" />
                 @Html.ValidationMessageFor(model => model.VerificationCode)
@@ -43,7 +43,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.RememberMe, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 padtop7">
                 @Html.EditorFor(model => model.RememberMe)
                 @Html.ValidationMessageFor(model => model.RememberMe)
                 @*&nbsp; &nbsp;
