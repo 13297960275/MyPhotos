@@ -19,13 +19,26 @@
     visibility: hidden;
 }
 
-#screen {
+#screen_break {
     position: absolute;
     /*left: 20%;
         width: 60%;*/
     top: 20%;
     height: 60%;
     /*background: #000;*/
+    border: gray solid 1px;
+}
+
+#screen {
+    position: absolute;
+    /*left: 20%;
+        width: 60%;*/
+    top: 20%;
+    height: 70%;
+    width: 90%;
+    /*background: #000;*/
+    margin: 0;
+    padding: 0;
     border: gray solid 1px;
 }
 

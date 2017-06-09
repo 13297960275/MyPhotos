@@ -25,17 +25,23 @@ namespace MyPhotos.Migrations
                 new PhotoType
                 {
                     _typeid = 1,
-                    _typename = "风景"
+                    _typename = "风景",
+                    _typedes = "风景这边更好",
+                    _tcover = "AddPhotos.png"
                 },
                 new PhotoType
                 {
                     _typeid = 2,
-                    _typename = "美女"
+                    _typename = "美女",
+                    _typedes = "窈窕淑女",
+                    _tcover = "AddPhotos.png"
                 },
                 new PhotoType
                 {
                     _typeid = 3,
-                    _typename = "自拍"
+                    _typename = "自拍",
+                    _typedes = "自恋的小凳子",
+                    _tcover = "AddPhotos.png"
                 }
             );
             context.Roles.AddOrUpdate(

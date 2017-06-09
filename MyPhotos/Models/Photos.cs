@@ -71,6 +71,8 @@ namespace MyPhotos.Models
         [Display(Name = "踩")]
         public int? _pdown { get; set; }
 
+        public string MD5 { get; set; }
+
 
         public virtual PhotoType PhotoTypes { get; set; }
     }

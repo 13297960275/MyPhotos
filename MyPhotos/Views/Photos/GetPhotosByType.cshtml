@@ -161,13 +161,13 @@
 
 </script>
 
-<h2>风景</h2>
+<h2>@ViewBag.ptypeName</h2>
 <div id="slider" class="content container body-content">
     @foreach (var item in Model)
     {
         <div class="slide">
             <a href="~/Photos/Details/@item._pid">
-                <img class="diapo" src="~/img.ashx?w=680&h=586&u=@item._purl" alt="">
+                <img class="diapo img-thumbnail" src="~/img.ashx?w=680&h=586&u=@item._purl" alt="">
                 @*<img class="diapo" src="~/Images/@item._purl"
                 *@
             </a>
@@ -177,6 +177,15 @@
             </div>
         </div>
     }
+    <div class="slide">
+        <a href="#" onclick="OpenAddNew();">
+            <img class="diapo img-thumbnail" src="~/Referances/Pictures/AddPhotos.png" alt="添加图片">
+        </a>
+        <div class="text">
+            <span class="title">标题</span>
+            <span>添加图片</span>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">

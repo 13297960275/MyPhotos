@@ -201,8 +201,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\GlobalWaterMaker.cs" />
+    <Compile Include="Common\AdminFilter.cs" />
     <Compile Include="Common\Authentication.cs" />
     <Compile Include="Common\Download.cs" />
+    <Compile Include="Common\FileLogger.cs" />
+    <Compile Include="Common\MD5Helper.cs" />
     <Compile Include="Common\Thumbnail.cs" />
     <Compile Include="Common\Upload.cs" />
     <Compile Include="Common\WaterMaker.cs" />
@@ -218,6 +221,10 @@
     <Compile Include="Controllers\PhotosController.cs" />
     <Compile Include="Controllers\PhotoTypesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Migrations\201706090904434_photosMD5.cs" />
+    <Compile Include="Migrations\201706090904434_photosMD5.Designer.cs">
+      <DependentUpon>201706090904434_photosMD5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Test\Download.aspx.cs">
       <DependentUpon>Download.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -301,6 +308,8 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Images\AddPhotos.png" />
+    <Content Include="Log\Logs.txt" />
     <Content Include="Referances\Pictures\AddAlbum.png" />
     <Content Include="Referances\Pictures\AddPhotos.png" />
     <Content Include="Referances\Pictures\rabit.png" />
@@ -335,6 +344,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="img.ashx" />
+    <Content Include="ApplicationInsights.config" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\ai.1.0.8-build01310.js" />
     <Content Include="Scripts\ai.1.0.8-build01310.min.js" />
@@ -449,6 +459,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706090904434_photosMD5.resx">
+      <DependentUpon>201706090904434_photosMD5.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\Initial.resx">
       <DependentUpon>Initial.cs</DependentUpon>
     </EmbeddedResource>

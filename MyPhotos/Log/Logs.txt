@@ -1,0 +1,2524 @@
+﻿Messages:{}
+DateTime:2017-06-09 10:49:45{}
+生成按比例缩放的图片成功Messages:{}
+DateTime:2017-06-09 10:49:45{}
+生成按比例缩放的图片成功Messages:{}
+DateTime:2017-06-09 10:49:46{}
+生成按比例缩放的图片成功Messages:{}
+DateTime:2017-06-09 10:49:46{}
+生成按比例缩放的图片成功Messages:{}
+DateTime:2017-06-09 10:50:11{}
+生成指定大小的图片成功Messages:{}
+DateTime:2017-06-09 10:50:11{}
+生成指定大小的图片成功Messages:{}
+DateTime:2017-06-09 10:50:11{}
+生成指定大小的图片成功Messages:{}
+DateTime:2017-06-09 10:50:12{}
+生成指定大小的图片成功Messages:{}
+DateTime:2017-06-09 10:50:12{}
+生成按比例缩放的图片成功Messages:{}
+DateTime:2017-06-09 10:50:12{}
+生成指定大小的图片成功
+
+File.AppendAllText(
+                "E:/workspace/Csharp/ASPNET/MyPhotos/MyPhotos/Log/Logs.txt",
+                //"../Log/Logs.txt",
+                "Exceptions:{" + "}\r\nDateTime:" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")
+                + "{" + "}\r\n" + "Message:{" + e.Message + "}\r\n" + "Stacktrace:{" + e.StackTrace + "}\r\n" + "\r\n"
+            );
+        }
+
+        public void LogMessage(string msg)
+        {
+            File.AppendAllText(
+                "E:/workspace/Csharp/ASPNET/MyPhotos/MyPhotos/Log/Logs.txt",
+                //"../Log/Logs.txt",
+                "Messages:{" + "\r\n\t DateTime:" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss")
+                +  "\r\n\t Message" + msg+"\r\n}\r\n"
+            );
+        }Messages:{
+	 DateTime:2017-06-09 11:16:39
+	 Message:生成按比例缩放的图片成功
+}
+Messages:{
+	 DateTime:2017-06-09 11:16:39
+	 Message:生成指定大小的图片成功
+}
+Messages:{
+	 DateTime:2017-06-09 11:16:39
+	 Message:生成按比例缩放的图片成功
+}
+Messages:{
+	 DateTime:2017-06-09 11:16:39
+	 Message:生成按比例缩放的图片成功
+}
+Messages:{
+	 DateTime:2017-06-09 11:16:39
+	 Message:生成指定大小的图片成功
+}
+Messages:{
+	 DateTime:2017-06-09 11:16:39
+	 Message:生成按比例缩放的图片成功
+}
+Messages:{
+	 DateTime:2017-06-09 11:16:39
+	 Message:生成指定大小的图片成功
+}
+Messages:{
+	 DateTime:2017-06-09 11:16:39
+	 Message:生成按比例缩放的图片成功
+}
+Messages:{
+	 DateTime:2017-06-09 11:16:39
+	 Message:生成指定大小的图片成功
+}
+Messages:{
+	 DateTime:2017-06-09 11:16:39
+	 Message:生成指定大小的图片成功
+}
+Messages:{
+	 DateTime:2017-06-09 11:18:34
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:34
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:34
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:34
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:34
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:34
+	 Message:生成指定大小的图片成功
+}
+
+Exceptions:{
+	 DateTime:2017-06-09 11:18:34
+	 Message:文件“E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Log\Logs.txt”正由另一进程使用，因此该进程无法访问此文件。
+	 Stacktrace:   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   在 System.IO.File.InternalAppendAllText(String path, String contents, Encoding encoding)
+   在 System.IO.File.AppendAllText(String path, String contents)
+   在 MyPhotos.Common.FileLogger.LogMessage(String msg) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\FileLogger.cs:行号 19
+   在 MyPhotos.Common.Thumbnail.GetScaleImage(Int32 width, Int32 height, String path) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\Thumbnail.cs:行号 56
+}
+
+Exceptions:{
+	 DateTime:2017-06-09 11:18:34
+	 Message:值不能为 null。
+参数名: image
+	 Stacktrace:   在 System.Drawing.Graphics.DrawImage(Image image, Int32 x, Int32 y)
+   在 MyPhotos.Common.Thumbnail.GetThumbnail(Int32 width, Int32 height, String path) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\Thumbnail.cs:行号 21
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:34
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:34
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:42
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:43
+	 Message:生成指定大小的图片成功
+}
+
+Exceptions:{
+	 DateTime:2017-06-09 11:18:43
+	 Message:文件“E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Log\Logs.txt”正由另一进程使用，因此该进程无法访问此文件。
+	 Stacktrace:   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   在 System.IO.File.InternalAppendAllText(String path, String contents, Encoding encoding)
+   在 System.IO.File.AppendAllText(String path, String contents)
+   在 MyPhotos.Common.FileLogger.LogMessage(String msg) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\FileLogger.cs:行号 19
+   在 MyPhotos.Common.Thumbnail.GetThumbnail(Int32 width, Int32 height, String path) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\Thumbnail.cs:行号 24
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:43
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:43
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:43
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:43
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:43
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:43
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:43
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:43
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:43
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:18:43
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:19:30
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:19:30
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:19:30
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:19:30
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:19:30
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:19:30
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:19:30
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:19:30
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:19:30
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:19:30
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:48
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:48
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:48
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:48
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:48
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:48
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:48
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:48
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:48
+	 Message:生成指定大小的图片成功
+}
+
+Exceptions:{
+	 DateTime:2017-06-09 11:20:48
+	 Message:文件“E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Log\Logs.txt”正由另一进程使用，因此该进程无法访问此文件。
+	 Stacktrace:   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   在 System.IO.File.InternalAppendAllText(String path, String contents, Encoding encoding)
+   在 System.IO.File.AppendAllText(String path, String contents)
+   在 MyPhotos.Common.FileLogger.LogMessage(String msg) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\FileLogger.cs:行号 19
+   在 MyPhotos.Common.Thumbnail.GetThumbnail(Int32 width, Int32 height, String path) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\Thumbnail.cs:行号 24
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:54
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:55
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:55
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:55
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:55
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:55
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:20:55
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:24:52
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:24:52
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:24:52
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:24:52
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:24:52
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:24:52
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:24:52
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:24:52
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:24:52
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 11:24:52
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:34
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:34
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:34
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:34
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:34
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:34
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:34
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:34
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:34
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:34
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:47
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:47
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:47
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:47
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:47
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:47
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:47
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:47
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:47
+	 Message:生成指定大小的图片成功
+}
+
+Exceptions:{
+	 DateTime:2017-06-09 02:10:47
+	 Message:文件“E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Log\Logs.txt”正由另一进程使用，因此该进程无法访问此文件。
+	 Stacktrace:   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   在 System.IO.File.InternalAppendAllText(String path, String contents, Encoding encoding)
+   在 System.IO.File.AppendAllText(String path, String contents)
+   在 MyPhotos.Common.FileLogger.LogMessage(String msg) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\FileLogger.cs:行号 19
+   在 MyPhotos.Common.Thumbnail.GetThumbnail(Int32 width, Int32 height, String path) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\Thumbnail.cs:行号 24
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:47
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:47
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:10:52
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:20
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成指定大小的图片成功
+}
+
+Exceptions:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:文件“E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Log\Logs.txt”正由另一进程使用，因此该进程无法访问此文件。
+	 Stacktrace:   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   在 System.IO.File.InternalAppendAllText(String path, String contents, Encoding encoding)
+   在 System.IO.File.AppendAllText(String path, String contents)
+   在 MyPhotos.Common.FileLogger.LogMessage(String msg) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\FileLogger.cs:行号 19
+   在 MyPhotos.Common.Thumbnail.GetScaleImage(Int32 width, Int32 height, String path) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\Thumbnail.cs:行号 56
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成按比例缩放的图片成功
+}
+
+Exceptions:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:值不能为 null。
+参数名: image
+	 Stacktrace:   在 System.Drawing.Graphics.DrawImage(Image image, Int32 x, Int32 y)
+   在 MyPhotos.Common.Thumbnail.GetThumbnail(Int32 width, Int32 height, String path) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\Thumbnail.cs:行号 21
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:11:40
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:00
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:00
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:00
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:00
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:00
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:00
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:00
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:00
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:00
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:00
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:02
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:13
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:23
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:31
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:31
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:31
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:31
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:31
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:31
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:31
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:31
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:31
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:31
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:32
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:33
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:33
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:33
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:33
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:33
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:12:33
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:14:16
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:14:16
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:14:16
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:14:16
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:14:16
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:14:16
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:14:16
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:14:16
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:14:16
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:14:16
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:17
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:17
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:18
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:18
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:18
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:18
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:18
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:18
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:18
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:18
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:39
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:39
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:39
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:39
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:39
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:39
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:18:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:19:18
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:41:58
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:41:58
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:41:58
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:41:58
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:41:58
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:41:58
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:41:58
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:41:58
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:41:58
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:41:58
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:10
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:10
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:10
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:10
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:10
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:10
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:26
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:42:26
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:14
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:14
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:14
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:14
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:14
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:14
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:14
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:43:15
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:生成指定大小的图片成功
+}
+
+Exceptions:{
+	 DateTime:2017-06-09 02:48:50
+	 Message:文件“E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Log\Logs.txt”正由另一进程使用，因此该进程无法访问此文件。
+	 Stacktrace:   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   在 System.IO.File.InternalAppendAllText(String path, String contents, Encoding encoding)
+   在 System.IO.File.AppendAllText(String path, String contents)
+   在 MyPhotos.Common.FileLogger.LogMessage(String msg) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\FileLogger.cs:行号 19
+   在 MyPhotos.Common.Thumbnail.GetThumbnail(Int32 width, Int32 height, String path) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\Thumbnail.cs:行号 24
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:49:46
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:生成指定大小的图片成功
+}
+
+Exceptions:{
+	 DateTime:2017-06-09 02:50:05
+	 Message:文件“E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Log\Logs.txt”正由另一进程使用，因此该进程无法访问此文件。
+	 Stacktrace:   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   在 System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   在 System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   在 System.IO.File.InternalAppendAllText(String path, String contents, Encoding encoding)
+   在 System.IO.File.AppendAllText(String path, String contents)
+   在 MyPhotos.Common.FileLogger.LogMessage(String msg) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\FileLogger.cs:行号 19
+   在 MyPhotos.Common.Thumbnail.GetThumbnail(Int32 width, Int32 height, String path) 位置 E:\workspace\Csharp\ASPNET\MyPhotos\MyPhotos\Common\Thumbnail.cs:行号 24
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:06
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:06
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:06
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:06
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:06
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:06
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:06
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:06
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:06
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:06
+	 Message:生成按比例缩放的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:06
+	 Message:生成指定大小的图片成功
+}
+
+Messages:{
+	 DateTime:2017-06-09 02:50:06
+	 Message:生成指定大小的图片成功
+}
+

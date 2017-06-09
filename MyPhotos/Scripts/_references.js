@@ -1,6 +1,6 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="../referances/script/Canvas_Moon_MeteorShower.js" />
-/// <reference path="../referances/script/Photos.js" />
+/// <reference path="../referances/script/PhotosPagerIndex.js" />
 /// <reference path="../referances/script/uploadImg.js" />
 /// <reference path="../referances/script/uploadTest.js" />
 /// <reference path="ai.1.0.8-build01310.min.js" />

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using MyPhotos.Common;
 
 namespace MyPhotos.Controllers
 {
@@ -17,6 +18,7 @@ namespace MyPhotos.Controllers
     public class PhotosController : Controller
     {
         private BaseDBContext db = new BaseDBContext();
+        private MD5Helper md5 = new MD5Helper();
 
         /// <summary>
         /// 分页显示图片列表
@@ -78,8 +80,8 @@ namespace MyPhotos.Controllers
         [HttpPost]
         public ActionResult AddNew(HttpPostedFileBase uploadFile, [Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_ptime,_pclicks,_pdownload,_pup,_pdown")] Photos photos)
         {
-            /*采用MD5识别相同文件，防止重复上传，实现方法在此处添加*/
-            //string fileMD5 = CommonFuncs.GetStreamMD5(Filedata.InputStream);
+            /*采用MD5识别相同文件，防止重复上传*/
+            string fileMD5 = md5.GetStreamMD5(uploadFile.InputStream);
 
             if (ModelState.IsValid)
             {
@@ -278,8 +280,9 @@ namespace MyPhotos.Controllers
         /// <returns></returns>
         public ActionResult GetPhotosByType(int id)
         {
-            var pt = db.Photos.Where(p => p._ptypeid == id);
-            return View(pt.ToList());
+            var photos = db.Photos.Where(p => p._ptypeid == id);
+            ViewBag.ptypeName = db.PhotoTypes.Find(id)._typename;
+            return View(photos.ToList());
         }
 
         /// <summary>
