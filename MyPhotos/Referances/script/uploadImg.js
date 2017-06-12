@@ -10,7 +10,7 @@ function reupload() {
 };
 $(function () {
     //选择图片后显示预览和文件大小
-    debugger
+    //debugger
     $('#uploadFile').on("change", function () {
         var file = this.files[0];
         if (this.files && file) {

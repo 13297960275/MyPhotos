@@ -20,13 +20,13 @@ namespace MyPhotos.Models
         /// 图片类型ID
         /// </summary>
         [ForeignKey("PhotoTypes")]
-        [Display(Name = "图片类型ID")]
+        [Display(Name = "图片类型")]
         public int _ptypeid { get; set; }
 
         /// <summary>
         /// 图片标题
         /// </summary>
-        [Display(Name = "图片标题")]
+        [Display(Name = "标题")]
         public string _ptitle { get; set; }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace MyPhotos.Models
         /// <summary>
         /// 图片描述
         /// </summary>
-        [Display(Name = "图片描述")]
+        [Display(Name = "描述")]
         public string _pdes { get; set; }
 
         /// <summary>

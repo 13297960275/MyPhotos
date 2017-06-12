@@ -1,10 +1,11 @@
 ﻿var baseUrl = '../../';
 
 function OpenAddNew() {
+    //debugger
     $.get("/Photos/AddNew").then(
     function (r) {
         $("<div id='DivCreateNew'></div>").html(r).dialog({
-            width: 540,
+            //width: 540,
             modal: true,
             closable: true,
             title: "添加图片"
@@ -13,6 +14,7 @@ function OpenAddNew() {
 };
 
 function del(id) {
+    //debugger
     $("#del-confirm").dialog({
         resizable: true,
         modal: true,
@@ -49,13 +51,14 @@ function del(id) {
 };
 
 function Modify(id) {
+    //debugger
     $.get("/Photos/AddNew").then(
     function (r) {
         $("<div id='editModal'></div>").html(r).dialog({
             //width: 540,
             modal: true,
             closable: true,
-            title: "添加图片"
+            title: "修改图片信息"
         });
     });
 };
