@@ -80,9 +80,6 @@ namespace MyPhotos.Controllers
         [HttpPost]
         public ActionResult AddNew(HttpPostedFileBase uploadFile, [Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_ptime,_pclicks,_pdownload,_pup,_pdown")] Photos photos)
         {
-            /*采用MD5识别相同文件，防止重复上传*/
-            string fileMD5 = md5.GetStreamMD5(uploadFile.InputStream);
-
             if (ModelState.IsValid)
             {
                 if (uploadFile != null && uploadFile.ContentLength > 0)//判断是否存在文件
@@ -90,18 +87,31 @@ namespace MyPhotos.Controllers
                     //暂不允许上传GIF || uploadFile.ContentType == "image/gif"
                     if (uploadFile.ContentType == "image/jpeg")//判断是否是图片文件 
                     {
-                        string path = Server.MapPath("~/Images/");
-                        string oldname = uploadFile.FileName;
-                        string newname = Guid.NewGuid().ToString() + Path.GetExtension(oldname);
-                        //string filetype = filedata.ContentType;
-                        //int filesize = filedata.ContentLength;
-                        uploadFile.SaveAs(Path.Combine(path, newname));
-                        photos._purl = newname;
+                        /*采用MD5识别相同文件，防止重复上传*/
+                        string fileMD5 = md5.GetStreamMD5(uploadFile.InputStream);
+                        Photos p = db.Photos.SingleOrDefault(dp => dp.MD5 == fileMD5);
+
+                        if (p == null)
+                        {
+                            string path = Server.MapPath("~/Images/");
+                            string oldname = uploadFile.FileName;
+                            string newname = Guid.NewGuid().ToString() + Path.GetExtension(oldname);
+                            //string filetype = filedata.ContentType;
+                            //int filesize = filedata.ContentLength;
+                            uploadFile.SaveAs(Path.Combine(path, newname));
+                            photos._purl = newname;
+                        }
+                        else
+                        {
+                            photos._purl = p._purl;
+                        }
+
                         photos._pdownload = 0;
                         photos._pclicks = 0;
                         photos._pdown = 0;
                         photos._pup = 0;
                         photos._ptime = DateTime.Now;
+                        photos.MD5 = fileMD5;
                         db.Photos.Add(photos);
                         db.SaveChanges();
                         return RedirectToAction("PagerIndex");
