@@ -80,6 +80,8 @@ namespace MyPhotos.Controllers
         [HttpPost]
         public ActionResult AddNew(HttpPostedFileBase uploadFile, [Bind(Include = "_pid,_ptypeid,_ptitle,_purl,_pdes,_ptime,_pclicks,_pdownload,_pup,_pdown")] Photos photos)
         {
+            //var pts = db.PhotoTypes.Where(pt => pt._typeid == photos._ptypeid);
+            PhotoType photoTypes = db.PhotoTypes.Find(photos._ptypeid);
             if (ModelState.IsValid)
             {
                 if (uploadFile != null && uploadFile.ContentLength > 0)//判断是否存在文件
@@ -89,9 +91,10 @@ namespace MyPhotos.Controllers
                     {
                         /*采用MD5识别相同文件，防止重复上传*/
                         string fileMD5 = md5.GetStreamMD5(uploadFile.InputStream);
-                        Photos p = db.Photos.SingleOrDefault(dp => dp.MD5 == fileMD5);
-
-                        if (p == null)
+                        //Photos p = db.Photos.SingleOrDefault(dp => dp.MD5 == fileMD5);//若多个满足则SingleOrDefault引发异常
+                        var ps = db.Photos.Where(dp => dp.MD5 == fileMD5).ToList();
+                        //var p = ps.ToList()[0];
+                        if (ps.Count() == 0)
                         {
                             string path = Server.MapPath("~/Images/");
                             string oldname = uploadFile.FileName;
@@ -100,20 +103,26 @@ namespace MyPhotos.Controllers
                             //int filesize = filedata.ContentLength;
                             uploadFile.SaveAs(Path.Combine(path, newname));
                             photos._purl = newname;
+                            photoTypes._tcover = newname;
+                            photos._pdownload = 0;
+                            photos._pclicks = 0;
+                            photos._pdown = 0;
+                            photos._pup = 0;
+                            photos._ptime = DateTime.Now;
+                            photos.MD5 = fileMD5;
+                            db.Entry(photoTypes).State = EntityState.Modified;//更新相册封面
+                            db.Photos.Add(photos);
+                            db.SaveChanges();
                         }
                         else
                         {
-                            photos._purl = p._purl;
+                            //photos._purl = ps[0]._purl;
+                            HttpContext.Response.Write("<script>alert('已上传过这张图片，请重新选择图片上传！');</script>");
+                            HttpContext.Response.Redirect("PagerIndex");
+                            //HttpContext.Response.Flush();
+                            //HttpContext.Response.End();
+                            //RedirectToAction("PagerIndex");
                         }
-
-                        photos._pdownload = 0;
-                        photos._pclicks = 0;
-                        photos._pdown = 0;
-                        photos._pup = 0;
-                        photos._ptime = DateTime.Now;
-                        photos.MD5 = fileMD5;
-                        db.Photos.Add(photos);
-                        db.SaveChanges();
                         return RedirectToAction("PagerIndex");
                     }
                     //else HttpContext.Response.Write("<script>alert('请选择图片文件server');</script>");

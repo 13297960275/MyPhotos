@@ -19,7 +19,7 @@
     visibility: hidden;
 }
 
-#screen_break {
+#screen {
     position: absolute;
     /*left: 20%;
         width: 60%;*/
@@ -29,7 +29,7 @@
     border: gray solid 1px;
 }
 
-#screen {
+#screen_break {
     position: absolute;
     /*left: 20%;
         width: 60%;*/
