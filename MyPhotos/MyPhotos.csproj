@@ -262,12 +262,37 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Bases.mdf" />
+    <Content Include="App_Data\Bases_log.ldf">
+      <DependentUpon>Bases.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\DefaultConnection.mdf" />
+    <Content Include="App_Data\DefaultConnection_log.ldf">
+      <DependentUpon>DefaultConnection.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\SQLTest.sql" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
+    <Content Include="Images\7e84b4cd-539e-401f-b882-e937f1a1407d.jpg" />
+    <Content Include="Images\e8f3dd03-628a-497c-92ab-6f4c9a3ae20b.jpg" />
+    <Content Include="Images\f491786c-d1a3-4962-91f2-ad565e0c33f7.jpg" />
+    <Content Include="Referances\Pictures\banner.jpg" />
+    <Content Include="Referances\Pictures\bg.png" />
+    <Content Include="Referances\Pictures\cp_img_sc.png" />
+    <Content Include="Referances\Pictures\cp_img_tj.png" />
+    <Content Include="Referances\Pictures\cp_img_tj_a.png" />
+    <Content Include="Referances\Pictures\favicon.ico" />
+    <Content Include="Referances\Pictures\favicon.png" />
+    <Content Include="Referances\Pictures\icons.png" />
+    <Content Include="Referances\Pictures\image.png" />
+    <Content Include="Referances\Pictures\progress.png" />
+    <Content Include="Referances\Pictures\qrcode.jpg" />
+    <Content Include="Referances\Pictures\success.png" />
+    <Content Include="Referances\script\jquery-1.8.2.min.js" />
+    <Content Include="Referances\style\syntax.css" />
     <Content Include="Referances\style\WebUploaderdemo.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -374,6 +399,9 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="img.ashx" />
+    <Content Include="Referances\Pictures\logo.psd" />
+    <None Include="Properties\PublishProfiles\MyPhotos - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\MyPhotos - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\ai.1.0.8-build01310.js" />
     <Content Include="Scripts\ai.1.0.8-build01310.min.js" />
